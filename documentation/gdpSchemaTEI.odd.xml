@@ -1,0 +1,1537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns="http://www.tei-c.org/ns/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0">
+  <!-- 
+   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    Guides de Paris, Schéma et documention 
+   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+   @todo revoir ensemble des classes d’attribut et des classes de modèles de tei
+-->
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title xml:lang="fre" type="main">Schéma et documentation du Corpus des Guides de Paris</title>
+        <principal>
+          <persName ref="#MCL">
+            <forename>Marianne</forename>
+            <surname>Cojannot-Le Blanc</surname>
+          </persName>
+          <affiliation>
+            <orgName>Histoire des Arts &amp; Représentations</orgName>
+            <orgName type="acronym">HAR</orgName>
+            <orgName type="alt">EA 4414</orgName>
+            <roleName>responsable scientifique</roleName>
+          </affiliation>
+          <affiliation>
+            <orgName>Université Paris-Ouest Nanterre-La Défense</orgName>
+            <orgName type="alt">Paris 10</orgName>
+            <roleName>professeur d’histoire de l’art</roleName>
+          </affiliation>
+        </principal>
+        <funder>
+          <orgName>Labex Les Passés dans le Présent</orgName>
+          <date from="2013" to="2018">2013-2018</date>
+        </funder>
+        <respStmt>
+          <resp key="prg">modélisation XML-TEI</resp>
+          <persName ref="#EC">
+            <forename>Emmanuel</forename>
+            <surname>Château</surname>
+          </persName>
+        </respStmt>
+        <respStmt>
+          <resp key="mrk">encodage</resp>
+          <persName ref="#EC">
+            <forename>Emmanuel</forename>
+            <surname>Château</surname>
+          </persName>
+        </respStmt>
+        <respStmt>
+          <resp key="edt">édition</resp>
+          <persName ref="#EC">
+            <forename>Emmanuel</forename>
+            <surname>Château</surname>
+          </persName>
+          <persName ref="#MCL">
+            <forename>Marianne</forename>
+            <surname>Cojannot-Le Blanc</surname>
+          </persName>
+        </respStmt>
+      </titleStmt>
+      <editionStmt>
+        <edition n="1">première édition électronique, <date from="2013" to="2018">2013-2018</date></edition>
+      </editionStmt>
+      <extent><!-- TODO : taille du fichier en octet --></extent>
+      <publicationStmt>
+        <authority>
+          <orgName>Histoire des Arts &amp; Représentations</orgName>
+          <orgName type="acronym">HAR</orgName>
+          <orgName type="alt">EA 4414</orgName>
+          <address>
+            <addrLine>Université Paris Ouest-Nanterre La Défense</addrLine>
+            <addrLine>UFR de Sciences Sociales et Administration (SSA)</addrLine>
+            <addrLine>200, Avenue de la République</addrLine>
+            <addrLine>92001 Nanterre Cedex</addrLine>
+            <addrLine>France</addrLine>
+            <addrLine>http://har.u-paris10.fr</addrLine>
+            <addrLine>harparisouest@gmail.com</addrLine>
+          </address>
+        </authority>
+        <date from="2014" to="2018">2014-2018</date>
+        <!-- TODO attribuer un DOI ou un identifiant ARK aux fichiers -->
+        <idno>ark</idno>
+        <!-- responsable de la publication -->
+        <publisher>
+          <orgName>Histoire des Arts &amp; Représentations</orgName>
+          <orgName type="acronym">HAR</orgName>
+          <orgName type="alt">EA 4414</orgName>
+          <address>
+            <addrLine>Université Paris Ouest-Nanterre La Défense</addrLine>
+            <addrLine>UFR de Sciences Sociales et Administration (SSA)</addrLine>
+            <addrLine>200, Avenue de la République</addrLine>
+            <addrLine>92001 Nanterre Cedex</addrLine>
+            <addrLine>France</addrLine>
+            <addrLine>http://har.u-paris10.fr</addrLine>
+            <addrLine>harparisouest@gmail.com</addrLine>
+          </address>
+        </publisher>
+        <availability status="restricted" xml:id="gdpSauvalLicence">
+          <licence target="http://creativecommons.org/licenses/by-nc-sa/4.0/fr/">
+            <p>Texte de la licence</p>
+            <!-- TODO renseigner le texte de la licence -->
+            <graphic url="http://i.creativecommons.org/l/by-nc-sa/4.0/fr/88x31.png"/>
+          </licence>
+        </availability>
+      </publicationStmt>
+      <seriesStmt>
+        <title xml:lang="fre" type="main">Les Guides de Paris</title>
+        <title xml:lang="fre" type="sub">Les historiens des arts et les corpus numériques</title>
+        <idno type="URI">http://www.guidesdeparis.net</idno>
+      </seriesStmt>
+      <!--
+         <notesStmt>
+            <note xml:lang="fre" type="abstract">Texte de description pour DC.description</note>
+            <note xml:lang="eng" type="abstract">Texte de description en anglais pour DC.description</note>
+         </notesStmt>
+         -->
+      <!-- description de la source -->
+      <sourceDesc xml:id="gdpSauval">
+        <p>Fichier nativement numérique. Le document s’appuie sur le cadre de travail proposé par la <ref target="http://www.tei-c.org/index.xml">Text Encoding Initiative</ref>.</p>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <!-- description du projet éditorial -->
+      <projectDesc>
+        <p>L’édition des Guides de Paris fait partie d’un programme de recherche sur les historiens de l’art et les corpus numériques.</p>
+      </projectDesc>
+      <!-- déclaration des principes éditoriaux -->
+      <editorialDecl>
+        <p>Ce fichier s’appuie sur l’infrastructure de la TEI et la spécification des schéma avec ODD</p>
+      </editorialDecl>
+    </encodingDesc>
+    <!-- présentation du profil de fichier -->
+    <profileDesc>
+      <creation when="2014">2014</creation>
+      <langUsage>
+        <language ident="fre" usage="100">Français (langue principale du corpus)</language>
+      </langUsage>
+      <textClass>
+        <keywords xml:lang="fre" scheme="http://data.bnf.fr/liste-rameau">
+          <term>Édition savante électronique</term>
+          <term>Documentation technique</term>
+          <term>17e-18e siècles</term>
+          <term>France</term>
+        </keywords>
+        <keywords xml:lang="eng" scheme="http://id.loc.gov/authorities/about.html#lcsh">
+          <term>Scholarly electronic publishing</term>
+          <term>Technical literature</term>
+          <term>17th-18th centuries</term>
+          <term>France</term>
+        </keywords>
+        <classCode scheme="http://dublincore.org/documents/2012/06/14/dcmi-terms/">
+          <term>Text</term>
+        </classCode>
+      </textClass>
+    </profileDesc>
+    <revisionDesc>
+      <change when="2014-09">Création du fichier Odd</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <divGen type="toc"/>
+      <div>
+        <head>L’édition des Guides de Paris (Marianne Cojannot-Le Blanc)</head>
+        <div>
+          <p>Les « guides de Paris » font partie des sources incontournables pour l’histoire de l’art à Paris aux XVII et XVIII<hi rend="superscript">e</hi> siècles, période qui voit le genre du « guide » croître de manière exponentielle, en même temps qu’évoluer dans ses ambitions, formats et publics visés – de la somme d’érudition d’Henri Sauval au petit guide à destination des voyageurs étrangers. Leur consultation s’impose, autant pour connaître ce qui, du Paris ancien a disparu (palais royaux, hôtels particuliers, églises, couvents, places, etc.) que pour critiquer l’état de ce qui est conservé. Mais ils sont aujourd’hui mal ou sous-exploités, en raison du nombre important de volumes et d’éditions, matériellement peu maniables. Il n’est guère envisageable pour un chercheur isolé de faire, sur un objet donné (un bâtiment, un tableau, une sculpture, un décor etc.), une consultation systématique de toutes les éditions (que Gilles Chabaud évalue à 300 environ pour la période concernée), alors même que celles-ci peuvent différer dans les informations publiées.</p>
+        </div>
+        <div>
+          <head>L’instrumentation systématique du corpus</head>
+          <p>Le projet des Guides de Paris consiste à mettre à disposition du chercheur un corpus de guides historiques. Ce corpus textuel doit non seulement faire l’objet d’une numérisation systématique mais d’une indexation sémantique. L’ambition du projet est de rendre possible, par l’utilisation des techniques de balisage des textes anciens en XML-TEI et en s’appuyant sur les principes web sémantique, des recherches plein-texte et systématiques sur l’ensemble des éditions pour :<list>
+              <item>accompagner efficacement les requêtes traditionnelles, à savoir la recherche d’informations ponctuelles (sur l’attribution des œuvres d’art, les dates d’exécution, l’identité des commanditaires etc.).</item>
+              <item>permettre de nouveaux types de recherches et multiplier les accès en utilisant l’hypertextualité (ainsi pour les analyses syntaxiques et lexicales).</item>
+              <item>donner une existence tangible au corpus en tant que corpus, marqué par des phénomènes d’intertextualité, de copies, de larges réécritures, de stratégies commerciales, d’une édition à l’autre, visualisables et mesurables quantitativement.</item>
+            </list>Pour la mise en place de son indexation, le projet Guides de Paris nécessitera l’élaboration d’un référentiel des objets culturels parisiens qui fera l’objet d’une publication en Linked Open Data.</p>
+        </div>
+        <div>
+          <head>L’élaboration d’un espace de publication et d’un espace numérique de travail</head>
+          <p>La mise en ligne du corpus doit répondre à des fonctionnalités diverses, adaptées aussi bien au service d’un public de chercheurs que d’un public plus large. Si l’édition d’un corpus de textes anciens vise d’abord à le mettre à disposition sous forme textuelle, le projet des Guides de Paris souhaite offrir des points d’accès nouveaux sur les textes, dont le recours à des dispositifs de visualisation, transformant ceux-ci en une base de données.</p>
+          <p>Dès lors que les guides de Paris décrivent des œuvres qui peuvent être conservées ou pour lesquelles il peut subsister des témoignages visuels (dessins préparatoires, estampes, photographies anciennes), il devient nécessaire de pouvoir rapprocher les textes et les images, que ce soit pour identifier ou pour interpréter. Un des enjeux du projet consiste donc également à savoir tirer parti des importants gisements de ressources numériques en histoire de l’art. Comment afficher des images mises à disposition par ailleurs sur le web ? Comment visualiser de manière pertinente le texte et les images ? Comment fournir des possibilités d’investigation pertinente pour l’historien d’art (comparaison, visualisation, etc.) ?</p>
+          <p>Compte-tenu de la volumétrie et de la durée du projet, il n’a pas paru souhaitable d’attendre la finalisation de l’indexation avant de mettre à disposition le résultat du travail. Il a donc été choisi d’inverser le processus de production, en réunissant sur le présent site l’espace de travail numérique et l’espace de publication.</p>
+        </div>
+        <div>
+          <head>Un projet en lien avec les problématiques patrimoniales et les réflexions épistémologiques du labex « Les Passés dans le Présent »</head>
+          <p>Le corpus des guides de Paris constitue un cas d’étude pour des problématiques au cœur du labex : celles de la construction d’une conscience patrimoniale et de l’évaluation critique de l’efficacité d’une protection d’objets publiquement valorisés. Quels enseignements tirer des périodes anciennes pour les débats patrimoniaux contemporains : en quelle mesure le fait de parler, de publier sur des objets contribue effectivement (ou non) à leur protection dans les siècles à venir ? Quel est l’impact des sources imprimées en matière de protection patrimoniale ? Par l’étude des « entrées » et « sorties » (mentions ou disparitions de mentions de bâtiments, de décors, d’œuvres d’art) dans les diverses éditions sur presque deux siècles, ou celle des déplacements d’œuvres au sein d’un espace (église, hôtel) et donc des hiérarchisations mouvantes (relégation, promotion des œuvres dans des espaces-clefs etc.), nous avons la possibilité assez unique d’observer et comprendre comment s’élabore une conscience patrimoniale partagée et les effets éventuels de celle-ci lors de la Révolution française.</p>
+          <p>Il s’agira pour finir de développer une réflexion sur les apports de l’édition numérique dans la pratique de l’histoire de l’art et d’envisager, dans une perspective épistémologique, ses conséquences (bonnes et/ou mauvaises) sur les usages et le type de savoir élaboré.</p>
+        </div>
+      </div>
+      <div>
+        <head>Les partis éditoriaux</head>
+        <div type="introduction">
+          <p>Dès lors que les guides de Paris constituent des sources incontournables de l’histoire de l’art, si l’ambition du projet est de les donner à lire de manière transversale à l’échelle du corpus, la production d’un texte bien établi réside au cœur du projet. De ce point de vue, le projet aborde l’édition des guides de Paris d’un point de vue relativement conservateur, c’est-à-dire respectueuse de la matérialité du texte. Chaque source donnant lieu à un texte bien arrêté dont il s’agira de déterminer les variantes par rapport aux autres éditions. L’établissement du texte suit les recommandations formulées par Bernard Barbiche et Monique Châtenet pour l’édition de sources de la période moderne et publiées dans la collection de l’<orgName>Inventaire</orgName><ref type="note" target="#nGdpSchemaTEI0001"/>. Même si elles sont relativement anciennes, ces recommandations font toujours référence dans la tradition philologique française. Elles ont pour l’historien le mérite de privilégier, dans la tradition de Joseph Bédier, le respect des sources et l’intégrité du texte<ref type="note" target="#nGdpSchemaTEI0002"/>. On restera toutefois attentif à la publication annoncée d’un guide de l’École des chartes comparable à ceux déjà parus pour le Moyen-Âge et qui ont largement inspiré les partis éditoriaux<ref type="note" target="#nGdpSchemaTEI0003"/>.</p>
+        </div>
+        <div>
+          <head>Règles de transcription et modernisation</head>
+          <div>
+            <p>Les œuvres concernées par l’édition ont toutes connu des éditions imprimées. Le plus souvent, l’établissement du texte n’est donc pas spécialement problématique. Néanmoins, s’agissant de sources des XVII et XVIII<hi rend="sup">e</hi> siècles, l’utilisation des techniques de reconnaissance optique de caractères (OCR) n’a pas paru efficace compte-tenu de problèmes typographiques courants (s longs, esperluettes, etc.), de l’abondance des noms propres, et surtout de l’absence de dictionnaires adaptés pour la correction orthographique. La transcription des textes est donc effectuée manuellement ce qui autorise quelques interventions minimes sur le texte pour en faciliter la lecture et le normaliser par endroit. </p>
+          </div>
+          <div>
+            <head>Orthographe</head>
+            <p>La transcription respecte strictement l’orthographe et la syntaxe de l’époque. Toutefois, les lettres <said>i</said> et <said>u</said> ayant valeur de consonne ont été transcrites respectivement par <said>j</said> et <said>v</said>. Afin de faciliter la lecture les <ident>s</ident> longs n’ont pas été transcrits.</p>
+          </div>
+          <div>
+            <head>Ponctuation</head>
+            <p>Dans un même soucis de faciliter la compréhension du texte, la ponctuation a été modernisée. Les choix de ponctuation sont fondés sur la grammaire.</p>
+          </div>
+          <div>
+            <head>Majuscules</head>
+            <p>L’emploi des majuscules a été normalisé conformément aux usages actuels. Toutefois, selon l’usage français, il a été décidé de les conserver lorsqu’elles marquaient des noms propres de manière consistante dans la source.</p>
+          </div>
+          <div>
+            <head>Séparation des mots</head>
+            <p>Les mots agglutinés ont été séparés, en revanche les locutions qui se sont soudées par la suite pour ne former qu’un seul mot n’ont pas été réunis. Le trait d’union a été employé avec modération.</p>
+          </div>
+          <div>
+            <head>Accents</head>
+            <p>En matière d’accentuation, un système cohérent, inspiré le plus possible des usages graphiques et typographiques du temps, a été appliqué.</p>
+            <p>Dans les textes du XVII<hi rend="sup">e</hi>, les accents peuvent être largement utilisés. On accentue en particulier les finales en <ident>-ée</ident> (née, armée, etc.) pour marquer les sons <ident>é</ident> finaux sauf lorsqu’il était déjà marqué par l’ancienne désinense en <ident>–ez</ident> par la suite remplacée par <ident>–és</ident>. On a employé l’accent grave sur les lettres <ident>a</ident>, <ident>e</ident> et <ident>u</ident> dans les prépositions et les adverbes monosyllabiques pour les distinguer des mots homographes (à, là, dès, lès, où). En revanche, on n’a pas accentué la lettre <ident>e</ident> à l’intérieur d’un mot (maniere, pere, present).</p>
+            <p>Pour les textes du XVIII<hi rend="superscript">e</hi> siècle, on a appliqué l’usage actuel. Le tréma, la cédille, l’apostrophe ont été introduits et utilisés conformément à l’usage présent. On a inversement supprimé le tréma quand il figurait sur des mots qui n’en comportent plus aujourd’hui.</p>
+          </div>
+          <div>
+            <head>Abréviations</head>
+            <p>Afin de faciliter la lecture, les abréviations ont été développées, sans indiquer les lettres restituées mais en marquant la restitution au moyen de l’encodage. Dans certains cas ambigus, celles-ci ont été restituées telles qu’elles en les accompagnant d’une proposition de restitution.</p>
+          </div>
+          <div>
+            <head>Nombres</head>
+            <p>Les nombres ont été reproduits tels qu’ils se présentaient dans le document (en toutes lettres, en chiffres romains ou arabes).</p>
+            <!-- normaliser ?? -->
+          </div>
+          <div>
+            <head>Lacunes et difficultés de lecture</head>
+            <p>Disposant de sources imprimées, nous n’avons généralement pas été confrontés à des lacunes ou des passages détruits nécessitant d’être restitués entre crochets.</p>
+            <p>Les mots illisibles ou douteux ont toutefois pu être encodés. L’usage du <ident>sic.</ident> étant réservé aux segments syntaxiquement incorrect d’après l’usage du temps.</p>
+          </div>
+          <!-- TODO reprendre http://theleme.enc.sorbonne.fr/cours/edition_epoque_moderne/edition_des_textes -->
+          <div>
+            <head>Variantes</head>
+            <p>Les textes faisant souvent l’objet de fortes variation entre les réédition et chacun de ces états du texte étant attesté par l’édition imprimée, elles ont fait l’objet de transcription intégrales. Compte tenu de l’importance de ces remaniements, le traitement de ces variantes avec des lemmes n’étant pas le plus souvent pertinent, un apparat critique de ce type n’a pas été produit. Au contraire, il a été choisi de confier à la comparaison des témoins à un traitement algorithmique qui propose à l’utilisateur une visualisation de l’ensemble des lieux variants et des différents textes.</p>
+          </div>
+          <div>
+            <p>voir : l’<hi rend="italic">Histoire de l’orthographe française </hi>de Charles Beaulieux</p>
+            <p><hi rend="italic">L’orthographe française au temps de la réforme </hi>de Susan Baddeley </p>
+            <p><hi rend="italic">De la prononciation française depuis le commencement du XVIe siècle </hi>de Charles Thurot </p>
+            <p>« la caractéristique majeure et la plus frappante de l’orthographe nouvelle est l’introduction d’accents et de signes auxiliaires[1] ». [1] S. Baddeley, L’orthographe française au temps de la réforme,p.29. </p>
+            <p>Dictionnaire historique de l’orthographe française, sous la direction de Nina Catach</p>
+            <p>Catach, Histoire de l’orthographe française, </p>
+            <p>Baroni, La lente naissance des accents français : https://www.academia.edu/702241</p>
+            <!-- TODO élaborer -->
+          </div>
+        </div>
+        <div>
+          <head>Noms propres</head>
+          <div>
+            <cit>
+              <quote>Le nom commun désigne un objet particulier qui fait partie d’une série (table), le nom propre désigne un individu, unique par définition (Victor Hugo).</quote>
+              <bibl> Brunot et Bruneau, p. 100</bibl>
+            </cit>
+            <cit>
+              <quote>Le nom commun est pourvu d’une signification, d’une définition, et il est utilisé en fonction de cette signification.</quote>
+              <bibl>Grévise, n° 451</bibl>
+            </cit>
+          </div>
+          <div>
+            <head>Noms propres devenus noms communs</head>
+            <cit>
+              <quote>Les noms propres d’hommes (réels ou imaginaires) de pays ou de villes deviennent des noms communs pour désigner : 1° des personnes ou des types rappelant des personnages connus. Par exemple, un adonis, un appollon, un apmphitryon. 2° des animaux : un canari, un terre-neuve, etc. 3° Des choses, en particulier des produits ou objets rappelant le pays d’origine ou le nom de l’inventeur  atlas, bordeaux, bougie, cachemire, damas, etc.</quote>
+              <bibl>René Georgin, Difficultés et finesses de notre langue, Éditions André Bonne, 1961</bibl>
+            </cit>
+            <cit>
+              <quote><p>Le nom propre n’a pas de signification véritable de définition ; il se rattache à ce qu’il désigne par un lien qui n’est pas sémantique, mais par une convention qui lui est particulière.</p>
+                <p>Il n’est pas possible de deviner que telle personne s’appelle <hi rend="italic">Claude</hi>. Il n’y a, entre les diverses personnes portant ce prénom, d’autre caractère commun que ce prénom. – Comparez aussi <hi rend="italic">Boulanger</hi> nom de famille et <hi rend="italic">boulanger</hi> nom commun.</p>
+                <p>Le noms propres s’écrivent par une majuscule ; ils sont généralement invariables en nombre ; ils se passent souvent de déterminant.</p>
+                <p>SOnt de véritables noms propres :<list>
+                    <item>Les noms de lieux : villes, villages, rues, monumenst, régions, pays, îles, montagnes, cours d’eau, mers, étoiles et astres (excepté <hi rend="italic">la terre</hi>, <hi rend="italic">la lune</hi>, et <hi rend="italic">le soleil</hi> ;</item>
+                    <item>Les noms de personnes : noms de familles, prénoms, pseudonymes (et aussi les sobriquets, mais, pour ceux-ci, la signification n’est pas toujours absente).</item>
+                  </list></p>
+                <p>On considère aussi comme des personnes les êtres surnaturels des diverses religions et mythologies : <hi rend="italic">Dieu</hi> qui cesse d’être un nom propre dans les religions polythésistes. <hi rend="italic">Apollon</hi> [mais conserve la majuscule].</p>
+                <p>Certains animaux, certains objets peuvent recevoir un nom propre : <hi rend="italic">Bucéphale</hi> cheval d’Alexandre ; <hi rend="italic">Durandal</hi>, épée de Roland ; <hi rend="italic">le Nautilus</hi>, sous-marin imaginé par Jules Verne.</p>
+                <p>Des mots ayants une signification deviennent des noms propres lorsqu’œn les emploie pour désigner, en faisant abstraction de leur signification ; c’est le cas des titres de livres (<hi rend="italic">le Code civil</hi>, <hi rend="italic">L’éducation sentimentale</hi>), de revues (<hi rend="italic">La nouvelle revue française</hi>), etc.</p>
+                <label>Remarques.</label>
+                <list type="ordered">
+                  <item n="1">Les mots appartenant aux catégories suivantes ne sont pas de vrais noms propres parce qu’ils ont une définition (qui est en rapport avec un vrai nom propre : <hi rend="italic">Mérovingien</hi> = descendant de <hi rend="italic">Mérovée</hi> ; <hi rend="italic">Parisien</hi> = habitant de <hi rend="italic">Paris</hi>) : ils prennent d’ordinaire la marque du pluriel. Nous les considérons comme des noms associés aux noms propres. <list>
+                      <item>Les dérivés désignant des dynasties (avec majuscule) : Les Capétiens, les Mérovingiens, les Atrides</item>
+                      <item>Les ethniques (ou gentilés), c’est-à-dire les noms désignant les habitants d’un pays, d’une région, d’une ville, etc. (normalement avec majuscule) : Les Africains, les Genevois.</item>
+                      <item>Les noms désignant les membres des ordres religieux, les adeptes d’une doctrine, etc. (d’ordinaire avec une minuscule) : les jésuites, les mahométans, les gaullistes.</item>
+                    </list></item>
+                  <item n="2">Les noms propres ont souvent été des noms communs à l’origine.</item>
+                  <item n="3">Les noms propres peuvent devenir des noms communs en acquérant une signification :</item>
+                </list>
+              </quote>
+              <bibl>Grévisse, n° 451</bibl>
+            </cit>
+            <cit>
+              <quote>
+                <p>Noms associés au noms propres.<list>
+                    <label>ethniques (majuscule)</label>
+                    <item>Les Belges, les Italiens, les Parisiens, les Provençaux, etc.</item>
+                    <label>Noms de dynasties (majuscule)</label>
+                    <item>Les Capétiens, les Mérovingiens, les Atrides, etc.</item>
+                    <label>Les noms d’ordres religieux</label>
+                    <item>Les jésuites, les dominicains, etc.</item>
+                  </list></p></quote>
+              <bibl>Grévisse, n° 471</bibl>
+            </cit>
+            <cit>
+              <quote>
+                <label>Le nom et la majuscule</label>
+                <p>Comme on le verra ci-dessous, il y a quelques règles strictes, et aussi bien des cal mal fixés. D’une façon générale, les majuscules obligatoires sont respectées, mais certains scripteurs ont tendance à mettre des majuscules superflues.</p>
+                <p>La majuscule apporte une véritable information et est donc nécessaire quand il s’agit d’un vrai nom propre (a, 1° et 2°), d’un nom dérivé d’un nom de lieu pour désigner les habitants de ce lieu (a, 3°), quand elle joue un rôle nettement distinctif (b).</p>
+                <list>
+                  <label>a, La majuscule est la marque du nom propre.</label>
+                  <item>
+                    <list>
+                      <item>[1°..., noms de lieux et les astres, sauf la lune, le soleil et terre. Les points cardinaux, rmq les vents s’écrivent sans majuscule]</item>
+                      <item>2° Noms de personnes, c’est à dire noms de familles et prénoms dans notre société occidentale, auxquels il faut adjoindre les surnoms, ou noms organisés selon d’autres systèmes, jadis ou ailleurs. [Caton, surnommé l’Ancien, ou le Censeur] [les êtres surnaturels, Jupiter, le Tout-Puissant, Vénus, les Parques, les Muses, etc. [ne prennent pas la majuscule parce que ce sont des noms désignant des catégories : les dieux (dans les religions polythéistes), les anges, les archanges, les démons, les faunes, les naïades, les satyres, les fées, les lutins, les elfes, ... [on traite les animaux comme des personnes, les objets comme dans personnes]. [allégories]</item>
+                      <item>3° Alors que pour les vrais noms propres, de lieux ou de personnes la majuscule est respectée par l’ensemble des usagers, il n’en est pas de même pour les noms associés aux noms propres. Il faut distinguer plusieurs catégories et constater des hésitations dans l’usage. Les noms dérivés de noms propres de lieux pour désigner les habitants (gentilés ou ethniques) prennent la majuscule. Les dérivés des noms propres de personnes pour désigner la descendance, la dynastie prennent la majuscule. Pour les noms désignant les membres d’ordres religieux, l’usage n’est pas bien fixé, quoique la minuscule soit préférable. Les noms désignant les adeptes d’une religion, les partisans d’une doctrine ou d’une personne prennent la minuscule.</item>
+                    </list>
+                  </item>
+                  <label>b. La majuscule permet de distinguer une acception particulière d’un nom, notamment</label>
+                  <item>La Bourse, comme bâtiment, Cour tribunal, un avocat à la Cour d’appel, l’Église comme institution par opposition à église édifice du culte. Majuscule au domaine traité par un ministre. Quand les noms de rue sont employés par métonymie. Pour les périodes de l’histoire. Les noms de sociétés, d’association. Les noms désignant des œuvres d’art, des livres, des maisons [seulement à la première].</item>
+                  <label>c, La majuscule comme marque de déférence</label>
+                  <item>Quand on s’adresse à une personne par écrit. Souvent Monsieur, madame, Monseigneur avec majuscule à propos des personnes dont on parle, particulièrement quand on croît leur devoir de la déférence et quand ces mots ne sont pas suivis du noms. Fêtes chrétiennes par révérence. ecclésiastiques, chefs de l’État, mais pas l’usage le plus courant.</item>
+                </list>
+              </quote>
+              <bibl>Grévisse, n° 98</bibl>
+            </cit>
+          </div>
+        </div>
+      </div>
+      <div>
+        <head>La TEI comme cadre de travail pour l’édition des sources historiques</head>
+        <div>
+          <p>L’édition électronique du corpus des Guides de Paris exigeait la mobilisation de techniques spécifiques pour l’établissement des textes, l’enregistrement des annotations scientifiques et la publication. Deux considérations ont principalement guidé les choix en la matière : d’une part l’adaptation aux objectifs scientifiques du projet, d’autre part l’interopérabilité et la pérennisation. Sur ces derniers points, le <hi rend="italic">Référentiel général d’interopérabilité</hi> publié en 2009 par la <orgName>Direction générale de la modernisation de l’État</orgName> recommande l’utilisation des technologies XML (eXtensible Markup Language)<ref type="note" target="#nGdpSchemaTEI0004"/>. En outre, le dialecte XML de la <orgName>Text Encoding Initiative (TEI)</orgName> s’est très largement imposé ces dernières années comme standard de fait dans le domaine de l’édition numérique à caractère scientifique. Telle que la définie <persName>Laurent Romary</persName>, la <orgName>TEI</orgName> est une <q>Norme de balisage, de notation et d’échanges de corpus des documents électroniques. Elle s’est élaborée à partir des besoins de structuration, de conceptualisation et de mise en réseau des textes</q>. Sa large adoption, les possibilités de personnalisation, ainsi que l’expérience acquise en matière de traitement des sources primaires à caractère textuel en histoire ces dernières années, permettaient de juger que son utilisation était tout à fait adaptée. Nous verrons cependant que certains aspects propres à un projet en histoire de l’art ont nécessité des adaptations dans l’utilisation de ce dialecte, ou encore de confier à d’autres modèles documentaires la prise en charge de l’enregistrement de certains aspects du travail.</p>
+        </div>
+        <div>
+          <head>Historique de la Text Encoding Initiative (TEI)</head>
+          <p>La <orgName>Text Encoding Initiative (TEI)</orgName> est un effort international lancé en 1987 pour unifier les pratiques d’encodage de texte dans le domaine académique. Elle fournit un vocabulaire XML qui permet de produire des modèles de textes que l’on peut utiliser à différentes fins notamment pour l’édition de sources primaires. Plus qu’un schéma générique, elle offre en fait un cadre de travail qui permet de traiter différents cas de figure. Ce cadre de travail se compose d’un vocabulaire, d’une documentation qui en fournit la sémantique en langage naturel, d’un langage de haut niveau pour spécifier des schémas, et d’un ensemble de recommandations rassemblées sous l’intitulé de <title>Guidelines</title>.</p>
+          <p>La Text Encoding Initiative est née d’un constat partagé, au sein d’une communauté de chercheurs déjà engagés dans la production de textes numériques, du besoin de solutions pour faciliter l’échange de textes et d’information sur leur travail. En novembre 1987, une première rencontre fut organisée sous l’égide de l’<orgName>Association for Computers and the Humanities (ACH)</orgName> au Vassar College à Poughkeepsie avec une trentaine de représentants issus du monde des archives, des centres d’informatique appliquée aux sciences humaines, ou d’organisations professionnelles pour examiner à nouveau la question de la standardisation. S’accordant tous sur le besoin de pratiques communes, ces participants formulèrent une dizaine de principes directeurs<ref type="note" target="#nGdpSchemaTEI0005"/>. Ceux-ci mettaient notamment l’accent sur la conversion de formats et la nécessité de développer un métalangage pour des schémas d’encodage descriptifs.</p>
+          <p>L’<orgName>ACH</orgName>, rapidement suivie dans son effort de standardisation par l’<orgName>Association for Literary and Linguistic Computing</orgName> et l’<orgName>Association for Computational Linguistics</orgName> formèrent ensemble la <orgName>Text Encoding Initiative (TEI)</orgName> afin de conduire le projet sous une forme internationale et multilingue et développer des recommandations pour la préparation et l’échange de textes électroniques dans le domaine universitaire. Dès 1993, la TEI publiait une première version de ses <title xml:lang="eng">Guidelines for the Encoding and Interchange of Machine-Readable Texts</title>. Ce rapport proposait un ensemble de conventions pour l’encodage de différents types de textes pour servir dans le domaine des sciences du langage ou des sciences humaines. Cette première publication constitue un jalon important car jamais auparavant les chercheurs n’avaient été capables de formuler un consensus sur les pratiques d’encodage.</p>
+          <p>Alors qu’elle avait d’abord été fondée sur l’utilisation de la syntaxe SGML (<foreign xml:lang="eng">Standard Generalized Markup Language</foreign>), la TEI a adopté XML dès la première publication de sa spécification en 1996, certains membres de la TEI avaient en effet participé au développement de cette standardisation. Par la suite, les <title xml:lang="eng">Guidelines</title> ont été étayées par l’apport d’autres spécialités pour prendre en charge une plus grande diversité de textes ou les entités historiques (personnes, lieux, etc.). On en est aujourd’hui à la cinquième proposition numérotée P5, parmi les nombreuses évolutions de cette version on relève en particulier le regroupement des éléments et des attributs en classes de modèle de contenu et d’attributs ainsi que la possibilité de produire une spécification de haut-niveau rédigée en TEI dans un document ODD (One Document Does it all)<ref type="note" target="#nGdpSchemaTEI0006"/>. La Text Encoding Initiative rassemble une importante communauté d’utilisateurs organisée autour d’un Consortium, d’un Conseil technique (<foreign xml:lang="eng">TEI Technical council</foreign>) et de Groupes d’intérêts (<foreign xml:lang="eng">Special interest group SIG</foreign>) et de Groupes de travail (<foreign xml:lang="eng">Workgroups</foreign>).</p>
+          <p>Conçue comme un modèle générique de structuration et de sémantisation des textes, la TEI présente de nombreux avantages. On relève notamment : <list>
+              <item>sa modularité et sa flexibilité</item>
+              <item>son expressivité (niveau de granularité)</item>
+              <item>le fait qu’il s’agit d’un standard reconnu internationalement (interopérabilité, pérennité)</item>
+              <item>le fait qu’elle dispose des propriétés intrinsèques au modèle XML : séparation entre le contenu et a présentation, possibilité de générer plusieurs formats de sortie à partir d’une même source, bon candidat pour la pérennisation</item>
+              <item>son adaptation à l’édition électronique (croisement de sources, <foreign xml:lang="lat">fac simili</foreign>, hyperliens, etc.)</item>
+              <item>les possibilités de modulation de l’affichage et d’accessibilité, ses aspects économiques</item>
+            </list></p>
+          <p>Outre son architecture modulaire conçue pour la personnalisation, ce sont d’abord ces qualités qui expliquent la large implantation de la TEI dans la communauté scientifique. Elle sert de format à de nombreux projets d’envergure internationale (Blake archive<ref type="note" target="#nGdpSchemaTEI0007"/>, Perseus<ref type="note" target="#nGdpSchemaTEI0008"/>, Rosetti<ref type="note" target="#nGdpSchemaTEI0009"/>, etc.). Plusieurs projets français importants utilisent également la TEI dans le domaine des sciences historiques (BVH<ref type="note" target="#nGdpSchemaTEI0010"/>, Élec<ref type="note" target="#nGdpSchemaTEI0011"/>, le portail Telma<ref type="note" target="#nGdpSchemaTEI0012"/>, ENS Lyon<ref type="note" target="#nGdpSchemaTEI0013"/>, etc.). En histoire de l’art, on citera principalement l’édition du corpus des Cours d’Antoine Desgodets réalisé dans le cadre d’un projet financé par l’ANR de 2008 à 2013<ref type="note" target="#nGdpSchemaTEI0014"/>, l’édition Sandart en Allemagne<ref type="note" target="#nGdpSchemaTEI0015"/>, ou plus récemment le projet Digital Mellini conduit par le Getty<ref type="note" target="#nGdpSchemaTEI0016"/>.</p>
+        </div>
+        <div>
+          <head>La personnalisation de la TEI</head>
+          <p>La Text Encoding Initiative (TEI) est un projet universitaire international dont l’objectif est de favoriser le partage et l’échange de sources textuelles encodées. Le contexte scientifique du projet explique que la TEI ne constitue pas une norme proprement dit, mais avant tout un cadre de travail personnalisable dans lequel puiser en fonction des besoins propres et particuliers à chaque projet de recherche. La philosophie de la TEI consiste à fournir un vocabulaire nécessaire pour la description des textes sans pour autant dicter précisément ce que ces textes doivent contenir ou pourraient contenir. Ainsi, la TEI spécifie des conventions d’encodage simples, faciles à employer et relativement compréhensibles qui sont accompagnées d’amples mécanismes d’extension afin de pouvoir répondre à des besoins particuliers<ref type="note" target="#nGdpSchemaTEI0017"/>. À certains égards, on peut dire, comme le suggère <persName>Florence Clavaud</persName>, qu’elle propose une sorte <q>d’ontologie générique du texte</q> capable de prendre en charge tant l’hétérogénéité des matériaux textuels rencontrés que des points de vue adoptés. Pour autant, celle-ci n’est pas exprimée de manière formelle mais sous forme d’une documentation littéraire inspirée des principes de la programmation littéraire de Donald Knuth.</p>
+          <p>La TEI ne constitue donc pas une solution prête-à-l’emploi pour la production d’un balisage descriptif du texte sous la forme d’un encodage XML. L’encodage est une étape dans un processus plus global qui implique tout d’abord la définition d’un modèle dans lequel on déclare ses pratiques et la manière dont on va utiliser la TEI. Celle-ci offre une infrastructure conceptuelle et technique qui permet de documenter son travail par l’intermédiaire d’une spécification de haut-niveau, sous la forme d’un document ODD, de laquelle on peut dériver des schémas XML pour contrôler la production de l’encodage du texte et la validité des fichiers. Ce travail consiste à produire une modélisation de son corpus en définissant un sous-ensemble de la TEI approprié à son projet. Par conséquent, il existe différentes manières d’employer la TEI, chaque projet pouvant normalement donner lieu à l’établissement d’un modèle spécifique en fonction du matériau traité et des ses objectifs de recherche. Dès lors, des textes encodés d’après des modèles TEI distincts ne sont pas directement interopérables. Néanmoins, on peut dire que la TEI formule, sinon des recommandations, au moins des propositions concernant la manière de modéliser tel ou tel aspect du texte, et que la documentation du modèle que permet cette infrastructure technique favorise l’interopérabilité.</p>
+          <p>Afin de produire une modélisation de ce type, et éventuellement le manuel d’encodage qui l’accompagne, il est nécessaire de bien comprendre sa source. Aussi ne faut-il pas envisager l’encodage comme une fin en soi, mais plutôt comme un moyen de travailler et d’étudier le matériau textuel. La définition du modèle s’opère au moyen d’aller-retour continus avec les sources textuelles que l’on souhaite traiter. On effectue généralement d’abord une première modélisation à partir d’un échantillon jugé représentatif du corpus. Enfin, lors du passage à l’échelle, il est parfois nécessaire de corriger quelques choix s’avérant inappropriés ou bien encore de renforcer le contrôle par l’intermédiaire du schéma. Le processus d’élaboration du modèle est donc un processus incrémentiel, et le schéma n’est pas d’emblée figé dans le marbre. Afin de prendre en compte ces évolutions, le présent document sera édité sous la forme de versions numérotées.</p>
+        </div>
+        <div>
+          <head>Personnalisation de la TEI mise en œuvre pour le corpus des Guides de Paris</head>
+          <div>
+            <head>Introduction</head>
+            <p>Dès l’origine, la TEI a été conçue pour être employée comme un ensemble de briques permettant de construire des schémas spécifiques pour un projet donné. L’infrastructure de la Proposition numéro cinq de la TEI (P5) consiste en vingt-deux modules parmi lesquels sont répartis les nombreux éléments de la TEI qui font l’objet d’une importante documentation textuelle et sont formellement classés dans des classes de modèle et d’attributs auxquels on peut faire appel pour spécifier un schéma.</p>
+            <p>En recommandant la production de personnalisations pour répondre à des projets particuliers, l’approche privilégiée par la TEI est une approche <soCalled>descriptive</soCalled> plutôt que <soCalled>prescriptive</soCalled>. Cependant cette flexibilité présente un coût en matière d’interopérabilité. Considérant qu’une approche prescriptive pouvait présenter un intérêt dans certains cas d’usage, un travail conduit de 2014 à 2015 s’est proposé d’élaborer un prototype d’une nouvelle famille de personnalisations contraintes notamment pour prendre en charge des ouvrages imprimés de l’époque moderne. Ce travail étant conduit en partenariat avec le Consortium cahier, lorsque cela était pertinent nous avons été attentifs à suivre certains choix d’encodage proposés, notamment pour l’en-tête TEI. Par ailleurs, nous nous sommes fortement inspirés de cette modélisation dans l’organisation du présent document ODD.</p>
+            <p> </p>
+          </div>
+          <div>
+            <head>Choix des modules</head>
+            <p>Les modules constituent avant tout un moyen commode de grouper par domaine d’application les nombreux éléments de la TEI (ils sont actuellement au nombre de 555). Chaque module fait l’objet d’une description littérale dans un chapitre des <hi rend="italic">Guidelines</hi>. Trois de ces modules sont habituellement requis lors de la production d’un schéma (<ident type="module">core</ident>, <ident type="module">header</ident>, et <ident type="module">textstructure</ident>, on utilise également <ident type="module">tei</ident> pour RelaxNG).</p>
+            <table>
+              <head>Les modules de la TEI</head>
+              <row role="label">
+                <cell>Nom</cell>
+                <cell>Désignation (en)</cell>
+                <cell>Désignation (fr)</cell>
+              </row>
+              <row>
+                <cell><ident type="module">analysis</ident></cell>
+                <cell>Simple analytic mechanisms</cell>
+                <cell>Mécanismes d’analyse simples</cell>
+              </row>
+              <row>
+                <cell><ident type="module">certainty</ident></cell>
+                <cell>Certainty and uncertainty</cell>
+                <cell>Certitude et incertitude</cell>
+              </row>
+              <row>
+                <cell><hi rend="bold"><ident type="module">core</ident></hi></cell>
+                <cell>Elements commons to all TEI documents</cell>
+                <cell>Éléments communs à tous les documents TEI</cell>
+              </row>
+              <row>
+                <cell><ident type="module">corpus</ident></cell>
+                <cell>Header extensions for corpus texts</cell>
+                <cell>Extension de l’en-tête pour les corpus</cell>
+              </row>
+              <row>
+                <cell><ident type="module">declarefs</ident></cell>
+                <cell>Feature system declarations</cell>
+                <cell>Articles pour les systèmes de déclaration</cell>
+              </row>
+              <row>
+                <cell><ident type="module">dictionaries</ident></cell>
+                <cell>Dictionaries and other lexical resources</cell>
+                <cell>Dictionnaires et autres ressources lexicales </cell>
+              </row>
+              <row>
+                <cell><ident type="module">drama</ident></cell>
+                <cell>Performance texts</cell>
+                <cell>Textes dramatiques</cell>
+              </row>
+              <row>
+                <cell><ident type="module">figures</ident></cell>
+                <cell>Tables, formulae, and figures</cell>
+                <cell>Tables, formules et figures</cell>
+              </row>
+              <row>
+                <cell><ident type="module">gaiji</ident></cell>
+                <cell>Character and glyph documentation</cell>
+                <cell>Documentation des caractères et des glyphes</cell>
+              </row>
+              <row>
+                <cell><hi rend="bold"><ident type="module">header</ident></hi></cell>
+                <cell>The TEI Header</cell>
+                <cell>L’en-tête TEI</cell>
+              </row>
+              <row>
+                <cell><ident type="module">iso-fs</ident></cell>
+                <cell>Feature structures</cell>
+                <cell>Articles pour les structures</cell>
+              </row>
+              <row>
+                <cell><ident type="module">linking</ident></cell>
+                <cell>Linking, segmentation and alignment</cell>
+                <cell>Lien, segmentation et alignement</cell>
+              </row>
+              <row>
+                <cell><ident type="module">msdescription</ident></cell>
+                <cell>Manuscript Description</cell>
+                <cell>Description des manuscrits</cell>
+              </row>
+              <row>
+                <cell><ident type="module">namesdates</ident></cell>
+                <cell>Names and dates</cell>
+                <cell>Noms et dates</cell>
+              </row>
+              <row>
+                <cell><ident type="module">nets</ident></cell>
+                <cell>Graphs, networks and trees</cell>
+                <cell>Graphiques, réseaux et arborescences</cell>
+              </row>
+              <row>
+                <cell><ident type="module">spoken</ident></cell>
+                <cell>Transcribed Speech</cell>
+                <cell>Transcription du discours</cell>
+              </row>
+              <row>
+                <cell><ident type="module">tagdocs</ident></cell>
+                <cell>Documentation of TEI modules</cell>
+                <cell>Documentation des modules TEI</cell>
+              </row>
+              <row>
+                <cell><hi rend="bold"><ident type="module">tei</ident></hi></cell>
+                <cell>Declarations for datatypes, classes, and macros available to all TEI modules</cell>
+                <cell>Déclaration pour les types de données, les classes, et les macros disponibles dans tous les modules TEI</cell>
+              </row>
+              <row>
+                <cell><ident type="module">textcrit</ident></cell>
+                <cell>Text criticism</cell>
+                <cell>Critique textuelle</cell>
+              </row>
+              <row>
+                <cell><hi rend="bold"><ident type="module">textstructure</ident></hi></cell>
+                <cell>Default text structure</cell>
+                <cell>Structures textuelles par défaut</cell>
+              </row>
+              <row>
+                <cell><ident type="module">transcr</ident></cell>
+                <cell>Transcription of primary sources</cell>
+                <cell>Transcription des sources primaires</cell>
+              </row>
+              <row>
+                <cell><ident type="module">verse</ident></cell>
+                <cell>Verse structures</cell>
+                <cell>Structures versifiées</cell>
+              </row>
+            </table>
+            <p>Outre ces trois modules, le projet des Guides de Paris fait appel aux modules suivants <ident type="module">gaiji</ident>, <ident type="module">figures</ident>, <ident type="module">namesdates</ident>, <ident type="module">linking</ident>, <ident type="module">transcr</ident>. Le module <ident type="module">namesdates</ident> est particulièrement adapté pour la description des entités historiques de type personnes et lieux. On s’est réservé l’utilisation de <ident type="module">gaiji</ident> pour le traitement des éventuels glyphes non pris en charge par UTF-8. Le module <ident type="module">figures</ident> est utilisé conjointement avec <ident type="module">transcr</ident> pour traiter la description des facsimili et des planches. Il sera par la suite possible d’utiliser le module <ident type="module">dictionaries</ident> pour le traitement d’un glossaire. </p>
+          </div>
+          <div>
+            <head>Choix des éléments et des attributs</head>
+            <p>Tous les éléments ou attributs définis par ces modules n’étant pas nécessairement pertinents pour le projet, nous avons spécifié ceux qui étaient employés. Pour ce faire, deux méthodes sont proposées par le langage ODD, soit l’on retire une liste d’élément au module, soit l’on définie une liste fermée d’éléments nécessaires. Cette opération est généralement sans risque sur la production d’un modèle conforme à la TEI, mais il convient de veillez à prendre en compte les dépendances éventuelles liées aux différents modèles de contenus (par exemple, si l’on peut se passer sans risque des éléments <gi>div1</gi>, <gi>div2</gi>, <gi>div3</gi>, etc., toutefois, il faut veillez à conserver un élément englobant <gi>div</gi> qui doit contenir les paragraphes <gi>p</gi>).</p>
+            <p>TODO donner des exemples</p>
+          </div>
+          <div>
+            <head>Personnalisation des modèles de contenu</head>
+            <p>Afin de faciliter la personnalisation, la TEI regroupe certaines spécifications communes sous forme de classes de modèles ou de classes d’attribut. Ces modèles de contenu son également accessibles pour être modifié dans le langage ODD.</p>
+            <p>TODO donner des exemples</p>
+          </div>
+          <div>
+            <head>Définition de liste de valeurs d’attributs</head>
+            <p>Afin d’améliorer la consistance de l’encodage, il est possible de spécifier une liste de valeur fermée ou ouverte pour les attributs, de même ces attributs peuvent être rendus obligatoires.</p>
+            <p>TODO donner des exemples</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <head>Règles d’encodage</head>
+        <div>
+          <head>La description bibliographique et les métadonnées</head>
+          <div>
+            <head>Introduction</head>
+            <p>L’étude des Guides de Paris supposait l’établissement d’un corpus bien circonscrit et bien documenté. L’établissement d’un tel corpus permet d’une part de disposer d’une base de données bibliographiques permettant de recontextualiser les œuvres et d’autre part de recenser les éditions qui doivent faire l’objet d’une transcription dans le cadre du projet. Face à la multiplicité des éditions et des variantes textuelles qu’elles peuvent engendrer, il s’agissait avant tout d’identifier les manifestations d’un certain nombre d’œuvres déterminées. Les descriptions bibliographiques produites à cette occasion sont à la fois destinées à fournir des métadonnées précises sur chacun des textes édités et à être utilisées pour le suivi de la numérisation réalisée par la Bibliothèque nationale de France tout au long du projet. La Text Encoding Initiative (TEI) propose un certain nombre d’éléments utiles pour produire ces description bibliographiques. Toutefois, les besoins propres au projet, notamment en ce qui concerne la prise en compte des phénomènes éditoriaux complexes, ont réclamé une adaptation de la description standard des sources bibliographiques avec la TEI.</p>
+          </div>
+          <div>
+            <head>L’enregistrement des métadonnées et des informations bibliographiques</head>
+            <div>
+              <p>Qu’il s’agisse de l’enregistrement des informations relatives à l’édition réalisée dans le cadre du projet ou bien de la description des sources utilisées, il était possible de s’appuyer sur les riches fonctionnalités offertes par la Text Encoding Initiative (TEI) pour la production de métadonnées. Par l’intermédiaire de ces en-têtes de fichiers, les métadonnées peuvent être directement associées au texte édité en XML-TEI, elles sont auto-portées. Ainsi, la réunion d’un ensemble de fichiers peut directement constituer un système de base de données bibliographiques complet. L’utilisation des éléments prévus pour les en-têtes de la TEI permet notamment d’enregistrer des informations conformes à la norme de description bibliographique internationale ISBD, et permet des conversions dans différents formats. La description des fichiers doit par ailleurs être attentive au respect d’un certain nombre de bonnes pratiques en vue de l’intégration des métadonnées produites dans le cadre du projet dans d’autres systèmes bibliographiques. Dans la mesure du possible, nous avons retenu les principes proposés par les bonnes pratiques pour l’usage de la TEI en bibliothèque. Par ailleurs le modèle d’encodage proposé ici est, sauf indication contraire, conforme aux propositions du projet WebOAI réalisé dans le cadre du Consortium cahier.</p>
+            </div>
+            <div>
+              <head>Les métadonnées sur l’édition</head>
+              <p>Les en-têtes de fichiers TEI permettent de distinguer clairement les métadonnées relatives à l’édition de celles qui décrivent la source éditée. L’élément <gi>fileDesc</gi> comporte la description du fichier. À l’intérieur de cet élément, plusieurs éléments permettent de renseigner les mentions de titre, de responsabilités et d’édition. Les éléments <gi>author</gi> et <gi>editor</gi> servent à fournir un auteur principal et l’éditeur. Toutes les autres mentions de responsabilité, groupées par genre, doivent être données dans des élements <gi>respStmt</gi> avec un élément <gi>resp</gi> et des éléments <gi>persName</gi>.</p>
+              <p>Pour pouvoir distinguer les prénoms des autres parties du nom, les noms de personnes sont composés avec des sous éléments <gi>foreName</gi> et <gi>surName</gi> pour les prénoms et noms, et <gi>nameLink</gi> pour les particules. Les noms de personnes Les formes normalisées du nom, données conformément à la norme ISO XXX, sont marquées par l’attribut </p>
+            </div>
+            <div>
+              <head>Les informations bibliographiques</head>
+              <p>La TEI étant principalement destinée à la production de textes encodés, les en-têtes de fichiers doivent obligatoirement comporter un élément <gi>sourceDesc</gi> destiné à la description de la source. </p>
+              <p>Bibliographie, étude des formes imprimées. Phénomènes éditoriaux complexes. Description des relations entre les éditions, ou bien entre les exemplaires et les éditions qu’il est possible de de prendre en charge au moyen des FRBR. Toutefois, il peut dans certains cas être difficile de distinguer l’œuvre, des manifestations, et des items. Besoin de conduire une analyse bibliographique, au moyen d’un examen direct des exemplaires et de leur confrontation.</p>
+              <p>Afin de distinguer le traitement de la base de données bibliographique traitement de l’information bibliographique de celui de la production des textes, les notices bibliographiques qui décrivent le corpus ont été traitées dans un fichier séparé intitulé <ident>gdpBibliography.tei.xml</ident> et contenu dans le répertoire <ident>autorities/</ident><!-- @RMQ localisation à revoir -->. Au sein de ce fichier des éléments <gi>listBibl</gi> rassemblent l’ensemble des notices par œuvre. Chaque œuvre au sen des FRBR est encodée au moyen d’un élément <gi>bibl</gi> qui possède un attribut <att>type</att> avec la valeur <val>work</val>. Les expressions sont encodées avec un élément <gi>biblStruct</gi> qui porte un attribut <att>type</att> avec la valeur <val>expression</val>. Enfin, les manifestations sont encodées avec des éléments <gi>biblStruct</gi> et un attribut <att>type</att> qui a la valeur <val>manifestation</val>.</p>
+              <p>Les relations entre ces différents enregistrements bibliographiques sont encodés au moyen d’un élément <gi>relationGrp</gi> qui a été ajoutée au modèle de contenu de <gi>listBibl</gi>. On encode chaque relation à l’intérieur de cet élément avec des éléments <gi>relation</gi> et une combinaison d’attributs <att>type</att> et <att>corresp</att>.</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                <biblStruct xml:id="antonini1734" type="manifestation">
+                  <monogr>
+                    <author>
+                      <persName ref="#antoniniAnnibale">
+                        <forename>Annibale</forename>
+                        <surname>Antonini</surname>
+                      </persName>
+                    </author>
+                    <title level="m">Mémorial de Paris et de ses environs à l’usage des voyageurs par M. l’abbé Antonini</title>
+                    <imprint>
+                      <date when="1734">1734</date>
+                      <pubPlace>Paris</pubPlace>
+                      <publisher>Musier</publisher>
+                      <biblScope/>
+                    </imprint>
+                    <extent>
+                      <dim type="format" extent="in-12">In-12</dim>
+                      <dim unit="pages" quantity="222">VI-216 p.</dim>
+                    </extent>
+                  </monogr>
+                  <idno type="catBnf">http://catalogue.bnf.fr/ark:/12148/cb31724994r/</idno>
+                  <listRelation>
+                    <relation type="expression" corresp="#antoniniExpression"/>
+                  </listRelation>
+                </biblStruct>
+              </egXML>
+              <p>Dans l’élément <gi>sourceDesc</gi> de chaque fichier de l’édition, qu’il s’agisse de fichier de corpus ou de fichier TEI simple, on pointe vers la description correspondante avec un attribut <att>copyOf</att> sur un élément <gi>bibl</gi>, de la manière suivante :</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                <sourceDesc xml:id="gdpSauval1724">
+                  <bibl copyOf="#biblioSauval1724"/>
+                </sourceDesc>
+              </egXML>
+            </div>
+          </div>
+        </div>
+        <div>
+          <head>Les en-têtes TEI</head>
+          <div>
+            <head>Introduction</head>
+            <p>La TEI prévoit de riches fonctionnalités pour inclure des métadonnées directement à l’intérieur du document XML. Ces informations sont rassemblées dans l’en-tête TEI au début du fichier. Cette en-tête permet de renseigner distinctement les informations sur les fichiers édités et les informations relatives à la source éditée. Elle permet également d’enregistrer toute sortes d’informations pour préciser les choix d’encodage ou faciliter l’interopérabilité et le partage des fichiers. La grande expressivité de la TEI pour les métadonnées permet de réaliser un certain nombre de mapping vers d’autres formats tels que Dublin Core, ou Marc. Dans les choix d’encodage pour les en-têtes de fichiers, il faut prévoir l’enregistrement des informations nécessaires pour ces conversion. Par ailleurs, il sera souvent utile d’essayer d’adopter des choix d’encodage cohérent avec ceux d’une communauté. Le projet des Guides de paris étant membre du Consortium cahier, on s’est efforcé de se conformer aux recommandations produites dans le cadre de ce travail.</p>
+          </div>
+          <div>
+            <head>Description du fichier</head>
+            <div>
+              <p>À l’intérieur du <gi>teiHeader</gi>, l’élément <gi>fileDesc</gi> accueille la description du fichier qui doit être distinguée de la source. Celle-ci comprend notamment, les mentions de responsabilités principales et secondaires, le titre, et les mentions d’édition.</p>
+            </div>
+            <div>
+              <head>Titres</head>
+              <p>Les titres et sous-titres sont donnés avec l’élément <gi>title</gi> qui est répétable. On les distingue entre-eux au moyen d’un attribut <att>type</att> avec les valeurs <val>main</val> et <val>sub</val>. Pour faciliter le partage, la langue du titre doit-être précisée avec l’attribut <att>xml:lang</att> qui prend la valeur d’un code de langue à deux lettres, conformément à la norme ISO 639-1.</p>
+            </div>
+            <div>
+              <head>Mentions de responsabilité</head>
+              <p>Conformément à la norme ISBD, la mention de responsabilité principale est distinguée des mentions de responsabilité secondaires. <gi>principal</gi> permet de fournir cette première mention de responsabilité, généralement l’auteur du fichier. L’éditeur peut aussi être renseigné avec l’élément <gi>editor</gi>. Toutes les autres mentions de responsabilité sont fournies, groupées par type d’intervention, avec des éléments <gi>respStmt</gi>. À l’intérieur de <gi>respStmt</gi>, l’élément <gi>resp</gi> sert à indiquer le type de responsabilité, l’attribut <att>key</att> sert à fournir une valeur normalisée conformément à la terminologie de la bibliothèque du congrès<ref type="note" target="#nGdpSchemaTEI0018"/>.</p>
+              <p>On indique également le corpus auquel appartient le document avec <gi>seriesStmt</gi> qui contient leurs titres et sous-titres éventuel, ainsi que leur identifiant avec <gi>idno</gi>.</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                <seriesStmt>
+                  <title xml:lang="fre" type="main">Les Guides de Paris</title>
+                  <title xml:lang="fre" type="sub">Les historiens des arts et les corpus numériques</title>
+                  <idno type="URI">http://www.guidesdeparis.net</idno>
+                </seriesStmt>
+              </egXML>
+            </div>
+          </div>
+        </div>
+        <div>
+          <head>L’établissement du texte</head>
+          <div>
+            <head>Introduction</head>
+            <p>Les guidelines de la TEI proposent une gamme étendue de solutions pour l’encodage du texte. La plupart des éléments proposés dans les modules spécialisés comme ceux consacrés à l’édition des manuscrits ou des textes dramatiques ne sont d’aucune utilisé pour les Guides de Paris. En revanche, la fine structuration de la structure du texte et le repérage de certains éléments, telles que les entités-nommées, sont déterminants pour la production de l’édition et sa publication. C’est pour l’essentiel sur ce balisage que pourra reposer l’essentiel des fonctionnalités hypertextuelles qui permettront l’exploration du corpus.</p>
+          </div>
+          <div>
+            <head>Macrostructure du texte</head>
+            <div>
+              <head>Introduction</head>
+              <p>La production de l’édition et sa présentation nécessite l’établissement de la structure logique des textes. Il s’agit notamment de déterminer l’organisation logique du texte, en distinguant les pages de titre, les pièces liminaires, les différentes divisions du texte en les hiérarchisant, ainsi que les parties annexes. Cette opération est cruciale dans toute édition en TEI car XML représente le texte comme un modèle de contenu hiérarchiquement ordonné. Au cours de cette opération, on s’assurera du marquage de la pagination et du contrôle de sa numérotation.</p>
+              <p>Il importe d’établir les divisions principales du texte. À cet égard, il est possible que la présentation typographique du texte ne soit pas toujours cohérente et nécessite une harmonisation. Toutefois, ses particularités sont souvent un guide précieux pour déterminer de manière certaine la structuration du texte. On distinguera clairement les types de division : parties, sous-parties, chapitres et sous-chapitres. Dans certains cas, la comparaison entre les différentes éditions pourra se révéler instructive. Les règles de structuration qui suivent ont été établies pour permettre la prise en charge d’un grand nombre de cas en fonction de la diversité des ouvrages qui constituent le corpus.</p>
+            </div>
+            <div>
+              <head>Livres et volumes</head>
+              <p>S’agissant de sources imprimées, il était nécessaire de prévoir les cas où la publication était structurée en volumes ou livres tout en tenant compte de la tomaison qui est cruciale pour la citation ou l’établissement d’un lien avec les facsimili. Afin de pouvoir rendre compte des parties liminaires ou annexes présentes dans chaque volume distinctement, chacun de ces volumes donne lieu à un élément <gi>text</gi> qui sont groupés ensemble avec l’élément <gi>group</gi>. L’attribut <att>type</att> permet de typer cet élément texte de manière plus explicite, et l’attribut <att>n</att> de fournir une numérotation. Cette solution présente notamment l’avantage d’éviter de multiplier les fichiers TEI pour un seul et même texte. Par ailleurs, elle offre la possibilité de faire précéder l’élément <gi>group</gi> par un élément <gi>front</gi> pour accueillir une présentation du texte, et d’insérer les notes d’édition critique dans un élément back.</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                <TEI>
+                  <teiHeader>
+                    <!-- ... -->
+                  </teiHeader>
+                  <text>
+                    <group>
+                      <text type="volume" n="1">
+                        <!-- ... -->
+                      </text>
+                      <text type="volume" n="2">
+                        <!-- ... -->
+                      </text>
+                      <text type="volume" n="3">
+                        <!-- ... -->
+                      </text>
+                    </group>
+                    <back>
+                      <div type="notes">
+                        <!-- ... -->
+                      </div>
+                    </back>
+                  </text>
+                </TEI>
+              </egXML>
+            </div>
+            <div>
+              <head>Parties liminaires, corps de texte, et parties annexes</head>
+              <p>Chaque volume traité avec un élément <gi>text</gi> peut comprendre des parties liminaires, un corps de texte et des parties annexes qui sont respectivement réparties dans les éléments <gi>front</gi>, <gi>body</gi> et <gi>back</gi>. De manière générale, les avertissements, préfaces, introductions, et tables des matières sont répartis dans des divisions <gi>div</gi> à l’intérieur de <gi>front</gi>. Le corps de texte est quant à lui compris dans un élément <gi>body</gi> subdivisé en autant de divisions <gi>div</gi> que nécessaire. De même, les parties annexes telles que les tables générales, index, et compléments sont comprises dans l’élément <gi>back</gi>.</p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                <text type="volume" n="1">
+                  <front>
+                    <titlePage>
+                      <!-- ... -->
+                    </titlePage>
+                    <div type="introduction">
+                      <!-- ... -->
+                    </div>
+                    <div type="toc">
+                      <!-- ... -->
+                    </div>
+                  </front>
+                  <body>
+                    <div type="part" n="1">
+                      <!-- ... -->
+                    </div>
+                    <!-- ... -->
+                  </body>
+                  <back>
+                    <div type="index">
+                      <!-- ... -->
+                    </div>
+                    <div type="toc">
+                      <!-- ... -->
+                    </div>
+                  </back>
+                </text>
+              </egXML>
+            </div>
+            <div>
+              <head>Pages de titre</head>
+              <p>S’agissant d’éditer des textes imprimés, une attention particulière sera accordée aux pages de titres. L’élément <gi>titlePage</gi> et tous ses sous-éléments permettent d’encoder avec la finesse nécessaire ces pages de titre. La description bibliographique de l’ouvrage imprimée étant donnée par ailleurs, l’encodage de la page de titre s’attaque à permettre sa restitution typogrpahique. À l’intérieur de <gi>docTitle</gi> on distingue les différentes parties de titre au moyen d’éléments <gi>titlePart</gi>. Une attention particulière est accordée aux effets typographiques et à la composition. Les attributs <att>rend</att> permettent de renseigner la casse (<val>capital</val>, <val>italic</val>, ou la couleur <val>red</val> etc.). Les sauts de ligne sont également partout marqués par des éléments vides <gi>lb</gi>.</p>
+              <p>Les mentions d’éditions sont balisées au moyen de l’élément <gi>docImprint</gi>. Ses sous-éléments <gi>pubPlace</gi> et <gi>publisher</gi> permettent d’encoder les lieux d’édition et les signatures. <gi>docAutor</gi> accueille l’éventuelle mention de responsabilité. <gi>docDate</gi> permet quant à lui de baliser le millésime transcrit tel qu’il apparaît sur la page et normalisée avec l’attribut <att>when</att> en utilisant une valeur ISO. Le privilège peut être encodé avec l’élément <gi>imprimatur</gi> à l’endroit où il apparaît sur la page, de même les vignettes, cul-de-lampe, ou autres ornements sont encodés avec l’élément <gi>metamark</gi> et un attribut <att>rend</att> qui indique leur nature (<val>culDeLampe</val>, <val>tailpiece</val>, <val>simpleLine</val>, etc.). <!-- TODO faire un renvoi à une division concernant la description des aspects typographiques --></p>
+              <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                <titlePage xml:lang="fre">
+                  <!-- page de titre transcrite à l’identique -->
+                  <docTitle>
+                    <titlePart rend="capital">Histoire <lb/>et <lb/>recherches <lb/>des <lb/>antiquités <lb/>de la ville <lb/>de <lb/>Paris.</titlePart>
+                    <titlePart rend="italic">Par M<hi rend="superscript">e</hi>
+                      <persName rend="capital">Henri Sauval</persName> Avocat <lb/>au Parlement.</titlePart>
+                    <titlePart>Tome premier.</titlePart>
+                  </docTitle>
+                  <metamark rend="culDeLampe"/>
+                  <docImprint>
+                    <pubPlace>À Paris,</pubPlace>
+                    <publisher>Chés Charles Moette, Libraire, rue de la Bouclerie à <abbr>St</abbr> Alexis, près le Pont <abbr>St</abbr> Michel.</publisher>
+                    <publisher>Chés Jacques Chardon, Imprimeur-Libraire, rue du Petit-Pont, au bas de la rue <abbr>St</abbr> Jacques à la Croix d’or.</publisher>
+                    <docDate when="1724">M. DCC XXIV.</docDate>
+                  </docImprint>
+                  <imprimatur rend="capital">Avec privilège du Roy</imprimatur>
+                </titlePage>
+              </egXML>
+            </div>
+            <div>
+              <head>Divisions</head>
+              <p>À l’intérieur du flux textuel, chacune des divisions est marquée à l’aide de l’élément <gi>div</gi>. L’agencement des divisions rend compte de la structure hiérarchique du texte avec l’attribut <att>type</att> qui sert à typer le niveau hiérarchique. La création d’une division est possible en l’absence de titre. Dans certains cas, l’établissement du niveau hiérarchique de la division peut s’avérer délicat. Il convient alors d’être attentif au traitement typographique, ou à la composition qui peuvent traduire la présence d’un niveau hiérarchique. Dans certains cas, il peut être nécessaire de rétablir la cohérence hiérarchique de la division.</p>
+              <p>La valeur de l’attribut <att>type</att> des divisions est prise dans la liste ouverte de valeurs suivante :<list>
+                  <label><val>volume</val></label>
+                  <item>pour une unité physique (volume)</item>
+                  <label><val>book</val></label>
+                  <item>pour une division livre</item>
+                  <label><val>introduction</val></label>
+                  <item>pour une introduction</item>
+                  <label><val>preface</val></label>
+                  <item>pour une préface</item>
+                  <label><val>dedication</val></label>
+                  <item>pour une dédicace</item>
+                  <label><val>toc</val></label>
+                  <item>pour une table des matières</item>
+                  <label><val>part</val></label>
+                  <item>pour une partie</item>
+                  <label><val>chapter</val></label>
+                  <item>pour un chapitre</item>
+                  <label><val>section</val></label>
+                  <item>pour une section</item>
+                  <label><val>item</val></label>
+                  <item>pour un item à afficher dans l’édition</item>
+                  <label><val>errata</val></label>
+                  <item>pour les errata</item>
+                  <label><val>index</val></label>
+                  <item>pour un index</item>
+                  <label><val>colophon</val></label>
+                  <item>pour le colophon</item>
+                  <label><val>privilege</val></label>
+                  <item>pour le privilège</item>
+                  <label><val>supplement</val></label>
+                  <item>pour les suppléments</item>
+                  <!-- TODO EC faire un renvoi vers la partie où on décrit leur insersion dans le texte -->
+                  <label><val>notes</val></label>
+                  <item>pour les notes d’édition critique</item>
+                  <!-- TODO ajouter avertissement, et utiliser appel des spécifications -->
+                </list></p>
+              <p>
+                <!-- TODO expliciter ces règles -->
+                <list>
+                  <item>ne pas numéroter les parties et sous parties</item>
+                  <item>catégoriser les divisions de livres, volumes, chapitre avec <att>type</att></item>
+                  <item>suivre la hiérarchie des divisions telles qu’elles apparaissent dans la présentation typographique</item>
+                  <item>dans les cas ambigus, créer les subdivisions supplémentaires en s’attachant à conserver la hiérarchie explicitement marquée dans le volume</item>
+                  <item>marquer les entrée thématiques avec l’attribut @type="section"</item>
+                  <item>utiliser pour les titres forgés restitués à partir de la table des matières, lorsque les autres intertitres de même niveau apparaissent avec des rubriques dans le texte</item>
+                  <item>introduire une note de commentaire</item>
+                </list>
+              </p>
+            </div>
+            <div>
+              <head>Renvois et insertions</head>
+              <!-- TODO Rédaction -->
+              <p>On utilise l’élément <gi>ref</gi> pour marquer les renvois dans le texte. La valeur du pointeur sera renseignée par la suite après la génération des <att>xml:id</att> basés sur la structure du texte.</p>
+            </div>
+            <div>
+              <head>Paragraphes et unités</head>
+              <div>
+                <head>Titres et inter-titres</head>
+                <p>Les titres ou inter-titres, balisés au moyen d’un élément <gi>head</gi> est associé aux divisions <gi>div</gi>. Cet élément <gi>head</gi> est répétable. L’encodage des titres est attentif aux effets typographiques (capitalisation : attribut <att>rend</att> avec la valeur <val>capitals</val>. L’espacement vertical du texte destiné à mettre en valeur le titre sur la page n’est pas spécialement encodé puisque le balisage permet de rendre compte qu’il s’agit d’un titre.</p>
+                <!-- TODO envisager la modification du modèle TEI pour permettre l’utilisation de <gi>titlepage</gi> pour les parties -->
+              </div>
+              <div>
+                <head>Paragraphes</head>
+                <p>Le paragraphe constitue l’unité textuelle de base. Au sein des divisions <gi>div</gi>, l’élément <gi>p</gi> contient le texte des paragraphes, cet élément est répétable. Ces paragraphes peuvent contenir des listes balisées avec l’élélemnt <gi>list</gi>, et à l’intérieur des paragraphes certains passages peuvent être balisés avec <gi>seg</gi>.</p>
+                <!-- TODO mises en exergue, rubriques, etc. -->
+              </div>
+              <div>
+                <head>Structures de liste</head>
+                <p>Les listes sont balisées avec l’élément <gi>list</gi> et ses sous-éléments <gi>label</gi> et <gi>item</gi>. L’attribut <att>att</att> permet de préciser s’il s’agit d’une liste ordonnée avec la valeur <val>ordered</val>.</p>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                  <list>
+                    <item>
+                      <label><hi rend="capital"><hi rend="initial">D</hi>iscours</hi> à <expan>Monsieur</expan> de Launoi</label>
+                      <num>1</num>
+                    </item>
+                    <item>
+                      <label>des églises</label>
+                      <num>12</num>
+                    </item>
+                  </list>
+                </egXML>
+                <!-- TODO l’exemple est-il représentatif -->
+                <p>Les listes numérotées sont distinguées par un attribut <att>type</att> avec la valuer <val>ordered</val></p>
+              </div>
+              <div>
+                <head>Tableaux</head>
+                <p>Les tableaux sont encodés avec l’élément <gi>table</gi>. Ils peuvent disposer d’un titre avec <gi>head</gi>. Chacune des rangées est encodée avec un élément <gi>row</gi> qui peut contenir plusieurs cellules <gi>cell</gi>.</p>
+              </div>
+              <div>
+                <head>Citations</head>
+                <p>Les guides de Paris contiennent fréquemment des citations ou des épitaphes. Lorsqu’il s’agit d’un bloc de citation entre deux paragraphes, ces passages sont encodés avec un élément <gi>quote</gi>. Tandis que lorsqu’il s’agit d’une simple citation au sein d’un paragraphe, on utilise l’élément <gi>q</gi>. À l’intérieur d’un bloc de citation, le texte peut au besoin être sous-divisé en autant de paragraphes <gi>p</gi>, de vers <gi>l</gi> ou de strophes <gi>lg</gi> que de besoin. Dans les cas où la référence est fournie, le passage cité est encodé, à l’intérieur de <gi>quote</gi> avec <gi>cit</gi> et la référence bibliographique est fournie avec <gi>bibl</gi>.</p>
+              </div>
+              <div>
+                <head>Passages versifiés</head>
+                <p>Les passages versifiés sont encodés avec les éléments <gi>l</gi> pour les vers et <gi>lg</gi> pour grouper les vers en strophes.</p>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                  <lg>
+                    <l>Cy gist qui pendant qu’il vivoit </l>
+                    <l>Fit tout mestier de gueserie,</l>
+                    <l>Il soufloit, predisoit, rimoit,</l>
+                    <l>Et cultivoit Philosophie.</l>
+                  </lg>
+                </egXML>
+              </div>
+            </div>
+          </div>
+          <div>
+            <head>Microstructures</head>
+            <p>L’encodage des entités-nommées est crucial pour la production d’index ou pour ménager des points d’accès sur le texte. L’ensemble des noms de personnes ou de collectivité, noms de lieux ou noms géographiques, ou encore les mentions d’œuvres sont balisées dans le flux textuel à l’aide des éléments <gi>persName</gi>, <gi>orgName</gi>, <gi>placeName</gi>, <gi>geogName</gi> et <gi>objectName</gi>. Un script générera un identifiant unique pour chacun de ces éléments destiné à servir d’ancre pour des identifications avec les entrées d’index.</p>
+            <p><gi>objectName</gi> sert à identifier les biens culturels (tableaux, chapelles, maître-hôtels, etc.) mais on privilégie <gi>placeName</gi> pour les églises et les édifices. Le détail des localités des appartements ou des parties d’édifices ne font pas l’objet d’un encodage à moins que l’on ne considère qu’il soit nécessaire pour produire un index. Les sculptures sont encodées. On balisera avec parcimonie en choisissant la partie de texte qui désigne le mieux l’objet. Les références implicites qui ne sont pas clairement résolvables et qui ne sont pas mentionnées à proximité dans le texte, ne sont pas encodées.</p>
+          </div>
+          <div>
+            <head>Inscription du texte sur la page</head>
+            <div>
+              <head>Sauts de page, de colonne ou de ligne</head>
+              <p>La présence d’un saut de page au sein du flux textuel est indiquée au moyen d’un élément de type borne (<foreign xml:lang="eng">milestone</foreign>) <gi>pb</gi> qui est un élément vide. Cet élément porte un identifiant unique avec <att>xml:id</att>.</p>
+              <p>Les sauts de colonne sont renseignés de la même manière au moyen de l’élément vide <gi>cb</gi></p>
+              <p>Les sauts de ligne ne sont généralement pas balisés. Toutefois, leur encodage est utile pour la restitution des titres et des pages de titres. On encode les sauts de ligne avec l’élément vide <gi>lb</gi>.</p>
+            </div>
+            <div>
+              <head>Pagination, titres courants, réclames</head>
+              <div>
+                <head>Pagination</head>
+                <p>La pagination est un élément crucial pour la citation. La numérotation des pages est donc relevée avec soin, telle qu’elle apparaît sur la page à l’intérieur d’un élément <gi>fw</gi> identifié par un attribut <att>type</att> avec la valeur <val>pageNum</val>. Une valeur normalisée, et régularisée dans le cas d’une numérotation fautive, peut être fournie avec l’attribut <att>n</att>.</p>
+              </div>
+              <div>
+                <head>Titres courants</head>
+                <p>Les titres courants sont encodés à l’endroit de leur insertion avec l’élément <gi>fw</gi> identifié par l’attribut <att>type</att>, avec la valeur <val>runningHead</val></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <head>L’apparat critique</head>
+          <div/>
+        </div>
+      </div>
+    </front>
+    <body>
+      <head>Schéma XML-TEI pour l’édition du corpus des Guides de Paris, version 0.4</head>
+      <p>L’édition des Guides de Paris fait partie d’un projet de recherche sur les historiens de l’art et les corpus numériques mené au sein du Labex Les Passés dans le présent par le laboratoire HAR.</p>
+      <schemaSpec ident="gdpSchemaTEI" docLang="fr" start="TEI teiCorpus">
+        <specGrpRef target="#base"/>
+        <specGrpRef target="#header"/>
+        <specGrpRef target="#textstructure"/>
+        <specGrpRef target="#transcrib"/>
+        <specGrpRef target="#entities"/>
+        <!-- <specGrpRef target="#analysis"/> -->
+        <specGrpRef target="#others"/>
+        <specGrpRef target="#biblio"/>
+        <specGrpRef target="#object"/>
+      </schemaSpec>
+      <!--
+            <include xmlns="http://www.w3.org/2001/XInclude"
+                href="elementsummary.xml"/>
+            -->
+      <div>
+        <head>L’infrastructure TEI</head>
+        <specGrp xml:id="base">
+          <moduleRef key="tei"/>
+          <classSpec ident="att.duration.iso" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="dur-iso" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.transcriptional" mode="change" type="atts" module="tei">
+            <attList>
+              <attDef ident="seq" mode="delete"/>
+              <attDef ident="cause" mode="delete"/>
+              <attDef ident="status" mode="delete"/>
+              <attDef ident="hand" mode="delete"/>
+            </attList>
+          </classSpec>
+          <moduleRef key="core" except="binaryObject headItem headLabel measure measureGrp name postBox postCode relatedItem said sp speaker stage street textLang time"/>
+          <moduleRef key="linking" except="ab alt altGrp anchor join joinGrp timeline when"/>
+        </specGrp>
+      </div>
+      <div>
+        <head>L’en-tête</head>
+        <p/>
+        <specGrp xml:id="header">
+          <moduleRef key="header" except="appInfo application biblFull calendar calendarDesc correspAction correspContext correspDesc distributor handNote refState scriptNote segmentation "/>
+          <!-- pour une utilisation de handNote afin de traiter les annotations éventuelles -->
+          <!-- 
+                    <classSpec ident="att.handFeatures" mode="change"
+                        type="atts" module="tei">
+                        <attList>
+                            <attDef ident="scribe" mode="delete"/>
+                            <attDef ident="scribeRef" mode="delete"/>
+                            <attDef ident="script" mode="delete"/>
+                            <attDef ident="scriptRef" mode="delete"/>
+                            <attDef ident="scope" mode="change" usage="req">
+                                <valList type="closed" mode="replace">
+                                    <valItem ident="sole"/>
+                                    <valItem ident="major"/>
+                                    <valItem ident="minor"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </classSpec>-->
+          <elementRef key="typeDesc"/>
+          <p>Les éléments devant seulement être utilisés dans le header sont bannis de <gi>text</gi> en utilisant une règle Schematron.</p>
+          <elementSpec ident="text" mode="change">
+            <include xmlns="http://www.w3.org/2001/XInclude" href="headerOnly.xml"/>
+          </elementSpec>
+          <!-- TODO revoir la liste et mettre en cohérence schematron -->
+          <!-- JM ajout de variantEncoding pour la validation. -->
+          <moduleRef key="textcrit" include="variantEncoding"/>
+        </specGrp>
+      </div>
+      <div>
+        <head>Structure du texte</head>
+        <specGrp xml:id="textstructure">
+          <moduleRef key="textstructure" except="div1 div2 div3 div4 div5 div6 div7"/>
+          <elementSpec ident="div" mode="change">
+            <attList>
+              <attDef ident="type" mode="change">
+                <datatype minOccurs="1" maxOccurs="unbounded">
+                  <rng:text/>
+                </datatype>
+                <valList mode="replace" type="closed">
+                  <valItem ident="dedicace"/>
+                  <valItem ident="imprimatur"/>
+                  <valItem ident="toc"/>
+                  <valItem ident="foreword"/>
+                  <valItem ident="preface"/>
+                  <valItem ident="introduction"/>
+                  <valItem ident="book"/>
+                  <valItem ident="part"/>
+                  <valItem ident="chapter"/>
+                  <valItem ident="section"/>
+                  <valItem ident="item"/>
+                  <valItem ident="index"/>
+                  <valItem ident="errata"/>
+                  <valItem ident="supplement"/>
+                  <valItem ident="notes"/>
+                  <valItem ident="notesCritical"/>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+        </specGrp>
+      </div>
+      <div>
+        <head>Transcription du texte</head>
+        <specGrp xml:id="transcrib">
+          <moduleRef key="transcr" except="addSpan am damage damageSpan delSpan ex handNotes handShift line listTranspose mod redo restore retrace sourceDoc subst substJoin surface surfaceGrp transpose undo"/>
+          <elementSpec ident="metamark" mode="change">
+            <attList>
+              <attDef ident="rend" mode="change">
+                <datatype minOccurs="1" maxOccurs="unbounded">
+                  <rng:text/>
+                </datatype>
+                <valList mode="replace" type="closed">
+                  <valItem ident="headpiece"/>
+                  <valItem ident="simpleLine"/>
+                  <valItem ident="tailpiece"/>
+                  <valItem ident="typographicalPiece"/>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          <elementSpec ident="fw" mode="change">
+            <attList>
+              <attDef ident="type" mode="change">
+                <datatype minOccurs="1">
+                  <rng:text/>
+                </datatype>
+                <valList mode="replace" type="closed">
+                  <valItem ident="catchword"/>
+                  <valItem ident="pageNum"/>
+                  <valItem ident="runningHead"/>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          <classSpec ident="att.global.change" module="transcr" mode="change" type="atts">
+            <attList>
+              <attDef ident="change" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.coordinated" module="transcr" mode="change" type="atts">
+            <attList>
+              <attDef ident="start" mode="delete"/>
+            </attList>
+          </classSpec>
+          <moduleRef key="certainty" except="precision certainty respons"/>
+          <moduleRef key="gaiji" except="char charDecl charName charProp localName mapping unicodeName value"/>
+          <moduleRef key="figures" except="notatedMusic"/>
+        </specGrp>
+      </div>
+      <div>
+        <head>Entités-nommées</head>
+        <p>Attention au surbalisage</p>
+        <!--
+          Baliser les noms de lieux qui doivent apparaître dans l’index. Il n’est pas certain que l’on renseigne la biographie dans l’index.
+          Paris n’est pas indexé car tous les guides parlent de Paris.
+          On balise le Parlement de Paris lorsqu’il agit comme personne. Pas dans les titres qui seront traités en index. 
+          Pour les œuvres on utilise objectName seulement pour les œuvres ou les objets distinctement indentifiables -->
+        <specGrp xml:id="entities">
+          <moduleRef key="namesdates" except="age bloc climate education faith geogFeat langKnowledge langKnown nationality offset population socecStatus terrain"/>
+          <classSpec ident="att.datable.custom" module="namesdates" mode="change" type="atts">
+            <attList>
+              <attDef ident="datingMethod" mode="delete"/>
+              <attDef ident="datingPoint" mode="delete"/>
+              <attDef ident="from-custom" mode="delete"/>
+              <attDef ident="notAfter-custom" mode="delete"/>
+              <attDef ident="notBefore-custom" mode="delete"/>
+              <attDef ident="to-custom" mode="delete"/>
+              <attDef ident="when-custom" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.datable.iso" module="namesdates" mode="change" type="atts">
+            <attList>
+              <attDef ident="from-iso" mode="delete"/>
+              <attDef ident="notAfter-iso" mode="delete"/>
+              <attDef ident="notBefore-iso" mode="delete"/>
+              <attDef ident="to-iso" mode="delete"/>
+              <attDef ident="when-iso" mode="delete"/>
+            </attList>
+          </classSpec>
+        </specGrp>
+      </div>
+      <div>
+        <head>Mécanismes d’analyse</head>
+        <specGrp xml:id="analysis">
+          <moduleRef key="analysis" except="c cl m pc phr s w"/>
+          <classSpec ident="att.global.linking" mode="change" type="atts" module="linking">
+            <attList>
+              <attDef ident="exclude" mode="delete"/>
+              <attDef ident="next" mode="delete"/>
+              <attDef ident="prev" mode="delete"/>
+              <attDef ident="sameAs" mode="delete"/>
+              <attDef ident="select" mode="delete"/>
+              <attDef ident="synch" mode="delete"/>
+            </attList>
+          </classSpec>
+        </specGrp>
+      </div>
+      <div>
+        <head>à trier</head>
+        <specGrp xml:id="others">
+          <!-- classes -->
+          <classSpec ident="att.breaking" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="break" mode="delete"/>
+            </attList>
+          </classSpec>
+
+          <classSpec ident="att.damaged" mode="change" type="atts" module="tei">
+            <attList>
+              <attDef ident="group" mode="delete"/>
+              <attDef ident="agent" mode="change" usage="req">
+                <valList type="closed" mode="replace">
+                  <valItem ident="fire"/>
+                  <valItem ident="moisture"/>
+                  <valItem ident="rubbing"/>
+                  <valItem ident="smoke"/>
+                  <valItem ident="tear"/>
+                  <valItem ident="water"/>
+                  <valItem ident="unknown"/>
+                </valList>
+              </attDef>
+              <attDef ident="degree" mode="change" usage="req">
+                <valList type="closed" mode="replace">
+                  <valItem ident="high"/>
+                  <valItem ident="low"/>
+                  <valItem ident="medium"/>
+                  <valItem ident="unknown"/>
+                </valList>
+              </attDef>
+            </attList>
+          </classSpec>
+          <!-- @RMQ peut-être à supprimer car on travaille sur des multiples -->
+          <classSpec ident="att.datable" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="calendar" mode="delete"/>
+              <attDef ident="period" mode="delete"/>
+            </attList>
+          </classSpec>
+
+          <classSpec ident="att.datcat" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="datcat" mode="delete"/>
+              <attDef ident="valueDatcat" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.dimensions" mode="change" type="atts" module="tei">
+            <attList>
+              <attDef ident="precision" mode="delete"/>
+              <attDef ident="scope" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.editLike" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="evidence" mode="delete"/>
+              <attDef ident="instant" mode="delete"/>
+              <attDef ident="source" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.edition" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="ed" mode="delete"/>
+              <attDef ident="edRef" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.enjamb" module="verse" mode="change" type="atts">
+            <attList>
+              <attDef ident="enjamb" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.fragmentable" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="part" mode="delete"/>
+            </attList>
+          </classSpec>
+
+          <!-- @rmq conflit avec autre spécifiction de style 2016-05-01 -->
+          <!--
+          <classSpec ident="att.global" mode="change" type="atts" module="tei">
+            <attList>
+              <attDef ident="style" mode="delete"/>
+            </attList>
+          </classSpec>-->
+
+
+          <classSpec ident="att.identified" mode="change" type="atts" module="tagdocs">
+            <attList>
+              <attDef ident="module" mode="delete"/>
+              <attDef ident="predeclare" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.interpLike" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="inst" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.lexicographic" module="dictionaries" mode="change" type="atts">
+            <attList>
+              <attDef ident="expand" mode="delete"/>
+              <attDef ident="location" mode="delete"/>
+              <attDef ident="mergedIn" mode="delete"/>
+              <attDef ident="norm" mode="delete"/>
+              <attDef ident="opt" mode="delete"/>
+              <attDef ident="orig" mode="delete"/>
+              <attDef ident="split" mode="delete"/>
+              <attDef ident="value" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.metrical" module="verse" mode="change" type="atts">
+            <attList>
+              <attDef ident="met" mode="delete"/>
+              <attDef ident="real" mode="delete"/>
+              <attDef ident="rhyme" mode="delete"/>
+            </attList>
+          </classSpec>
+
+          <classSpec ident="att.pointing" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="evaluate" mode="delete"/>
+              <attDef ident="targetLang" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.pointing.group" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="domains" mode="delete"/>
+              <attDef ident="targFunc" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.ranging" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="atLeast" mode="delete"/>
+              <attDef ident="atMost" mode="delete"/>
+              <attDef ident="confidence" mode="delete"/>
+              <attDef ident="max" mode="delete"/>
+              <attDef ident="min" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.segLike" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="function" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.scoping" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="match" mode="delete"/>
+              <attDef ident="target" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.styleDef" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="scheme" mode="delete"/>
+            </attList>
+          </classSpec>
+
+          <classSpec ident="att.timed" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="end" mode="delete"/>
+              <attDef ident="start" mode="delete"/>
+            </attList>
+          </classSpec>
+
+          <classSpec ident="att.translatable" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="versionDate" mode="delete"/>
+            </attList>
+          </classSpec>
+
+          <classSpec ident="att.combinable" module="tagdocs" mode="change" type="atts">
+            <attList>
+              <attDef ident="mode" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.typed" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="subtype" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.divLike" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="org" mode="delete"/>
+              <attDef ident="sample" mode="delete"/>
+            </attList>
+          </classSpec>
+
+
+          <classSpec ident="att.internetMedia" type="atts" mode="change" module="tei">
+            <attList>
+              <attDef ident="mimeType" mode="change">
+                <valList type="closed" mode="replace">
+                  <valItem ident="image/jpg"/>
+                  <valItem ident="image/png"/>
+                  <valItem ident="application/pdf"/>
+                  <valItem ident="application/tei+xml"/>
+                  <valItem ident="application/xml"/>
+                </valList>
+              </attDef>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.media" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="height" mode="delete"/>
+              <attDef ident="scale" mode="delete"/>
+              <attDef ident="width" mode="delete"/>
+            </attList>
+          </classSpec>
+          <!-- att.milestoneUnit -->
+          <classSpec ident="att.milestoneUnit" module="core" mode="delete" type="atts">
+            <attList>
+              <attDef ident="unit" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.namespaceable" module="tagdocs" mode="change" type="atts">
+            <attList>
+              <attDef ident="ns" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.naming" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="nymRef" mode="delete"/>
+            </attList>
+          </classSpec>
+
+          <classSpec ident="att.sortable" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="sortKey" mode="delete"/>
+            </attList>
+          </classSpec>
+          <classSpec ident="att.source" module="tei" mode="change" type="atts">
+            <attList>
+              <attDef ident="source" mode="delete"/>
+            </attList>
+          </classSpec>
+        </specGrp>
+      </div>
+      <div>
+        <head>Modification des éléments bibliographiques</head>
+        <specGrp xml:id="biblio">
+          <elementSpec ident="biblStruct" mode="change">
+            <content>
+              <rng:group>
+                <rng:zeroOrMore>
+                  <rng:ref name="analytic"/>
+                </rng:zeroOrMore>
+                <rng:oneOrMore>
+                  <rng:ref name="monogr"/>
+                  <rng:zeroOrMore>
+                    <rng:ref name="series"/>
+                  </rng:zeroOrMore>
+                </rng:oneOrMore>
+                <rng:zeroOrMore>
+                  <rng:choice>
+                    <rng:ref name="model.noteLike"/>
+                    <rng:ref name="idno"/>
+                    <rng:ref name="model.ptrLike"/>
+                    <rng:ref name="relatedItem"/>
+                    <rng:ref name="citedRange"/>
+                  </rng:choice>
+                </rng:zeroOrMore>
+                <rng:zeroOrMore>
+                  <rng:ref name="listRelation"/>
+                </rng:zeroOrMore>
+              </rng:group>
+            </content>
+          </elementSpec>
+          <p>Cette modification du modèle est destinée à permettre la notation de relations entre les entrées bibliographiques conforme aux FRBR.</p>
+        </specGrp>
+      </div>
+      <div>
+        <head>Ajout d’un élément object</head>
+        <p>La description des objets culturels nécessite la création d’un élément qui n’existe pas pour le moment dans la TEI. Les discussions conduites au sein du SIG ontology, envisagent la création d’un nouvel élément object. Nous avons essayé ci-dessous de fournir une première définition pour cet élément.</p>
+        <specGrp xml:id="object">
+          <!-- classe model.objectLike -->
+          <classSpec type="model" ident="model.objectLike">
+            <desc versionDate="2015-04-21" xml:lang="en">groups elements used to provide information about objects and their relationships.</desc>
+            <desc versionDate="2015-04-21" xml:lang="fr">regroupe des éléments qui donne des informations sur des objets et leurs relations.</desc>
+          </classSpec>
+          <!-- classe model.objectNamePart -->
+          <classSpec xml:id="OBJEPART" type="model" ident="model.objectNamePart">
+            <desc versionDate="2015-04-21" xml:lang="en">groups elements which form part of an object name.</desc>
+            <desc versionDate="2015-04-21" xml:lang="fr">regroupe des éléments qui font partie d'un nom d’objet.</desc>
+            <classes>
+              <!-- 
+                            <memberOf key="model.nameLike"/> 
+                            -->
+              <memberOf key="model.objectStateLike"/>
+            </classes>
+            <listRef>
+              <ptr target="#NDPLAC"/>
+            </listRef>
+          </classSpec>
+          <!-- classe model.objectStateLike -->
+          <classSpec type="model" ident="model.objectStateLike">
+            <desc versionDate="2015-04-21" xml:lang="en">groups elements which describe changing states of an object.</desc>
+            <desc versionDate="2015-04-21" xml:lang="fr">regroupe des éléments qui décrivent les transformations d’un objet</desc>
+            <classes>
+              <memberOf key="model.nameLike"/>
+            </classes>
+          </classSpec>
+          <!-- classe model.objectEventLike -->
+          <classSpec module="perso" type="model" ident="model.objectEventLike">
+            <desc versionDate="2015-04-21" xml:lang="en">groups elements which describe events at or affecting an object.</desc>
+            <desc versionDate="2015-04-21" xml:lang="fr">regroupe des éléments qui décrivent des événements survenus et relatifs à un objet.</desc>
+          </classSpec>
+          <!-- élément object -->
+          <elementSpec ident="object" module="perso">
+            <gloss versionDate="2015-04-21" xml:lang="en">object</gloss>
+            <desc versionDate="2015-04-21" xml:lang="en">contains data about a cultural object</desc>
+            <desc versionDate="2015-04-21" xml:lang="fr">contient des données sur un object culturel</desc>
+            <classes>
+              <memberOf key="att.global"/>
+              <memberOf key="att.typed"/>
+              <memberOf key="att.editLike"/>
+              <memberOf key="att.sortable"/>
+              <memberOf key="model.objectLike"/>
+            </classes>
+            <content>
+              <rng:group>
+                <rng:zeroOrMore>
+                  <rng:ref name="model.headLike"/>
+                </rng:zeroOrMore>
+                <rng:choice>
+                  <rng:group>
+                    <rng:zeroOrMore>
+                      <rng:ref name="model.pLike"/>
+                    </rng:zeroOrMore>
+                  </rng:group>
+                  <rng:zeroOrMore>
+                    <rng:choice>
+                      <rng:ref name="model.labelLike"/>
+                      <rng:ref name="model.placeStateLike"/>
+                      <rng:ref name="model.objectStateLike"/>
+                      <rng:ref name="model.objectEventLike"/>
+                    </rng:choice>
+                  </rng:zeroOrMore>
+                </rng:choice>
+                <rng:zeroOrMore>
+                  <rng:choice>
+                    <rng:ref name="model.noteLike"/>
+                    <rng:ref name="model.biblLike"/>
+                    <rng:ref name="idno"/>
+                    <rng:ref name="linkGrp"/>
+                    <rng:ref name="link"/>
+                  </rng:choice>
+                </rng:zeroOrMore>
+                <rng:zeroOrMore>
+                  <rng:choice>
+                    <rng:ref name="model.objectLike"/>
+                    <!-- TODO à créer
+                                        <rng:ref name="listObject"/>
+                                        -->
+                  </rng:choice>
+                </rng:zeroOrMore>
+              </rng:group>
+            </content>
+            <exemplum xml:lang="en">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                <object>
+                  <country>Lithuania</country>
+                  <country xml:lang="lt">Lietuva</country>
+                  <place>
+                    <settlement>Vilnius</settlement>
+                  </place>
+                  <place>
+                    <settlement>Kaunas</settlement>
+                  </place>
+                </object>
+              </egXML>
+            </exemplum>
+            <listRef>
+              <ptr target="#NDGEOG"/>
+            </listRef>
+          </elementSpec>
+          <!-- élément objectName -->
+          <elementSpec ident="rs" mode="change">
+            <attList>
+              <attDef ident="type" mode="change">
+                <valList mode="add" type="closed">
+                  <valItem ident="groupPerson">
+                    <desc>Identifie un groupe de personne.</desc>
+                  </valItem>
+                  <valItem ident="person">
+                    <desc>Identifie une personne citée de manière implicite.</desc>
+                  </valItem>
+                  <valItem ident="place">
+                    <desc>Identifie un lieu cité de manière implicite.</desc>
+                  </valItem>
+                  <valItem ident="object">
+                    <desc>Identifie un objet cité de manière implicite.</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          <elementSpec ident="objectName">
+            <gloss versionDate="2015-04-21" xml:lang="fr">nom d’objet</gloss>
+            <!--gloss>place name</gloss-->
+            <desc versionDate="2015-04-21" xml:lang="en">contains an absolute or relative object name.</desc>
+            <classes>
+              <memberOf key="att.datable"/>
+              <memberOf key="att.editLike"/>
+              <memberOf key="att.global"/>
+              <memberOf key="att.personal"/>
+              <memberOf key="att.typed"/>
+              <memberOf key="model.objectNamePart"/>
+            </classes>
+            <content>
+              <ref xmlns="http://relaxng.org/ns/structure/1.0" name="macro.phraseSeq"/>
+            </content>
+            <exemplum xml:lang="en">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                <placeName>
+                  <settlement>Rochester</settlement>
+                  <region>New York</region>
+                </placeName>
+              </egXML>
+            </exemplum>
+            <exemplum versionDate="2015-04-21" xml:lang="fr">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                <placeName>
+                  <settlement>Bordeaux</settlement>
+                  <region>Gironde</region>
+                </placeName>
+              </egXML>
+            </exemplum>
+            <exemplum xml:lang="en">
+              <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                <placeName>
+                  <geogName>Arrochar Alps</geogName>
+                  <region>Argylshire</region>
+                </placeName>
+              </egXML>
+            </exemplum>
+            <listRef>
+              <ptr target="#NDPLAC"/>
+            </listRef>
+          </elementSpec>
+        </specGrp>
+      </div>
+      <!-- TODO 
+                * rendre possible l’utilisation de titlePage au début d’un volume
+                * créer un modèle de contenu object
+            -->
+    </body>
+    <back>
+      <div type="notes">
+        <note xml:id="nGdpSchemaTEI0001">
+          <p>Bernard Barbiche, Monique Chatenet, Jean Delmas, Olivier Guyotjeannin, et Jean-François Belhoste. <title>L’Édition des textes anciens : XVIe-XVIIIe siècle. Bernard Barbiche et Monique Chatenet (dir.)</title>. Documents &amp; méthodes / Inventaire général des monuments et des richesses artistiques de la France 1. Paris : Association Études, loisirs, patrimoine, 1993.</p>
+        </note>
+        <note xml:id="nGdpSchemaTEI0002">
+          <p>Joseph Bédier. « La tradition manuscrite du Lai de l'ombre réflexions sur l'art d'éditer les anciens textes. » <title>Romania</title>, vol. LIV, 1928, 161-196, 321-356. </p>
+        </note>
+        <note xml:id="nGdpSchemaTEI0003">
+          <p><title>Conseils pour l’édition des textes médiévaux</title>. Documents d’archives, Fascicule I. Paris : Comité des travaux historiques et scientifiques / École nationale des chartes, 2001. ; <title>Conseils pour l’édition des textes médiévaux</title>. Documents d’archives, Fascicule II. Paris : Comité des travaux historiques et scientifiques / École nationale des chartes, 2001. ; Pascale Bourgain, et Françoise Vielliard. <title>Conseils pour l’édition des textes médiévaux</title>. Documents d’archives, Fascicule III, Textes littéraires. Paris : Comité des travaux historiques et scientifiques / École nationale des chartes, 2002.</p>
+        </note>
+        <note xml:id="nGdpSchemaTEI0004">
+          <p>Ministre du Budget, des Comptes publics. <title>Référentiel Général d’Interopérabilité (RGI)</title>, 12 mai 2009, p. 26. Consulté en ligne : http://references.modernisation.gouv.fr/rgi-interoperabilite.</p>
+        </note>
+        <note xml:id="nGdpSchemaTEI0005">
+          <p>Nancy M. Ide, et C. Michael Sperberg-McQueen. « The Text Encoding Initiative: Its History, Goals, and Future Development. » In <title>Computers and the Humanities</title>. Édité par Nancy M. Ide et Jean Véronis. 1995. Consulté en ligne : http://www.cs.vassar.edu/~ide/papers/teiHistory.pdf</p>
+        </note>
+        <note xml:id="nGdpSchemaTEI0006">
+          <p>« The making of TEI P5. » <title>Literary and Linguistic Computing</title>, vol. 24, n° 3, 2009, 281-296.</p>
+        </note>
+        <note xml:id="nGdpSchemaTEI0007">
+          <p>The William Blake Archive, Consulté en ligne : http://www.blakearchive.org</p>
+        </note>
+        <note xml:id="nGdpSchemaTEI0008">
+          <p>Perseus Digital Library, Consulté en ligne : http://www.perseus.tufts.edu</p>
+        </note>
+        <note xml:id="nGdpSchemaTEI0009">
+          <p>Rossetti Archive, Consulté en ligne : http://www.rossettiarchive.org/</p>
+        </note>
+        <note xml:id="nGdpSchemaTEI0010">
+          <p>Les Bibliothèques Virtuelles Humanistes, Consulté en ligne : http://www.bvh.univ-tours.fr/</p>
+        </note>
+        <note xml:id="nGdpSchemaTEI0011">
+          <p>Éditions en ligne de l’École des chartes ELEC, Consulté en ligne : http://elec.enc.sorbonne.fr/</p>
+        </note>
+        <note xml:id="nGdpSchemaTEI0012">
+          <p>Portail Telma, Consulté en ligne : http://www.cn-telma.fr/</p>
+        </note>
+        <note xml:id="nGdpSchemaTEI0013">
+          <p>Hyperdonat, Consulté en ligne : http://hyperdonat.tge-adonis.fr/</p>
+        </note>
+        <note xml:id="nGdpSchemaTEI0014">
+          <p>Les Cours de Desgodets, Consulté en ligne : http://www.desgodets.net/</p>
+        </note>
+        <note xml:id="nGdpSchemaTEI0015">
+          <p>Sandrart.net : A net-based research platform on the history of art and culture in the 17th century, Consulté en ligne : http://sandrart.net/en/</p>
+        </note>
+        <note xml:id="nGdpSchemaTEI0016">
+          <p>« Creating “Getty Scholars’ Workspace”: Lessons from the Digital Humanities Trenches. », Consulté en ligne : http://blogs.getty.edu/iris/creating-getty-scholars-workspace-lessons-from-the-digital-humanities-trenches/</p>
+        </note>
+        <note xml:id="nGdpSchemaTEI0017">
+          <p>Nancy M. Ide, et C. Michael Sperberg-McQueen. « The Text Encoding Initiative: Its History, Goals, and Future Development. » In <title>Computers and the Humanities</title>. Édité par Nancy M. Ide et Jean Véronis. 1995. Consulté en ligne : http://www.cs.vassar.edu/~ide/papers/teiHistory.pdf</p>
+        </note>
+        <note xml:id="nGdpSchemaTEI0018">
+          <p><ref target="http://www.loc.gov/marc/relators/relaterm.html">MARC Code List for Relators</ref>.</p>
+        </note>
+      </div>
+    </back>
+  </text>
+</TEI>

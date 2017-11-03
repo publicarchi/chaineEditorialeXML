@@ -1,0 +1,1396 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Programme</title>
+    <link href="themes/remark-dark.css" rel="stylesheet" media="all" type="text/css">
+  </head>
+    <body><textarea id="source">
+title: Introduction à l’édition critique numérique
+description: Emmanuel Château-Dutier, mars 2017
+theme: theme/remark-dark-em.css
+name: inverse
+layout: true
+class: inverse
+
+---
+
+class: center middle
+
+# Chaînes éditoriales XML avec TEI
+
+## EDN6002 | UdeM, 13 mars 2017
+
+.footnote[[Répertoire GitHub](https://github.com/publicarchitectura/chaineEditorialeXML) | [Programme](00-programme.tei.xml)]
+![test](images/logo.svg)
+
+---
+
+template: inverse
+class: center middle
+
+# Introduction
+
+???
+
+Ateliers pratiques d’introduction XML et Atelier Text Encoding Initiative. Dans le cadre de ce cours plus général et par son format, aussi plus théorique, je voudrais vous présenter quelques éléments concernant la chaîne éditoriale XML, dans le cas particulier de l’utilisation de la Text Encoding Initiative.
+
+Bien évidemment pas le seul standard en vigueur dans ce domaine. Vous avez également vu, EPUB, HTML et XHTML, peut être les formats Dita et DocBook.
+
+Mais plus qu’un format ou un standard, la TEI est un cadre de travail pour l’édition critique numérique qui s’avère particulièrement flexible pour toute sorte d’utilisation dans le domaine académique. Au point qu’elle est devenue, en quelque sorte, une *lingua franca* des Digital Humanities, en particulier en Europe. Difficile aujourd’hui d’envisager de produire des contenus textuels dans les humanités numériques sans tenir compte de la TEI.
+
+C’est aussi l’un des projets les plus anciens et les plus durables des Digital Humanities, puisque la création de la TEI remonte à 1987 (30 ans !). Elle manifeste l’un des plus grands achèvements de la communauté des humanités numériques comme en témoigne le prix Zampolino qu’elle a reçu cette année à la Conférence mondiale des Humanités numériques. La TEI c’est donc à la fois, une ontologie générique du texte, une méthode d’édition critique, mais aussi un projet libre et open source adossé à une forte communauté.
+
+Avec, vous allez l’entrevoir, de nombreux outils développés autour de cette communauté.
+
+---
+
+layout: false
+name: index
+
+## Sommaire
+
+1. [XML pour l’édition structurée](#xml)
+2. [L’outillage XML](#outillage)
+3. [Chaînes de traitement XML](#chaines)
+
+---
+
+template: inverse
+class: center middle
+name: xml
+
+# XML pour l’édition structurée
+
+---
+
+## Qu’est-ce qu’un .red[document structuré] ?
+
+**On appelle document structuré, un document dont la structure logique est décrite plutôt que sa mise en forme physique.**
+
+> Un document peut être décrit comme une collection d’objets comportant des objets de plus haut niveau composés d’objets plus primitifs. Les relations entre ces objets représentent les relations logiques entre les composants du document. Par exemple [...] un livre est divisé en chapitres, chaque chapitre en sections, sous-sections, paragraphes, etc. Une telle organisation documentaire est appelée représentation de document structuré.
+>
+> Jacques André, Richard Furuta, Vincent Quint. *Structured documents*. Cambridge University Press, 1989.
+
+???
+
+## Qu’est-ce qu’un document structuré ?
+
+#### Définition des documents structurés
+
+On appelle document structuré, un document dont la structure logique est décrite plutôt que sa mise en forme physique.
+
+> Un document peut être décrit comme une collection d’objets comportant des objets de plus haut niveau composés d’objets plus primitifs. Les relations entre ces objets représentent les relations logiques entre les composants du document. Par exemple [...] un livre est divisé en chapitres, chaque chapitre en sections, sous-sections, paragraphes, etc. Une telle organisation documentaire est appelée représentation de document structuré.
+>
+> Jacques André, Richard Furuta, Vincent Quint, *Structured documents*, Cambridge University Press, 1989.
+
+---
+
+## Encodage descriptif
+
+### .red[vs]
+
+## encodage présentationnel
+
+???
+
+### Encodage descriptif .red[vs] encodage présentationnel
+
+Parce qu’il détermine tous les traitements informatiques qu’il est possible d’effectuer sur le texte, le balisage a historiquement constitué une question fondamentale dans l’histoire de l’informatique. Depuis l’article séminal de Coombs et ses collègues, on a pris l’habitude de distinguer plusieurs types de balisages&nbsp;: procédural, présentationnel, ou encore descriptif.
+cf. Coombs, James H, Renear, Allen H, et DeRose, Steven J, [« Markup Systems and the Future of Scholarly Text Processing »](http://xml.coverpages.org/coombs.html), Communications of the ACM, n° 11, t. 30, 1987, p.933-947.
+La supériorité du balisage descriptif sur les autres types de balisage du texte a clairement été établie depuis quelques années. Un tel balisage présente l’avantage notable d’assurer une meilleure distinction entre le contenu et la forme (et donc de séparer les traitements). Cette distinction garantit une meilleure maintenance du texte encodé et une meilleure portabilité des artefacts numériques.
+
+---
+
+## La production d’un .red[balisage descriptif]
+
+Identifier explicitement la structure sémantique sous-jacente d’un document, indépendamment de tout traitement déterminé à l’avance.
+
+- Distinguer à l’intérieur du texte différents objets éditoriaux
+- Fournir une information sémantique
+- Possibilité de produire des vues distinctes
+
+#### Avantages d’un balisage descriptif sur un balisage présentationnel
+
+1. Processus d’établissement du texte simplifié
+2. Réduction des problèmes de maintenance
+3. Meilleure portabilité
+
+???
+
+## La production d’un .red[balisage descriptif]
+
+Le balisage est une opération au cours de laquelle on ajoute un descripteur au contenu en vue d'un traitement informatique. Un langage à balises est un langage permettant d’associer à un contenu (généralement du texte) des balises explicites (par exemple pour rendre compte de la structure du texte).
+
+**La production d’un .red[balisage descriptif] consiste à identifier explicitement la structure sémantique sous-jacente d’un document, cela indépendamment de tout traitement déterminé à l’avance.**
+cf. Renear, Allen, Dubin, David, Sperberg-McQueen, C. Michael, et Huitfeldt, Claus, [«&nbsp;XML semantics and digital libraries&nbsp;»](http://dl.acm.org/citation.cfm?id=827140.827192), Proceedings of the 3rd ACM/IEEE-CS joint conference on Digital libraries, p. 303-305, 2003.
+**Il s’agit de .red[distinguer explicitement à l’intérieur du texte différents objets éditoriaux] en les encadrant par des balises dont le nom peut être arbitraire.**
+
+Ce faisant l’auteur d’un balisage fournit une .red[information sémantique] et pragmatique suffisante pour produire des vues alternatives sur le document ou bien une édition basée sur la structure du texte.
+
+### Avantages sur un balisage présentationnel
+
+Contrairement aux apparences, les logiciels de traitement de texte qui mettent en forme les documents ne simplifient pas la production de documents en éliminant le besoin du balisage. D’une certaine manière cela est devenu plus clair aujourd’hui avec l’adoption des formats XML par Microsoft Word et Open Office. Mais, le balisage requis pour ces formats, tout en étant plus consommateur de ressources, n’atteint pas la même expressivité qu’un simple balisage descriptif. Par ailleurs, les dispositifs d’édition fondés sur un balisage descriptif présentent plusieurs avantages sur le balisage fondé sur la présentation comme LaTex&nbsp;:
+
+1. Le **processus d’établissement du texte se trouve simplifié** par la focalisation sur le contenu plutôt que sur le contrôle du programme (dans le cas d’un balisage procédural) ou de la présentation typographique de la copie (comme avec LaTex)
+2. Les **questions de maintenance sont réduites** à un nombre limité de problèmes indépendants du fichier proprement dit. L’actualisation des styles et la mise à jour s’en trouvent facilitées sans risque de corruption des documents.
+3. Enfin, ils fournissent de meilleurs standards dans le domaine patrimonial et culturel, ou pour l’industrie, du point de vue de la **portabilité**. Ils permettent en effet le partage aisé des fichiers et réduisent, à terme, les coûts de publication.
+
+Autrement dit, le balisage descriptif offre un certain nombre d’avantages pour l’éditeur. Outre qu’il **permet de partager des documents pour collaborer sans se préoccuper d’éventuelles incompatibilités**, il offre un **gain de temps de production et de gestion en permettant la réalisation de plusieurs éditions successives à partir d’un même fichier source, ou de produire plusieurs manifestations (présentations) d’un même fichier**. De surcroît, ce balisage permet le plus souvent la **génération automatique de l’information bibliographique** directement à partir du fichier source (ce qui réduit les erreurs et permet une citation aisée dans les bases bibliographiques) ou d’inclure directement des documents dans des bases de données en ligne pour la publication et la recherche plein-texte.
+
+---
+
+## Procédure mise en œuvre lors du .red[balisage]
+
+- Reconnaissance des éléments
+- Sélection des balises
+- Réalisation du balisage, marquage de l’élément
+
+???
+
+## Procédure mise en œuvre lors du .red[balisage]
+
+Les trois opérations qui interviennent au cours du balisage sont donc les suivantes&nbsp;:
+
+- la reconnaissance des éléments, &nbsp;: reconnaître que l’élément courant est un élément d’un certain type (paragraphe, citation en prose, note de bas de page, etc.)
+- la sélection des balises,&nbsp;: déterminer le balisage qui s’applique au type d’élément reconnu
+- la réalisation du balisage,&nbsp;: marquage de l’élément à l’intérieur du flux textuel
+  cf. Coombs, James, et al., .red[op. cit.]
+
+---
+
+## .red[OHCO], .red[O]rdered .red[H]ierarchy of .red[C]ontent .red[O]bject
+
+L’idée d’un balisage descriptif suggère une représentation du texte qui correspond à un modèle d’.red[éléments contenus hiérarchiquement imbriqués] (OHCO, .red[ordered hierarchy of content object, en anglais]).
+
+- structure hiérarchique
+- relations linéaires
+
+Une manière de se représenter ce qu’est un texte
+
+???
+
+## .red[OHCO], ordered hierarchy of content object
+
+L’idée d’un balisage descriptif qui repose sur le fait de marquer le contenu d’un texte par des éléments suggère une représentation du texte qui correspond à ce qu’on a appelé un modèle d’.red[]éléments contenus hiérarchiquement imbriqués.red[] (OHCO, ordered hierarchy of content object, en anglais).
+
+Dans une telle représentation du texte, les éléments contenus (paragraphes, citations, phrases, notes, etc.) sont présentés à l’intérieur d’une structure hiérarchique. La structure du texte est hiérarchique parce qu’ils résident les uns à l’intérieur des autres. Les objets reçoivent donc des relations linéaires.
+
+C’est ici l’occasion de souligner qu’il s’agit ici d’une modélisation. C’est une manière de représenter ce qu’est un texte qui impose son expressivité et ses contraintes. Nous verrons que la TEI, tout en étant en grande basée sur le balisage descriptif offre différents mécanismes pour prendre en charge des relations non hiérarchiques comme les chevauchements, etc.
+
+---
+
+## La notion de .red[chaîne éditoriale]
+
+> Une **chaîne éditoriale** est un procédé technologique et méthodologique consistant à réaliser un modèle de document, à assister dans les tâches de création du contenu et à automatiser la mise en forme. Son atout premier est de réduire les coûts de production et de maintenance des contenus, et de mieux contrôler leur qualité. (Stéphane Crozat)
+
+- séparation du fonds et de la forme
+- utilisation de modèles qui servent de guides d’écriture
+- maintenance de fichiers pivots en vue d’une diffusion multi-supports
+
+???
+
+## La notion de chaîne éditoriale
+
+cf. travail de Stéphane Crozat UTC de Compiègne, ou diverses réalisations récentes dans ce domaine soit dans le secteur de l’industrie à caractère commercial, soit dans le domaine de l’édition savante.
+
+> Une **chaîne éditoriale** est un procédé technologique et méthodologique consistant à réaliser un modèle de document, à assister dans les tâches de création du contenu et à automatiser la mise en forme. Son atout premier est de réduire les coûts de production et de maintenance des contenus, et de mieux contrôler leur qualité.
+
+La mise en œuvre de telles chaînes éditoriales repose notamment :
+
+- la **séparation du fonds et de la forme** qui se traduit par une séparation des formats de création et de publication
+- l’**utilisation de modèles qui servent de guide d’écriture**. il s’agit de modèles métiers au sens où ces modèles sont contextuels. Ceci-étant, il est possibilité de configurer des interfaces adaptées aux besoins spécifiques d’un domaine.
+- la **maintenance de fichiers pivots en vue d’une diffusion multisupport**. Indépendance technologique et séparation du contenu de la forme qui permet d’assurer la durabilité. Les documents sources ont alors recours à des formats pivots à partir desquels sont générés tous les autres formats en vue d’une diffusion multimodale. Le multisupport permet de n’écrire qu’une seule fois ce qui peut être publié plusieurs fois sous différentes formes. Il permet un gain de temps à la production du contenu, mais surtout de ne maintenir un seul fonds documentaire, sans redondance d’information.
+
+---
+
+@todo faire un schéma
+
+???
+
+## Une chaîne éditoriale se compose donc habituellement :
+
+- d’
+- permettant de contrôler automatiquement la structure des documents avec des technologies de schéma
+- les **références aux ressources binaires** (../images, etc.) et les références entre documents (liens entre fichiers)
+- un **ensemble d’interfaces d’édition** qui peuvent selon les cas être WYSIWYG, ou pas, permettant de créer et modifier des documents dans un format conforme aux modèles, de référencer des ressources binaires depuis ces documents et de créer des liens entre ces documents.
+- d’un **ensemble d'espaces permettant de stocker les fichiers** (documents structurés et ressources binaires)
+- d’un **ensemble de moteurs de publications** permettant de transformer les documents structurés et ressources binaires pour rendre des publications lisibles (HTML, PDF, etc.)
+
+modélisation = modèles
+
+production = contenus structurés
+
+publication = générateurs
+
+output multiformes
+
+#### Enjeux d’une chaîne éditoriale
+
+- polymorphisme et accessibilité
+- réduction des coûts et démarche qualité
+- séparation des métiers
+- archivage et pérennisation
+
+Le **polymorphisme** consiste en la possibilité technique de disposer d’une **source unique** (*single sourcing* en anglais) de contenu et de la transformer à volonté selon les supports et mises en formes désirés. Enjeux sur les formats liés à l’accessibilité, pour publication de l’ensemble des documents sur le web.
+
+**L’objectif d'une chaîne éditoriale numérique est d’instrumenter la production documentaire en vue de son industrialisation. Ce qui suppose la massification des processus, la réalisation d’économies d’échelle, et la mise en place de démarches de qualité.**
+
+Limites du paradigme bureautique. Permis démocratisation des pratique documentaires. Mais calqués sur les outils antérieurs. Expressivité limité.
+
+L’archivage pérenne des fonds documentaires numériques doit reposer sur trois piliers : un stockage durable qui assure que l’on puisse lire plus tard ce que l’on stocke aujourd’hui ; des formats malléables qui permettent d’utiliser les documents existants dans les usages présents ; des modalités d’indexation qui assurent que l’on peut accéder à ce qui existe en fonction de ce que l’on cherche. Donc il faut pouvoir stocker, chercher, utiliser.
+
+Traditionnellement la production documentaire fait appel à plusieurs métiers (auteur, rédacteur, correcteur, éditeur, diffuseur, etc.). En facilitant certaines tâches (correcteurs orthographiques, mise en page, etc.), l’outil informatique a tendu à fusionner tous les métiers en un seul « auteur-rédacteur-éditeur ». Pourtant, ces métiers sous-tendent des compétences et des savoirs faire spécifiques qui peuvent être réinvestis dans une chaîne éditoriale numérique.
+
+---
+
+## Inconvénients de HTML
+
+- jeu de balises restreint, manque d’extensivité
+- mélange des descripteurs physiques et logiques
+- liens directs
+
+## Avantages de XML sur HTML
+
+- permet de répondre à des besoins spécifiques
+- meilleure structuration des données
+- meilleure prise en charge des métadonnées
+- outillage XML
+
+### Cas d’O’Reilly avec [HTMLBook](http://oreillymedia.github.io/HTMLBook/)
+
+???
+
+XML est un méta-langage et HTML est un langage, XML et HTML ne sont donc pas strictement comparables. En particulier XHTML est un langage XML, c'est donc du XML !
+
+Toutefois, il est pertinent de se demander pourquoi HTML ou ses syntaxes XHTML ne suffisent pas pour les usages du web ou en publication.
+
+Si HTML, et a fortiori XHTML, fournissent une solution de publication efficiente, ceux-ci n’offrent pas le même potentiel en terme d’ingénierie documentaire. XML possède notamment un potentiel de manipulation plus important (par exemple pour le multi-supports, la rééditorialisation,...).
+
+- jeu de balises restreint, manque d’extensivité
+- mélange des descripteurs physiques et logiques
+- liens directs
+
+Vocabulaire propre à un domaine restreint, impossible jusqu’il y a peu de créer ses propres balises ou de créer un vocabulaire propre à un domaine spécifique. Du fait de ce manque d’extensibilité, peu adapté pour l’indexation de documents variés.
+
+Même si un effort notable a été produit pour séparer la présentation de la description du contenu, HTML reste très centré sur la présentation et mélange encore ces deux niveaux de descripteurs. Cette absence de séparation stricte peut nuire dans des contextes de publication multimodaux.
+
+En HTML les liens sont généralement des pointeurs directs, ce qui limite fortement les possibilités de réutilisation et ne permet pas de gérer la maintenance des liens.
+
+Ensemble de considérations qui ont conduit le W3C à se pencher sur XM et à développer ce standard.
+
+Besoins spécifiques dans des contextes éditoriaux complexes qui peuvent seulement difficilement être pris en charge par HTML.
+
+En outre aujourd’hui, on dispose pour les documents XML d’un outillage particulièrement bien adapté et puissant pour la prise en charge du texte informatique et sans équivalent dans le monde informatique.
+
+### Cas d’O’Reilly
+
+One of the speakers on the panel at DBW was Sanders Kleinfeld, Director of Publishing Technology at O’Reilly Media. O’Reilly created HTMLBook, a standard for writing books in XHTML5, a stricter XML-based variant of HTML5.
+
+HTMLBook is a subset of HTML5, containing only elements that are relevant to books, with data- attributes used to achieve new functionality that lies outside the scope of existing HTML elements. It’s an impressive standard, but I struggle to see it being embraced by authors unless they can use a WYSIWYG editor to produce it.
+
+---
+
+## e.red[X]tensible .red[M]arkup .red[L]anguage – historique
+
+### héritier de SGML (Standard Generalized Markup Language)
+
+- métalangage informatique pour le balisage du texte
+- [norme ISO (ISO 8879:1986)](http://www.iso.org/iso/fr/catalogue_detail.htm?csnumber=16387)
+
+### publication par le W3C en février 1998
+
+- des spécifications du métalangage XML 1.0
+- maîtres mots : simplicité, clarté, universalité
+- [version 1.1](http://www.w3.org/TR.html11) en 2004
+
+???
+
+## Rappels XML pour le Texte
+
+#### Un langage de balisage
+
+Une balise est un descripteur ajouté au contenu en vue d'un traitement informatique.Un langage à balises est un langage permettant d'associer à un contenu (généralement du texte) des balises explicites (par exemple pour rendre compte de la structure du texte).
+
+Le métalangage informatique XML (Extensible Markup Language) permet le développement de vocabulaires descriptifs de balisages interopérables spécifiques à certains domaines.
+cf. Bray, Tim, Paoli, Jean, Sperberg-McQueen, C. Michael, Maler, Eve, et Yergeau, François, Extensible Markup Language (XML) 1.0, Recommandation du W3C, 2008. [https://www.w3.org/TR/REC-xml/](https://www.w3.org/TR/REC.html/)
+
+## Un modèle de contenu arborescent
+
+Son .red[modèle de contenu arborescent] est précisément conforme au modèle OHCO.
+
+S’il offre une grammaire lisible par la machine, il ne présente pas une réelle sémantique et ne peut donc à lui seul spécifier formellement une sémantique.
+
+XML propose simplement .red[une solution rigoureuse, compréhensible par les machines, pour définir un langage de balisage descriptif].
+
+## Une large utilisation dans le domaine culturel
+
+La plupart des contenus des bibliothèques numériques aujourd’hui mis à disposition sur le web sont encodés en utilisant un balisage XML. « La large adoption de vocabulaires XML spécialisés comme la TEI rendent disponible une importante information sémantique, mais seulement sous la forme d’une documentation en prose et de pratiques partagées. »
+
+Simplification GSML
+
+Intérêt de SGML pour prendre en charge le texte
+
+### Un héritier de SGML
+
+SGML lui-même héritier d’un langage descriptif conçu en 1969 par des ingénieurs de la société IBM : DCF (Document Composition Facility).
+
+SGML : puissant et générique mais aussi trop souple et complexe en même temps → surtout utilisé dans le cadre d’applications lourdes. Utilisation la plus notable : langage HTML, dérivé du SGML =&gt; langage de publication pour le web.Né en 1989 et depuis 2011, HTML 5.
+
+### Publication de XML
+
+En février 1998 : publication en février 1998 par le W3C Consortium des spécifications du métalangage XML 1.0 =&gt; maîtres mots : simplicité, clarté, universalité.
+
+Dans son Référentiel général d’interopérabilité publié en 2009, la Direction générale de la modernisation de l’État recommande l’utilisation des technologies XML (Extensible Markup Language) à des fins d’interopérabilité et de pérennisation de l’information.
+
+Depuis 1998, la norme XML a peu évolué → dernière édition en date : 5e édition, mise à jour en 2008. Version 1.0 =&gt; véritable témoignage de sa stabilité.
+
+[Version 1.1](http://www.w3.org/TR.html11) publiée en février 2004 et mise à jour en 2006, notamment pour intégrer les évolution d’Unicode, mais XML 1.1 reste très peu utilisé.
+
+### Un succès immédiat
+
+Les langages et outils permettant de produire, contrôler, échanger, transformer et exploiter des fichiers XML se sont multipliés, souvent associés à des normes du W3C : modèles de documents et de (méta)données, langages de modélisation, de présentation, de programmation, protocoles, …
+
+Métalangage désormais utilisé partout en informatique qu’il s’agisse de structurer des informations dont la durée de vie est importante ou d’échanger des informations entre applications, qu’on ait à s’occuper essentiellement de données, de documents ou d’une combinaison des deux.
+
+---
+
+## Principes de conception de .red[XML]
+
+- applicable à tout type de texte
+- extensible
+- définition par un schéma
+- hypertextualité
+- simple, universel
+- modèle hiérarchique
+
+???
+
+## Principes de conception de XML
+
+- XML s’applique à tout type de texte&nbsp;: fondé sur le principe du balisage → càd : sur l’isolement d’une portion de texte et l’identification explicite de son rôle ou nature particulière. Autorise l’imbrication des balises et une granularité aussi fine que nécessaire.
+- Un schéma est un modèle (=la liste des balises utilisables, leurs noms, les contraintes de leur emploi : position, cardinalité, type de contenu) peut être défini sous la forme d’une DTD (Document Type Definition) ou d’un schéma (écrit en RelaxNG ou directement XML).
+- XML permet d’identifier la structure d’un texte et d’informer sur la sémantique des informations qu’il contient, ou d’en isoler les données =&gt; notion de structuration absolument primordiale : permet de rendre l’information exploitable par la machine (moteurs de recherche) et par l’utilisateur ; permet également à l’information d’être réutilisée, échangée, pérennisée. + bonne structure seule condition pour ensuite une transformation automatique.
+- XML conçu à l’ère de l’hypermédia : liens peuvent être établis entre des sections du même document XML ou entre un document XML et d’autres ressources électroniques, qui peuvent ne pas être du texte.
+- norme simple, sans ambiguïté, permettant à un humain de lire l’information produite.
+- fichiers XML sont des fichiers texte (peuvent être lus par grand nombre de logiciels donc) et supportent surtout un grand nombre de systèmes d’écriture → utilise le standard Unicode et le codage par défaut de XML est UTF-8 (codage de caractères conçu pour coder l’ensemble des caractères Unicode).
+- norme universelle, concentrée sur le contenu informationnel, ne traitant pas de son utilisation, indépendante des plates-formes informatiques (≠.odt, .doc, …).
+- utiliser XML pour structurer et échanger l’information est considéré comme une bonne pratique → les documents XML sont de bons candidats pour l’archivage pérenne.
+- grâce à leur structure réutilisation : l’accès, l’indexation et la recherche de l’information sont améliorées → on peut avec certains outils informatiques indexer un (ou un ensemble de) documents XML en exploitant leur marquage structurel, ce qui permet des recherches fines multicritères et améliore considérablement la qualité des réponses par rapport à une recherche plein texte dans un document non structuré.
+- on peut aussi explorer un document XML en tant qu’arbre, en utilisant notamment le langage XPath. =&gt; XML : format de stockage pour autant de formats de diffusion qu’on souhaite. Après transformation par programmes dans un ou plusieurs formats dédiés, le contenu structuré d’un document XML peut être consulté sous forme imprimée (transformation directement en PDF ou vers LateX), sous forme électronique (HTML) =&gt; XML : format pivot pour les nouvelles chaînes éditoriales.
+
+---
+
+## .red[XML] en 4 points
+
+1. .red[XML ne sert pas à afficher les données mais à les décrire]. Seul, il ne fait rien. Appliqué à la représentation des textes, il permet de décrire notamment leur structure
+2. .red[Le nom des balises n’est pas prédéfini] : on peut librement créer son propre vocabulaire
+3. .red[On peut utiliser une "grammaire" de balises], pour définir des contraintes ou s’assurer de la consistance de l’encodage
+4. .red[XML est auto-descriptif et lisible par l’homme]. Un fichier XML n’est rien que du texte, on peut facilement prendre connaissance d’un corpus dans n’importe quel éditeur textuel
+
+???
+
+## .red[XML] en 4 points
+
+1. .red[XML ne sert pas à afficher les données mais à les décrire]. Seul, il ne fait rien. Appliqué à la représentation des textes, il permet de décrire notamment leur structure (livre, chapitre, paragraphe, phrase, mot, etc.)
+2. .red[Le nom des balises n’est pas prédéfini] : on peut librement créer son propre vocabulaire
+3. .red[On peut utiliser une "grammaire" de balises], pour définir des contraintes ou s’assurer de la consistance de l’encodage
+4. .red[XML est auto-descriptif et lisible par l’homme]. Un fichier XML n’est rien que du texte, on peut facilement prendre connaissance d’un corpus dans n’importe quel éditeur textuel
+
+## Avantages de XML
+
+- ### non-ambiguïté
+
+  Les règles syntaxiques strictes de XML rendent son interprétation informatique univoque.
+
+- ### lisibilité
+
+  Le format XML doit être lisible par l’homme, afin pouvoir facilement appréhender le langage.
+
+- ### passivité
+
+  Le format XML est passif, il dépend de programmes informatiques qui le transforment.
+
+---
+
+## Élément .red[XML]
+
+![](../images/xml01.svg)
+
+???
+
+Quelques éléments de syntaxe (en abrégé)
+
+---
+
+## Attribut .red[XML]
+
+![](../images/xml02.svg)
+
+---
+
+## Exemple de balisage .red[XML]
+
+![](../images/xml00.svg)
+
+???
+
+## Exemple de document .red[XML]
+
+&amp;lt;?xml version="1.0"?&amp;gt; &amp;lt;doc xmlns="http://example.org/namespace"&amp;gt; &amp;lt;p n="1"&amp;gt;This is a paragraph.&amp;lt;/p&amp;gt; &amp;lt;p n="2"&amp;gt;This paragraph mentions &amp;lt;placeName&amp;gt;Bristol&amp;lt;/placeName&amp;gt;.&amp;lt;/p&amp;gt; &amp;lt;/doc&amp;gt;
+???
+
+Un document XML prend toujours la forme suivante.
+
+Un document XML consiste en une séquence de caractères lisibles par l’homme. C’est .red[un simple fichier texte] qui ne contient pas de code additionnel ou de données binaires.
+
+Seulement, vous pouvez constater que ce document comporte certaines séquences de caractères régulières (ici mises en valeur par la coloration).
+
+La première ligne de ce documents s’appelle une déclaration XML elle appartient au prologue du document. C’est une instruction qui permet d’indiquer qu’il s’agit d’un document XML et la version du langage.
+
+---
+
+## .red[Modèles de documents] ou schéma
+
+Rappel : définissent les contraintes que doit respecter une certaine classe de documents Diverses syntaxes peuvent être utilisées pour écrire de tels modèles&nbsp;:
+
+- celle des DTD (partie intégrante de la norme XML 1.0), la plus utilisée encore aujourd’hui&nbsp;;
+- celle, exprimée en XML, des schémas XML (norme du W3C publiée en mai 2001&nbsp;; 2&lt;sup&gt;e&lt;/sup&gt; édition octobre 2004&nbsp;; voir [http://www.w3.org/XML/Schema](http://www.w3.org/XML/Schema))&nbsp;;
+- celle des schémas RelaxNG (norme ISO/IEC 19757-2 depuis 2003, amendée en 2008&nbsp;; voir [http://www.relaxng.org/](http://www.relaxng.org/)).
+- ISO Schematron http://schematron.com
+
+Beaucoup d’applications XML sont validantes, ainsi un processeur XSLT n’opérera de transformation à partir d’un document XML associé à un modèle que si ce document XML est valide.
+
+???
+
+## XML et la validation
+
+Définition de grammaires et de syntaxes
+
+Un méta-langage est un langage permettant de définir d'autres langages, les langages ainsi définis permettent à leur tour la description d'informations respectant ces langages.
+
+## Les technologies de schémas
+
+Un schéma est une description de la structure que doit respecter un document qui lui fait référence, c’est à dire qu’il établit la liste des éléments XML autorisés (avec leurs attributs), ainsi que l’agencement possible de ces éléments.
+
+On parle aussi de *grammaire*, au sens où le schéma définit l’enchaînement autorisé des balises et vient en complément de la syntaxe XML (qui elle est indépendante d’un schéma particulier).
+
+Un document bien formé est dit valide pour un schéma donné s’il respecte les règles structurelles imposées par ce schéma.
+
+Ce contrôle de la structure permet :
+
+- de s’assurer de l’homogénéité structurelle des documents de même type
+- le traitement automatique d’un ensemble de documents de même type (mise en forme, stockage, extraction d'informations...)
+- la création de formats standard et leur respect
+
+Langages de schéma
+
+- Document Type Définition (W3C) : langage hérité de SGML qui fait partie du standard XML
+- [W3C XML Schema (W3C)](http://www.w3.org/XML/Schema) : alternative aux DTD destiné à moderniser et compléter ce langage historique
+- [Relax NG (OASIS, ISO)](http://relaxng.org/) : autre alternative, compromis entre W3C XML Schema et DTD
+
+Production des contraintes
+
+---
+
+## Notion de parser
+
+Un *parser* (ou parseur) XML est un programme capable d’analyser un document XML afin de :
+
+- s’assurer qu'il est bien formé
+- éventuellement vérifier sa validité par rapport à un schéma donné (DTD, W3C Schema, RelaxNG)
+- en fournir une représentation mémoire permettant son traitement (SAX, DOM, ou XDM)
+
+La plupart des grands langages de programmation proposent aujourd'hui des parsers XML.
+
+- Par exemple Xerces est un parser Java (http://xerces.apache.org/xerces2-j/).
+
+???
+
+## Modèles de documents ou schéma
+
+Les schémas, qui peuvent s’écrire en XML quelle que soit la syntaxe choisie, permettent de contraindre plus fortement que les DTD le contenu des attributs et des éléments, et gèrent les espaces de noms. Un parseur sachant interpréter la syntaxe utilisée pourra vérifier qu’un document est conforme à un modèle donné (est valide).
+
+Exemples de parseurs&nbsp;: ceux intégrés aux éditeurs XML, aux navigateurs Web&nbsp;; xmllint dans la librairie libxml, etc.
+
+Beaucoup d’applications XML sont validantes, ainsi un processeur XSLT n’opérera de transformation à partir d’un document XML associé à un modèle que si ce document XML est valide.
+
+## Notion de Parseur
+
+Un *parser* (ou parseur) XML est un programme capable d’analyser un document XML afin de :
+
+- s’assurer qu'il est bien formé
+- éventuellement vérifier sa validité par rapport à un schéma donné (DTD, W3C Schema, RelaxNG)
+- en fournir une représentation mémoire permettant son traitement (SAX, DOM, ou XDM)
+
+La plupart des grands langages de programmation proposent aujourd'hui des parsers XML.
+
+- Par exemple Xerces est un parser Java (http://xerces.apache.org/xerces2-j/).
+
+Un éditeur validant, sera un éditeur spécialisé pour l’édition de document XML en vérifiant dynamiquement que le fichier est bien formé, en s’assurant dynamiquement de sa validité, et en proposant des fonctions d’auto-complétion.
+
+Il existe également des éditeurs orientés dévelopeur et des éditeurs orientés rédacteur (ex. outil Caen)
+
+- oXygen (http://www.oxygenxml.com/), complet et accessible, multi-plateformes (Linux, Mac, Windows) ;
+- XML Spy, disponible uniquement sous Windows
+
+Il existe également des éditeurs orientés dévelopeur et des éditeurs orientés rédacteur (ex. outil Caen)
+
+- Jaxe, libre et multi-plateformes (http://jaxe.sourceforge.net/fr/)
+- Scenari, chaîne éditoriale complète libre et multi-plateformes (http://scenari-platform.org/)
+- XXE
+
+---
+
+### Formats orientés format
+
+- [OpenDocument](http://docs.oasis-open.org/office/v1.2/OpenDocument-v1.2.html),([ISO 26300](https://fr.wikipedia.org/wiki/ISO_26300))
+- [OOXML, (ISO/CEI 29500)](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=51463), [RFC 2119](http://www.ietf.org/rfc/rfc2119.txt), [ECMA-376](http://www.ecma-international.org/publications/standards/Ecma-376.htm)
+- [Synchronized Multimedia Integration Language SMIL](https://www.w3.org/AudioVideo/)
+- etc.
+
+### Formats orientés documents structurés
+
+- [DocBook](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=docbook)
+- [Darwin Information Typing Architecture (DITA)](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=dita)
+- [Text Encoding Initiative (TEI)](http://www.tei-c.org/Guidelines/P5/)
+- etc.
+
+???
+
+**Distinguer utilisation orientée données de celle orientée document.** Généralement considéré plus verbeux que ses alternatives comme JSON, CSV. Mais aussi plus expressif. Surtout répond plus spécifiquement au cas particulier du contenu mixte qui est fréquent pour le texte.
+
+Les langages de balisages de la famille SGML permettent de représenter informatiquement des documents numériques. Ces représentations font appel à des représentation arborescentes habituellement exprimés en XML.
+
+---
+
+## Exemples de formats XML orientés données
+
+- [MathML](https://www.w3.org/Math/)
+- [ChemML](http://www.xml-cml.org)
+- [Atom](https://tools.ietf.org/html/rfc4287), RSS
+- [Dublin Core](http://dublincore.org)
+- [RDF](https://www.w3.org/standards/techs/rdf#w3c_all), [OWL](https://www.w3.org/standards/techs/owl#w3c_all)
+- [SVG](https://www.w3.org/Graphics/SVG/)
+
+---
+
+## Vocabulaires spécialisés pour l’édition
+
+- [ONIX](http://www.editeur.org/83/Overview/)
+- [EPUB 3.0](http://idpf.org/epub/30)
+- [XML-Érudit](http://retro.erudit.org/xsd/article/3.0.0/doc/)
+- [JATS v.1.1 (ANSI/NISO Z39.96-2015)](https://jats.nlm.nih.gov/archiving/tag-library/1.1/)
+
+---
+
+# Le cas de la .red[TEI]
+
+La Text Encoding Initiative est :
+
+- un **effort international pour unifier les pratiques d’encodage** de textes dans le domaine académique
+- un **vocabulaire XML** qui permet de produire des modèles de textes
+- Un **cadre de travail**
+- Un ensemble de **recommandations** ([Guidelines](http://www.tei-c.org/Guidelines/))
+
+???
+
+La Text Encoding Initiative (TEI) est un effort international pour .red[unifier les pratiques d’encodage de textes] dans le domaine académique.
+
+Elle fournit .red[un vocabulaire XML] qui permet de produire des modèles de textes que l’on peut utiliser à différentes fins notamment pour l’édition de sources primaires.
+
+Plus qu’un schéma générique, elle offre en fait .red[un cadre de travail] qui permet de traiter différents cas de figure.
+
+Ce cadre de travail se compose
+
+- d’un vocabulaire,
+- d’une documentation qui en fournit la sémantique en langage naturel,
+- et d’un ensemble de recommandations rassemblées sous l’intitulé de Guidelines.
+
+En ce sens, comme le relève Florence Clavaud dans son cours à l’École nationale des chartes, il s’agit plutôt d’une sorte d’« ontologie générique du texte ».
+
+---
+
+## Un projet collectif
+
+- [Association for Computers in the Humanities](http://ach.org)
+- [Association for Literary and Linguistic Computing](http://eadh.org)
+- [Association for Computational Linguistics](http://www.aclweb.org)
+
+Recherche d’un modèle commun pour encoder &amp; partager des textes
+
+### Chronologie
+
+- .red[novembre 1987]&nbsp;–&nbsp;Première réunion au Vassar College à Poughkeepsie
+- Création de la Text Encoding Initiative
+- .red[juin 1990]&nbsp;– Premier brouillon (P1)
+- .red[mai 1994] – Première publication des Guidelines (P3)
+- .red[juin 2002] – Publication de la P4
+- .red[novembre 2007] – Publication de la P5
+
+???
+
+## Un projet collectif
+
+La Text Encoding Initiative est née d’un constat partagé, au sein d’une communauté de chercheurs déjà engagés dans la production de textes numériques, du manque de solutions pour faciliter l’échange de textes et d’information sur leur travail.
+
+- [Association for Computers in the Humanities](http://ach.org)
+- [Association for Literary and Linguistic Computing](http://eadh.org)
+- [Association for Computational Linguistics](http://www.aclweb.org)
+
+Recherche d’un modèle commun pour encoder &amp; partager des textes
+
+### .red[novembre 1987]&nbsp;–&nbsp;Première réunion au Vassar College à Poughkeepsie
+
+En novembre 1987, une première rencontre fut organisée sous l’égide de l’Association for Computers and the Humanities (ACH) au Vassar College à Poughkeepsie avec une trentaine de représentants issus du monde des archives, des centres d’informatique appliquée aux sciences humaines, ou d’organisations professionnelles pour examiner à nouveau la question de la standardisation.
+
+S’accordant tous sur le besoin de pratiques communes, ces participants formulèrent une dizaine de principes directeurs.
+
+- cf. Ide, Nancy M., et Sperberg-McQueen, C. Michael, [« The Text Encoding Initiative: Its History, Goals, and Future Development »](http://www.cs.vassar.edu/~ide/papers/teiHistory.pdf), dans Computers and the Humanities, editor. Nancy M. Ide et Jean Véronis vol. 29, 1995, p. 5-15.
+  Ceux-ci mettaient notamment l’accent sur la conversion de formats et la nécessité de développer un métalangage pour des schémas d’encodage descriptifs.
+
+### Création de la Text Encoding Initiative
+
+L’ACH, rapidement suivie dans son effort de standardisation par l’Association for Literary and Linguistic Computing et l’Association for Computational Linguistics formèrent ensemble la Text Encoding Initiative (TEI) afin de conduire le projet sous une forme internationale et multilingue et .red[développer des recommandations pour la préparation et l’échange de textes électroniques dans le domaine universitaire].
+
+Plus de 50 chercheurs contribuent déjà à la TEI P1 (juin 1990)
+
+15 groupes de travail collaborent de 1990-93 à la P2
+
+### .red[juin 1990]&nbsp;– Premier brouillon (P1)
+
+### .red[mai 1994] – Première publication des Guidelines (P3)
+
+Dès 1994, la TEI publiait une .red[première version officielle de ses Guidelines for the Encoding and Interchange of Machine-Readable Texts].
+
+Ce rapport proposait un ensemble de conventions pour l’encodage de différents types de textes pour servir dans le domaine des sciences du langage ou des sciences humaines. Cette première publication constitue un jalon important car jamais auparavant les chercheurs n’avaient été capables de formuler un consensus sur les pratiques d’encodage.
+
+### Développements du projet
+
+Création de groupes de travail par champs disciplinaires. La première version officielle des Guidelines P3, était le travail de 200 personnes.
+
+Diffusion du modèle par l’intermédiaire de séminaires, d’ateliers, qui permettent le recueil des remarques des utilisateurs.
+
+Création d’un consortium international en janvier 1999.
+
+Mise à jour de la P3 pour prendre en compte XML (P4, publiée en juin 2002).
+
+Immédiatement après la publication de cette version 4, début du travail sur la P5, version actuelle du projet publiée en novembre 2007.
+
+P5 qui incluait nombreuses améliorations concernant l’encodage de caractères, le traitement des parties graphiques, la description des manuscrits, le balisage externe, et la structuration des Guidelines proprement dit. C’est dans cette version qu’apparaît notamment une première version du langage ODD pour modéliser des documents.
+
+---
+
+## Un projet ancien
+
+- D’abord développé en SGML
+- Largement employé
+- Souvent la solution la plus adaptée pour les corpus textuels ou les sources primaires
+
+## Impact de la TEI
+
+- Une large reconnaissance internationale
+- Conservation à long terme du patrimoine culturel
+- Éviter la bibliothèque de Babel numérique
+- Projet phare des Humanités numériques
+
+???
+
+## Un projet ancien
+
+Comme vous le constatez, la TEI est un projet d’une dizaine d’années plus ancien que le méta-langage XML. Elle fut dans un premier temps développée en SGML, un méta-langage dont XML est une simplification.
+
+La TEI a adopté XML dès la première publication de sa spécification en 1996, certains membres de la TEI avaient en effet participé à son développement.
+
+Par la suite, les Guidelines ont été étayées par l’apport de nombreuses spécialités pour prendre en charge une plus grande diversité de textes.
+
+Malgré l’ancienneté du projet, elle reste l’un des dialectes XML les plus largement employé. On dispose donc de beaucoup de recul sur son utilisation. Dans bien des cas, c’est la solution la plus adéquate pour traiter certaines choses comme le texte ou la production de sources primaires.
+
+## Impact de la TEI
+
+Reconnu internationalement comme un outil d’importance cruciale à la fois pour la conservation à long terme de données électroniques et comme moyen efficace d’utiliser ces données dans de nombreux domaines.
+
+Son schéma d’encodage est particulièrement adopté pour la production d’éditions critiques de textes littéraires ou de sources primaires, de larges corpus linguistiques, ou encore la production de métadonnées détaillées relatives à des collections de textes patrimoniaux de toutes sortes.
+
+- cf. liste (non exhaustive) des projets répertoriés http://www.tei-c.org/Activities/Projects/
+
+Adoptée par de nombreuses organisations telles que le National Endowment for the Humanities aux États-Unis, l’Arts and Humanities Research Board au Royaume-Uni, la Modern Language Association, l’Expert Advisory Group for Language Engineering Standards de l’Union européenne, le Canadian Research Writing Collaboratory de Susan Brown et de nombreuses autres organismes à travers le monde qui financent ou promeuvent la production de textes électroniques.
+
+- Succès qui permet d’assurer conservation à long terme de notre patrimoine culturel porté dans un monde en réseau.
+- Une solution pour éviter la bibliothèque de Babel numérique
+- À tous les égards l’un des projet phares les plus durables dans le domaine des Humanités numériques (Digital Humanities).
+
+---
+
+template: inverse
+class: center middle
+name: outillage
+
+# L’outillage XML
+
+???
+
+En ayant recours à la Text Encoding Initiative (TEI), on adopte le .red[principal standard informatique] actuellement employé dans le .red[domaine de l’édition critique] numérique. La TEI fournit tout à la fois un cadre de travail pour traiter et analyser les sources, et enregistrer le résultat de l’activité scientifique qui aura été menée. Toutefois, les fichiers sources XML-TEI ne sont pas directement destinés à la consultation. La TEI constitue plutôt .red[un format pivot à partir duquel on produit diverses "manifestations" du texte en fonction des besoins] et des contextes de lecture (pages xhtml, fichiers epub, pdf, api, etc.). Le manque d’outils adaptés, faciles d’emploi, pour le traitement, l’analyse et la publication de ces fichiers est souvent considéré comme un des principaux freins à l’utilisation de la TEI.
+
+Du fait de l’utilisation courante de la TEI dans des projets de recherche, plusieurs solutions pour la publication d’édition critiques électroniques ont été développées ces dernières années, soit sous la forme de chaînes éditoriales propres soit sous la forme de logiciels libres ou open source. Il convient de choisir une solution de publication adaptée à nos besoins mais qui puisse être également maintenue dans la durée. Plusieurs solutions s’offrent à vous qui peuvent plus ou moins bien répondre aux besoins de votre projet, ou s’inscrire dans la politique générale de votre institution. Dans tous les cas, il n’y a pas de solution miracle, et le choix d’un outil résulte d’un arbitrage entre la complexité technique et l’étendue des fonctionnalités attendues.
+
+---
+
+## Le stockage des données
+
+- ### Stockage des fichiers à plat (Flat File Storage)
+
+- ### Bases de données relationnelles et orientées objet
+
+- ### Le stockage natif des données XML
+
+???
+
+## Le stockage des données
+
+Travailler avec des données XML nécessite de pouvoir effectuer trois types d’opérations distinctes&nbsp;:
+
+- ajouter de l’information dans l’entrepôt,
+- chercher et retrouver l’information dans l’entrepôt,
+- et mettre à jour l’information contenue dans l’entrepôt.
+
+Plusieurs solutions pour les bases de données XML ont été proposés parmi lesquelles&nbsp;:
+
+- le stockage de fichiers à plat,
+- l’utilisation de bases de données relationnelles,
+- le stockage natif des données XML comme dans des bases de données XML natives ou d’autres systèmes de gestion.
+
+---
+
+## Le Stockage des fichiers à plat
+
+(Flat File Storage)
+
+- ### Solution la plus simple
+
+- ### L’entité principale est le document
+
+- ### Simple système de fichier
+
+- ### Efficace et peu coûteux
+
+- ### Recherches dans le document prohibitives
+
+???
+
+## Stockage des fichiers à plat (Flat File Storage)
+
+C’est la solution la plus simple, le document complet constitue l’entité principale, les structures internes ne jouant aucun rôle. Cette solution peut être implémentée avec n’importe quel système de fichiers. Si le stockage est efficace et peu coûteux, d’autres opérations comme la recherche qui requièrent un accès à la structure interne du document peuvent devenir prohibitives.
+
+Le stockage à plat n’est pas le plus approprié lorsque la recherche est fréquente car le niveau de granularité du stockage est le document entier et non pas son contenu.
+
+---
+
+## Bases de données relationnelles et orientées objet
+
+- ### Fonctionnalités d’indexation
+
+- ### Nécessitent une conversion dans un modèle relationnel (jointures coûteuses)
+
+- ### Proposition de bases de données orientées objet pour refléter les structures imbriquées
+
+- ### Certains SGBDR proposent des APIs XML (XQuery, XPath)
+
+???
+
+## Bases de données relationnelles et orientées objet
+
+Les données XML peuvent être stockées dans des bases de données relationnelles. Elles peuvent ainsi bénéficier des fonctionnalités d’indexation, de transaction et d’optimisation des requêtes habituellement offertes par ces systèmes. Cependant, comme les données XML sont des données semi-structurées, elles nécessitent une conversion dans un modèle de données relationnelles. Compte-tenu des différences significatives inhérentes aux modèles relationnels et aux structures imbriquées des données semi-structurées, ces conversions impliquent généralement des jointures coûteuses pour le traitement des requêtes. L’utilisation de bases de données relationnelles orientées objet a été proposée pour refléter les structures imbriquées des données semi-structurées afin de réduire les redondances et ces jointures.
+
+---
+
+## Le stockage natif des données XML
+
+- ### Préservent la structure physique des documents XML (éléments, attributs, entités)
+
+- ### Stockent des documents sans déclaration préalable du schéma
+
+- ### Permettent d’accéder aux documents à partir des API spécifiques à XML (XPath, XQuery)
+
+cf. [http://www.rpbourret.com/xml/ProdsNative.htm](http://www.rpbourret.com.html/ProdsNative.htm)
+
+???
+Conçus spécialement pour gérer des données XML, les systèmes natifs ont l’avantage de ne pas nécessiter d’opérations de conversion. Les techniques de stockage et de traitement des requêtes adoptées par les bases de données XML sont habituellement plus efficientes que celles basées sur le stockage de fichiers à plats et les bases de données relationnelles.
+
+Plusieurs langages de requêtes ont été proposés pour manipuler des données XML (XML-QL, XML-GL, Quilt, XPath et XQuery). Le principal langage de requête pour XML qui ait été standardisé est XQuery. Il repose sur l’utilisation d’expressions de chemins XPath qui adressent des ensembles des parties spécifiques des documents XML.
+
+---
+
+## Arguments en faveur de l’utilisation d’une base de données native XML
+
+- ### Orientation document qui facilite le développement d’application
+
+- ### Accès à la structure et aux données facilité
+
+- ### Fonctionnalités qui s’inscrivent dans le respect des normes et l’implémentation des standards XML (XSL, XProc, XForms, XLink, etc.)
+
+---
+
+## Manipulation de XML
+
+Utilisation du modèle abstrait de XML, [XQuery and XPath Data Model (XDM)](https://www.w3.org/TR/xpath-datamodel-31/)
+
+### des langages de .red[transformation] de XML ([XSLT](https://www.w3.org/TR/xslt-30/), XSL-FO)
+
+capables de générer d’autres formats à partir du document source
+
+### des langages de .red[requêtes] ([XQuery](https://www.w3.org/XML/Query/))
+
+???
+
+### La manipulation de fichiers XML
+
+Repose sur l’utilisation du modèle abstrait de XML, [XQuery and XPath Data Model (XDM)](https://www.w3.org/TR/xpath-datamodel-31/)
+
+Plusieurs langages de programmation à caractère déclaratifs, langages fonctionnels, turing complet
+
+On distingue des langages de transformation et des langages de requêtes
+
+## La transformation
+
+Plusieurs langages de transformation ou de requête pour les données XML peuvent être particulièrement utiles pour exploiter des données XML-TEI.
+
+L’utilisation de XML comme format pivot en vue d’une publication de sources textuelles dans un autre format est un cas typique d’utilisation de cette technologie. Plusieurs langages de transformation de segments XML ont été proposés, notamment XSLT et XSL-FO qui reposent tous deux sur le langage XPath.
+
+Nota : XSL-FO tendance à être actuellement remplacé par CSS
+
+Si XSLT constitue une solution très efficace pour passer d’un format XML donné à un autre, comme par exemple XHTML, les processeurs disponibles pour réaliser cette transformation sont limités à la version 1.0 du langage dans l’environnement courant LAMP (Linux Apache PHP). Les processeurs XSLT 2.0 et XQuery sont généralement incompatibles avec cet environnement, c’est une des raisons pour lesquelles la plupart des applications pour travailler avec des sources XML sont développées en Java pour pleinement tirer parti des possibilités de ces langages et du modèle de données.
+
+### Transformations
+
+### Requêtes
+
+### Les solutions de publication web
+
+---
+
+## Processus de transformation .red[XSL]
+
+![](../images/xsltProcessing.svg)
+???
+
+Ce schéma présente le processus à l’œuvre lorsque l’on associe une feuille de style et un document source.
+
+Un programme XSLT spécifie une sortie à produire à partir d’un segment ou d’un fichier XML, si ce segment existe dans le document fourni en entrée et répond à certains critères.
+
+Le résultat est une fonction de l’entrée.
+
+---
+
+## Que peut faire XSLT&nbsp;?
+
+![](../images/whatXsltCanDo.png)
+
+---
+
+## Les bases de données XML natives
+
+Elles indexent les documents XML sur la base de leur structure.
+
+Facilitent l’exécution de requêtes sur les fichiers
+
+- [Basex](http://basex.org/)
+- [eXist-DB](http://exist-db.org/)
+- [Marklogic](http://www.marklogic.com/)
+
+Synops.red[X][http://synopsx.github.io](http://synopsx.github.io)
+
+---
+
+## Stratégies de publication
+
+### Produire un site statique avec des transformations XSL
+
+Le résultat de la transformation est placée sur le serveur sous forme d’un site web statique
+
+### Produire un site dynamique avec des pipelines de traitement
+
+Des environnements tels que Cocoon permettent de développer des chaînes de traitement qui peuvent être exécutées dynamiquement côté serveur
+
+### Produire un site dynamique avec une base de données XML native
+
+Une base de données XML native permet l’exécution dynamique des requêtes. Particulièrement adapté pour des contenus sujets à des modifications ou les requêtes non pré-définies
+
+---
+
+template: inverse
+class: center middle
+name: chaines
+
+# Chaînes de traitements .red[XML]
+
+???
+
+Chaîne éditoriale, ou chaîne d‘édition appellation qui désigne la suite d’opérations ou de procédés à travers lesquels les documents rédigés par des auteurs sont transformés en documents publiables et publics.
+
+Au cours de ce processus, les documents feront l’objet d’un formatage, seront mis en conformité avec des modèles de documents ou feront l’objet de différentes conversions, en vue de leur stockage ou de leur diffusion.
+
+cf. Stéphane Crozat. Scenari, la chaîne éditoriale libre. Eyrolles. Accès libre. 2007
+
+- normalisation et formatage de la production documentaire
+- séparation de la couche présentationnelle du fonds
+
+Mise en œuvre de documents sources propres facilement manipulables par des outils informatiques, sans risque de perte de données. Ces fichiers source peuvent alors servir de formats pivots pour la publication de divers formats dans des chaînes multimodales.
+
+La mise en œuvre d’une chaîne éditoriale réclame plusieurs actions.
+
+- formation des acteurs
+- mise en place des outils
+- maintenance
+
+---
+
+## Démo documentation (l’exemple de la TEI)
+
+- La TEI s’exprime elle même en ODD, son propre langage de schéma (caractère discursif)
+- Production d’une documentation
+- Production d’un schéma
+
+???
+
+---
+
+## Les TEI XSL Stylesheets
+
+.red[XSLT Stylesheets] = une bibliothèque de XSL (XSLT et XSL-FO) pour transformer des documents TEI vers toute sorte de formats
+
+https://github.com/TEIC/Stylesheets
+
+- conçues pour les besoins du TEI Consortium
+- traitement de documents ODD pour Roma
+- génération des Guidelines en XHTML
+- transformations vers LaTeX, MsWord (.docx), OpenOffice (.odt), epub, etc.
+- et bien d’autres choses encore…
+
+???
+
+## Les XSL Stylesheets
+
+.red[XSLT Stylesheets] = une bibliothèque de XSL (XSLT et XSL-FO) pour transformer des documents TEI vers toute sorte de formats
+
+- conçues pour les besoins du TEI Consortium
+- traitement de documents ODD pour Roma
+- génération des Guidelines en XHTML
+- transformations vers LaTeX, MsWord (.docx), OpenOffice (.odt), epub, etc.
+- et bien d’autres choses encore…
+
+## Pourquoi utiliser les XSL Stylesheets&nbsp;?
+
+En dehors du fait que nous soyons faignants…
+
+- elles résolvent divers problèmes, plus ou moins courants, auxquels vous n’aurez pas besoin de penser
+- elles couvrent une grande variété de formats dont vous pourriez un jour avoir besoin
+- puisqu’il s’agit d’un projet open-source, il est possible d’y contribuer
+- enfin, les XSL Stylesheets ont beaucoup d’utilisateurs et sont déjà largement distribuées sous diverses formes
+
+## Démo
+
+Utilisation des XSL-Stylesheets, ensemble de package de transformation
+
+Récupération d’un document bureautique
+
+Pourriez dire que pas besoin, qu’apporte en plus ?
+
+---
+
+## Démo Validation
+
+- Utilisation d’un schéma pour l’édition des fichier
+- Exemple des Guides de Paris
+
+---
+
+## Contrôle éditorial
+
+- l’exemple du schéma TEI-Journal
+- http://jtei.revues.org
+- http://www.tei-c.org/Guidelines/Customization/jTEI/
+
+---
+
+## Ex. La cité de Dieu
+
+Olivier Bertrand et alii : La Cité de Dieu d’Augustin traduite par Raoul de Presles (première partie)
+
+![raoul_marginalia_ms._bnf_fr._22912](../images/raoul_marginalia_ms._bnf_fr._22912.jpg)
+
+???
+
+Olivier Bertrand et alii : La Cité de Dieu d’Augustin traduite par Raoul de Presles (première partie)
+
+En 1375, Raoul de Presles, avocat de l’entourage du roi Charles V, présente à ce dernier le fruit de plus de quatre années de labeur : la première traduction en français de l’oeuvre d’Augustin d’Hippone, La cité de Dieu. C’est cette première traduction, au sein de laquelle chaque chapitre est complété par un commentaire de Raoul (« exposition »), qu’édite aujourd’hui l’équipe du programme de recherche « Histoire du Lexique Politique Français », sous la houlette d’Olivier Bertrand.
+
+Le volume constitue le premier fruit du travail colossal entrepris par l’équipe du programme de recherche « Histoire du Lexique Politique Français », qui depuis 2008, s’est attelée à l’édition de cette œuvre, avec le soutien du Conseil Européen de la Recherche et de l’unité de recherche du CNRS « Analyse et traitement informatique de la Langue Française » (ATILF). On ne peut que se montrer admiratif d’une telle entreprise – non seulement en raison de la somme de travail à accomplir, mais encore parce que cette première réalisation est remarquable.
+
+l’ouvrage de 981 p., ne contient en réalité que le premier tome de la première séquence de la première partie de La Cité de Dieu de saint Augustin traduite par Raoul de Presles ! En réalité, le premier d’une série de huit volumes.
+
+Huit personnes se sont penchés sur l’établissement du texte et deux collaborateurs sur l’indexation et la mise en forme.
+
+Texte conservé dans 50 témoins manuscrits, un manuscrit complet daté de 1376 à la Bnf, sans doute celui présenté par Raoul de Presles à son souverain. Toutefois, l’édition est donnée d’après 4 autres témoins manuscrits de contrôle.
+
+Apparat critique fourni, trois niveaux de notes : « dans l’étage supérieur figurent les leçons qui demandent un choix ou une intervention de la part de l’éditeur, dans l’étage intermédiaire les variantes et enfin dans l’étage inférieur l’apparat des sources ».
+
+Mais cette abondance de notes ne surcharge pourtant pas la page, qui reste tout à fait lisible également dans le cadre d’une lecture cursive, puisque les éditeurs, attentifs au moindre détail, ont fait le choix de ne pas placer d’appels de notes, mais d’indiquer directement dans les notes la ligne et les premiers mots de l’expression sur laquelle ils souhaitent attirer notre attention.
+
+Il nous faut également souligner la volonté affichée par les éditeurs de tenir compte des spécificités de mise en page de leur manuscrit de référence. En effet, l’élément qui caractérise le plus les principes d’édition employés dans ce volume est la volonté de mettre à la disposition du lecteur un maximum d’informations, facilement lisibles, en plus du texte établi. Or, cette maniabilité des ouvrages était également primordiale à la fin du Moyen Âge, surtout dans le cas de manuscrits d’apparat comme celui sur lequel s’appuient les éditeurs. C’est pour cette raisons qu’il est tout à fait pertinent de faire converger ces deux aspects (exigences académiques et témoignage historique textuel), en proposant une mise en page qui donne « au lecteur moderne une idée de la mise en page de [leur] manuscrit de base ». Cela comprend par exemple la distinction stricte entre le chapitre d’Augustin lui-même et son exposition par Raoul, mais aussi la reproduction dans des encadrés des indications marginales (*marginalia*), par lesquelles le copiste signale des références utilisées (auteurs, œuvres).
+
+édité chez Champion, mais avec LateX !
+
+http://www.actu-philosophia.com/spip.php?article604
+
+---
+
+## Génération de métadonnées
+
+OAI-PMH, www.openarchives.org
+
+http://weboai.cahier.huma-num.fr
+
+???
+
+### OAI-PMH
+
+OAI-PMH est un acronyme pour Protocol for Metadata Harvesting (ou en français « protocole pour la collecte de métadonnées de l'Initiative pour les Archives ouvertes »). Le protocole OAI-PMH est un moyen d’échanger sur Internet des métadonnées entre plusieurs institutions, afin de favoriser le signalement et l’accès aux documents numériques.
+
+Ce protocole est promu par l’Open Access Initiative depuis 1999, pour :
+
+- d’accroître la visibilité des collections numériques sur Internet,
+- de reconstituer virtuellement des corpus à partir de ressources accessibles sur différents sites,
+- d'alimenter des portails thématiques.
+
+Son utilisation est libre, tout comme ses spécifications, disponibles sur le site www.openarchives.org. On utilise actuellement la version 2 du protocole qui date de 2002. Le protocole est très utilisé dans le domaine patrimonial et culturel ainsi qu’universitaire.
+
+OAI-PMH définit deux types d’acteurs :
+
+- les fournisseurs de données, qui déposent leurs métadonnées sur un serveur web appelé "entrepôt",
+- et les fournisseurs de service qui collectent (on dit aussi "moissonnent") ces données pour les intégrer à l'index de leurs propres bibliothèques numériques.
+
+Un même établissement peut jouer les deux rôles : diffuser ses métadonnées et collecter celles des autres.
+
+Le fonctionnement de base du protocole OAI-PMH repose sur une communication de client à serveur. Le client envoie des requêtes au serveur en HTTP, le serveur répond par un flux de données en XML.
+
+Tous les jeux de données doivent être décrits en Dublin Core qui sert de format de description générique, mais peuvent également être décrits dans d’autres formats.
+
+Modèle de données
+
+Ressource (*resource*) 
+
+- un objet physique ou numérique pour lequel il existe une description documentaire
+
+Item (*item*) :
+
+- un objet documentaire qui décrit et identifie de manière unique une resource
+- toutes les métadonnées dont on dispose, sont stockées dans un entrepôt (repository) et décrites dans des formats XML
+
+Le protocole définit un ensemble de verbes pour accéder aux ressources :
+
+Les requêtes OAI-PMH
+
+Il existe 6 requêtes et des paramètres (Identify ; ListIdentifiers ; ListMetadataFormats ; ListSets ; ListRecords ; GetRecord)
+
+- Les requêtes précédées de « ?verb= »
+- Les requêtes commencent par une majuscule
+- Les paramètres sont introduits par « & »
+- Les paramètres commencent par une minuscule
+- Le nom du set est celui spécifié dans <setSpec> et non celui de <setName>
+
+Exemples
+
+- ?verb=Identify
+- ?verb=ListSets
+- ?verb=ListMetadataFormats
+- ?verb=ListRecords&metadataPrefix=oai_dc&set=cartes
+- ?verb=ListRecords&resumptionToken=ID1
+- ?verb=ListIdentifiers&metadataPrefix=didl&set=cartes&from=2008-10-31
+- ?verb=GetRecord&metadataPrefix=didl&identifier= identifiant:bnf:123456
+
+
+
+http://weboai.cahier.huma-num.fr
+
+https://github.com/ccahier/weboai/wiki
+
+http://weboai.cahier.huma-num.fr/pmh?verb=ListSets
+
+http://weboai.cahier.huma-num.fr/pmh?verb=ListMetadataFormats
+
+http://weboai.cahier.huma-num.fr/pmh?verb=ListRecords&set=bfm
+
+http://weboai.cahier.huma-num.fr/pmh?verb=GetRecord&identifier=oai:localhost:bfm:adhalefeuill-teiHeader
+
+### ONIX
+
+ONIX (ONLine Information eXchange) est un standard international XML intégrant 156 listes de codes (codes de devises ISO, codes de pays, …) créé en 1999 par l’association des éditeurs américains, pour faciliter la mise en ligne de données enrichies sur les sites de e-commerce.
+
+Il a ensuite été repris par la Book Industry Communication (BIC) et le Book Industry Study Group (BISG) et EDItEUR qui en devient le promoteur et en assure la maintenance et le support.
+
+http://editeur.org
+
+Onix se décline désormais en trois standards
+
+- Onix for books
+- Onix for serials
+- Onix for publications licens
+
+La Commission de liason internprofessionnelle du livre (CLIL) créée en 1991 est une association française qui a pour objet le développement du marché et de la promotion du livre, l’étude et l’amélioration des pratiques relatives à la chaîne du livre ». Commission FEL (Fichier exhaustif du livre) qui a pour but de normaliser les données indispensables à la commercialisation des livres.
+
+- un « langage » commun qui permet en principe de faciliter les échanges
+- un standard qui permet d’échanger des données structurées et enrichies
+- un standard qui permet d’intégrer des données normalisées (EAN13, GTIN13, ISBN, code ISO Pays, code ISO Devise, ISTC, ISNI, classification CLIL, Dewey, THEMA, etc) et multi-langues
+- un standard qui recouvre les besoins de description d’un marché de plus en plus international (description des droits par territoire, disponibilité et prix par territoire, etc)
+
+1 description du produit
+
+2 enrichissement maketing
+
+3 Détail du contenu
+
+4 Conditions de publication
+
+5 Œuvres et produits liés
+
+6 Conditions de distributions
+
+http://www.bnf.fr/documents/afnor2014_onix.pdf
+
+---
+
+## Vincent Van Gogh – The Letters
+
+[http://vangoghletters.org/vg/](http://vangoghletters.org/vg/)
+
+- présentation de l’apparat critique
+- glossaires et index
+- recherches plein-textes
+- différentes vues sur le texte
+
+???
+
+exemple de publication multimodales, Van Gogh letters
+
+cf. Tonra, Justin: [Review on] Vincent Van Gogh – The Letters, ed. by Leo Jansen, Hans Luijten and Nienke Bakker. Jahrbuch für Computerphilologie 11 (2011).
+
+### La Présentation de l’apparat critique
+
+Dans une édition critique d’un texte ancien, on appelle apparat critique l’ensemble des notes fournies par l’auteur de l’édition pour justifier des choix opérés dans l’édition ou signaler certaines particularités de la source. L’apparat critique d’une édition a essentiellement une fonction descriptive. Il concerne la description des particularités matérielles du texte transcrit, et celle des autres états du texte s’il en existe par un relevé des leçons pour chaque passage.
+
+### Glossaires et index
+
+Outre cet apparat critique et historique, on peut avoir le désir de fournir un glossaire des termes architecturaux et juridiques. C’est-à-dire une liste alphabétique des mots difficiles jouant le rôle d’un dictionnaire propre au texte pour favoriser sa compréhension. En dehors des aspects de vulgarisation, un tel glossaire peut aussi assez bien répondre au caractère pluri-disciplinaire d’une édition.
+
+Plusieurs index peuvent également permettre d’offrir différents types d’accès aux textes. En plus des index patronymiques et toponymiques habituellement requis dans une édition critique, on peut parfois envisager l’établissement d’un index des matières. Attention, la production d’un index même si elle se trouve en grande partie facilité par l’emploi du numérique doit être consistante. Elle elle surtout difficile et extrêmement chronophage.
+
+### Recherche et recherche plein-texte
+
+Outre les index qui relèvent en grande partie de l’apparat critique, il s’agissait également de proposer au lecteur une recherche plein texte. La recherche dite plein texte est l’une des modalités de consultation du texte spécifiquement permise par le support numérique. Il paraît donc souvent difficile de s’en passer dans une édition numérique.
+
+Toutefois, pour être efficace, une telle recherche suppose un traitement particulier de la langue qui n’est pas sans présenter quelques difficultés&nbsp;; a fortiori lorsque le texte n’est pas modernisé. Si une telle fonctionnalité est apparemment simple pour l’utilisateur, sa mise en place efficace est loin d’être triviale. On a habituellement recours à des logiciels spécifiques comme [Apache Lucene](http://lucene.apache.org/core/), [Solr](http://lucene.apache.org/solr/), ou [ElasticSearch](https://www.elastic.co/products/elasticsearch) qui fonctionnent généralement en environnement Java.
+
+## Hypertextualité et matérialité
+
+## Offrir plus de choix au lecteur
+
+---
+
+## Le Roman du Mont Saint-Michel
+
+[https://www.unicaen.fr/services/puc/sources/gsp/](https://www.unicaen.fr/services/puc/sources/gsp/)
+
+```xml
+<div xmlns="http://www.tei-c.org/ns/Examples" type="chapitre">
+	<div type="section" xml:id="AFR.1" xml:lang="afr">
+    	<lg xml:id="AFR.1.1"> <l n="1" xml:id="vers1">
+          <pb ed="A" n="1r"/>Molz pelerins qui vunt al 
+munt<note type="marginal" xml:id="AFRftn1"> 
+<hi rend="italic">B</hi>: Les bones gens qui vunt au mont
+<hi rend="italic">(voir infra), avec majuscule initiale de 
+grande taille.</hi> </note></l> <l n="2" xml:id="vers2">Enquierent
+molt, et grant dreit unt,</l> <l n="3" xml:id="vers3">Comment
+l’igliese fut fundee</l> <l n="4" xml:id="vers4">Premierement,
+et estoree.</l> <l n="5" xml:id="vers5">Cil qui lor
+dient de l’estoire</l> <l n="6" xml:id="vers6">Que cil
+demandent, en memoire</l> [...]
+		</lg>
+	<!-- ... -->
+	</div>
+</div>
+```
+
+???
+
+## Présentation de l’édition
+
+La coédition par les Presses universitaires de Caen et le Scriptorial – Ville d’Avranches des textes fondateurs du Mont Saint-Michel réunit des Chroniques latines, écrites entre le IXe et le XIIe siècle, et une œuvre en ancien français du XIIe siècle, le Roman du Mont Saint-Michel de Guillaume de Saint-Pair. En regroupant dans un double dossier l’ensemble des sources anciennes qui racontent les origines du sanctuaire montois, elle veut apporter un nouvel éclairage sur l’histoire et sur l’historiographie médiévales de l’abbaye du Mont Saint-Michel.
+
+Les documents présentés sur ce site entrent dans un programme de publication multi-supports organisé autour du travail d’édition critique (établissement du texte, traduction, commentaire philologique et historique) réalisé par P. Bouet et O. Desbordes sur les Chroniques latines du Mont Saint-Michel et par C. Bougy sur le Roman du Mont Saint-Michel de Guillaume de Saint Pair. Une partie de leurs recherches a été sélectionnée et mise en ligne afin de permettre l’accès d’un public élargi aux sources médiévales de l’histoire du Mont Saint-Michel.
+
+Ces recherches ont été conduites dans le cadre du contrat de projet État-Région 2007-2013 et ont bénéficié d’un soutien du Centre régional des lettres de Basse-Normandie.
+
+### Le Roman du Mont Saint-Michel de Guillaume de Saint-Pair
+
+Le Roman du Mont Saint-Michel est l’adaptation poétique, rédigée en français du XIIe siècle, des chroniques latines de la fondation et des premiers temps du sanctuaire montois. Son auteur, Guillaume de Saint-Pair, est un jeune moine de l’abbaye qui utilise ce récit des origines pour défendre avec ardeur l’indépendance de sa communauté face au pouvoir du duc de Normandie et roi d’Angleterre Henri II Plantagenêt. Poète et conteur de qualité, il écrit dans une langue limpide, émaillée de dialectalismes normands.
+
+Le site dédié au Roman du Mont Saint-Michel veut être fidèle, avec les outils technologiques d’aujourd’hui, aux intentions mêmes de Guillaume de Saint Pair, qui cherchait à rendre accessible, en la traduisant en vers français, l’histoire de son abbaye rédigée en latin. Il a donc été conçu comme une invitation à la découverte de l’œuvre médiévale en fournissant au lecteur des outils précieux repris à l’édition critique de C. Bougy : la transposition en français moderne mise en regard de l’ancien français, l’abondant appareil de notes qui l’accompagne et un glossaire interactif qui présente la traduction et l’analyse de toutes les formes qui ne sont pas immédiatement accessibles. Une brève présentation (résumée de l’introduction générale exposée par C. Bougy dans son édition critique) fournit les éléments de contextualisation indispensables à la compréhension du Roman du Mont Saint-Michel.
+
+### Programme éditorial
+
+**Le programme éditorial a été conçu par Dominique Roux et Pierre-Yves Buard pour combiner une diffusion «&nbsp;papier&nbsp;» et une diffusion sur support numérique.** Les volumes «&nbsp;papier&nbsp;» s’inscrivent dans la tradition des éditions critiques de textes anciens et fournissent aux lecteurs une introduction, le texte ancien et sa traduction, un apparat critique de la tradition textuelle, des notes d’établissement du texte, des commentaires philologique, historique et littéraire, un glossaire et des annexes. Le CD-ROM qui accompagne le volume papier en reproduit le contenu sous format PDF, mais en facilite l’exploitation en assurant une circulation interactive à l’intérieur de l’ouvrage… Les éditions en ligne permettent l’accès d’un large public aux documents médiévaux et veulent ainsi le sensibiliser au méthodes et matériaux de la recherche historique.
+
+L’ensemble de ce programme éditorial repose sur la mise en place d’un fonds encodé en XML. C’est à partir des fichiers de ce fonds que les formes de diffusion (papier, CD-ROM, web) sont produites.
+
+Les textes du Roman du Mont Saint-Michel sont encodés en XML en respectant les recommandations de la TEI (Text Encoding Initiative) dans sa version P5.
+
+Les exploitations (affichage web, synchronisation ancien français/français moderne, glossaire dynamique, notes, etc.) des fichiers structurés sont réalisées par des scripts PHP et des feuilles de transformation XSLT.
+
+---
+
+## L’exemple de la chaîne éditoriale de Caen
+
+![Métopes-Outils](../images/Métopes-Outils.png)
+
+http://www.numedif.fr
+
+???
+
+Dominique Roux, Pierre-Yves Buard
+
+Le projet MÉTOPES – Méthodes et outils pour l’édition structurée – vise à mettre au point, à développer et diffuser, librement dans la sphère publique, par des actions de formation auprès des éditeurs publics et des revues labellisées CNRS un ensemble d’outils et de méthodes leur permettant d’organiser leur production et leur diffusion papier et numérique sur le modèle du **Single Source Publishing**.
+
+Un des apports principaux est de rationaliser et de factoriser, au sein de la communauté des éditeurs universitaires et de recherche publics, le travail éditorial tout en favorisant la mise en place de stratégies de diffusion multisupports, en assurant une pérennisation des contenus et une haute qualité des métadonnées associées.
+
+Ce projet, principalement orienté vers la production des contenus, est fortement articulé, par le biais de la prise en compte de la norme ONIX et de ses exploitations, aux travaux et développements menés parallèlement par le Centre pour l’édition électronique ouverte (CLEO – OpenEdition, Marseille). L’ensemble des deux dispositifs permet de développer conjointement un réservoir de contenus normés (XML-TEI), à haute valeur éditoriale ajoutée (évalués, éditorialisés, structurés…), et un système de catalogage et d’exposition (diffusion) ouvrant vers la possibilité du déploiement d’un catalogue commun (ONIX) des éditeurs publics associés (métadonnées et contenus). Il constitue la partie recherche développement de l’infrastructure nationale de recherche NUMEDIF[3].
+
+Depuis septembre 2013, le même modèle de données[[4\]](http://www.unicaen.fr/recherche/mrsh/document_numerique/projets/metopes#_ftn4) régit les productions d’OpenEdition — ouvrages et périodiques — et des membres de l’[AEDRES](http://www.aedres.fr/) utilisateurs de la chaîne avec des conséquences positives directes quant à l’économie de diffusion des contenus. Une de ces conséquences, et non la moindre, est la suppression des frais de transformation des fichiers pour leur diffusion sur les plateformes[[5\]](http://www.unicaen.fr/recherche/mrsh/document_numerique/projets/metopes#_ftn5) mais surtout, assurant à l’éditeur la pleine propriété de fichiers structurés. Ces derniers, fruits d’un travail éditorial unique, sont pérennes, reconfigurables, garants du fond et porteurs de formes de diffusion multiples. Ils remplissent toutes les conditions de l’interopérabilité des fonds soit la possibilité du développement d’un catalogue commun et la mise en œuvre d’un réservoir de publications « qui chuchotent entre elles »[[6\]](http://www.unicaen.fr/recherche/mrsh/document_numerique/projets/metopes#_ftn6).
+
+Ce modèle et les outils d’informatique éditoriale qui l’accompagnent permettent, à partir d’une source unique, de produire toutes les formes de diffusion et est d’ores et déjà compatible avec les schémas nécessaires pour les revues des plateformes [Revues.org](http://www.revues.org/), [Cairn](https://www.cairn.info/) et pour les livres diffusés sur [OpenEdition Books](https://books.openedition.org/).
+
+http://www.unicaen.fr/recherche/mrsh/document_numerique/projets/metopes
+
+http://www.numedif.fr/metopes-outils.html
+
+---
+
+## TEI publisher
+
+### [http://teipublisher.com](http://teipublisher.com)
+
+### https://github.com/TEIC/TEI-Simple
+
+Basé sur la base de données XML native eXist-db, cette solution logicielle implémente le nouveau TEI Simple Processing model. Il a été notamment développé pour accompagner la publication des ouvrages d’EBSCO libérés récemment.
+
+???
+
+TEI Simple Processing Model, est une couche d’abstraction pour le traitement de XML
+
+- a new highly constrained and prescriptive subset of TEI
+- extension to TEI’s ODD metalanguage for specifying processing rules for TEI encoded texts
+- reference implementations of processing rules defined for this TEI subset
+- formal mapping to the CIDOC CRM
+
+---
+
+## SynopsX
+
+Un cadre de publication léger pour les corpus XML
+
+http://synopsx.github.io
+
+#### Exemples
+
+- http://rey.huma-num.fr
+- http://montesquieu.huma-num.fr/accueil
+- http://editions.ihpc.huma-num.fr/skepsis
+- exemple [Guides de Paris](http://localhost:8984/)
+
+???
+
+SynopsX est un cadre de publication léger pour publier des corpus XML conçu avec la base de données XML native BaseX. Le programme est développé avec le langage XQuery dans une perspective de publication comme données liées en respectant les standards du web sémantique. http://synopsx.github.io
+Développeur principal, projet conduit en collaboration avec l’École normale supérieure de Lyon, et l’ANR Ampère.
+
+__Initiated by the Digital humanities network of ENS Lyon (Atelier des Humanités Numériques)__, SynopsX is a lightweight framework which aimed is to easily publish and expose XML corpora.
+
+It’s __a full XQuery web application built upon BaseX__, a native XML Database and XQuery 3.0 processor. The sources of the project are published under GNU on GitHub (h​ttps://github.com/ahn­ens­lyon/synopsx)​.
+
+__SynopsX has been conceived as a scalable and easily customizable solution__ for HTML5 publication of XML files (TEI, EAD...).
+It allows __full control over the URL scheme__ to build real REST applications and we are planning to use it to expose XML corpora in the Linked Open Data.
+
+---
+
+template: inverse
+class: center middle
+
+# Orientations bibliographiques
+
+---
+
+## Orientations bibliographiques (édition numérique)
+
+- Burnard, Lou, O’Brien O’Keeffe, Katherine et Unsworth, John. [Electronic Textual Editing. Modern Language Association](http://www.tei-c.org/About/Archive_new/ETE/Preview/index.xml), 2006.
+- Schillingsburg, Peter L., [From Gutenberg to Google](http://books.google.fr/books/about/From_Gutenberg_to_Google.html?id=rd57F8IjyF0C), 2006.
+- Pierazzo, Elena. Digital Scholarly Editing, Theories, Models and Methods. Aldershot: Ashgate , 2015.
+- Digital Scholarly Editing Theories and Practices. Matthew James Driscoll et Elena Pierazzo (éd.). Cambridge (UK)&nbsp;: Open Book Publishers, 2016. http://dx.doi.org/10.11647/OBP.0095.
+- Boot, Peter. ["Some Digital Editions and Some Remaining Challenges."](http://www.janusdigital.es/articulo.htm?id=7) Janus, Estudios sobre el siglo de oro , no. 1 (2012).
+- Hayles, Katherine. ["Print Is Flat, Code Is Deep: The Importance of Media-Specific Analysis."](http://www.lab404.com/242/hayles_print_is_flat.pdf) Poetics Today 25, no. 1 (2004): 67-90.
+
+---
+
+## Orientations bibliographiques TEI
+
+- Burnard, Lou. [What is the Text Encoding Initiative](http://books.openedition.org/oep/426), OpenEdition Books, 2014.
+- Sperberg-McQueen, C. Michael, Lou Burnard, and Syd Bauman. [TEI P5&nbsp;: Guidelines for Electronic Text Encoding](http://www.tei-c.org/Guidelines/P5/). Charlottesville, Virginia: Text Encoding Initiative Consortium, version 2.5.0, 2013.
+- Wittern, Christian, Ciula, Arianna, Tuohy, Conal, ["The Making of TEI P5"](http://llc.oxfordjournals.org/content/24/3/281.abstract) Literary and Linguistic Computing 24, no. 3 (2009): 281-296.
+- Ide, Nancy M., and C. Michael Sperberg-McQueen. ["The Text Encoding Initiative: Its History, Goals, and Future Development."](http://www.cs.vassar.edu/~ide/papers/teiHistory.pdf) In Computers and the Humanities. Edited by Nancy M. Ide and Jean Véronis. 1995.
+- Mylonas, Elli, and Allen Renear. ["The Text Encoding Initiative at 10: Not Just An Interchange Format Anymore – but a New Research Community."](http://link.springer.com/article/10.1023%2FA%3A1001832310939) Computers and the Humanities 33, no. 1-2 (1999): doi:10.1023/A:1001832310939.
+
+---
+
+## Orientations bibliographiques Chaîne éditoriale
+
+- Bruno Bachimont, Stéphane Crozat, Instrumentation numérique des documents : pour une séparation fonds/forme, revue I3, vol 4, num 1, 2004. [<http://archivesic.ccsd.cnrs.fr/sic_00001017.html>]
+- Stéphane Crozat, Bruno Bachimont, Réinterroger les structures documentaires : de la numérisation à l'informatisation, revue I3, vol 4, num 1, 2004. [<http://archivesic.ccsd.cnrs.fr/sic_00001015.html>]
+- David Gardiner. Digital publishing with XML. Concepts for editors. XMPLAR, 2012. ISBN : 978-0-9873513-0-2
+- Stéphane Crozat. Chaînes éditoriales XML. Ingénierie documentaire. 14 septembre 2016. https://stph.scenari-community.org/doc/ced.pdf
+- James J. Maivald, Cathy Palmer. A Designer's Guide to Adobe InDesign and XML: Harness the Power of XML to Automate your Print and Web Workflows. MIX: 2007.
+- Dorothy J. Hoskins. XML Publishing with Adobe InDesign. O’Reilly: 2010.
+- Grant Gamble. InDesign CS5 Automation Using XML & JavaScript. TrainingCompagny.com, 2013.
+- Bernard Prost. Publishing with XML. Manasta Publishing: 2014.
+
+???
+
+Stéphane Crozat. Chaînes éditoriales et rééditorialisation de contenus numériques.crozat-v2.pdf
+
+— — . 2016. Chaînes éditoriales XML Ingénierie Documentaire.
+
+Bruno Bachimont, Ingénierie des connaissances et des contenus : le numérique entre ontologies et documents, Lavoisier, Hermès, 2007
+
+Roger T. Pédauque, Document : forme, signe et médium, les re-formulations du numérique, premier texte, 2003. [<http://archivesic.ccsd.cnrs.fr/sic_00000511>]
+
+Roger T. Pédauque, Le texte en jeu : Permanence et transformations du document, second texte, 2005. [<http://archivesic.ccsd.cnrs.fr/sic_00001401>]
+
+Roger T. Pédauque, Document et modernités, troisième texte, 2006. [<http://archivesic.ccsd.cnrs.fr/sic_00001741>]
+
+Bachimont Bruno, Herméneutique matérielle et artéfacture, Thèse en épistémologie, 1996.
+
+Bachimont Bruno, Arts et sciences du numérique : ingénierie des connaissances et critique de la raison computationnelle, Mémoire de HDR, Université de Technologie de Compiègne, 2004.
+
+---
+template: inverse
+class: center middle
+
+
+## @emchateau
+
+.footnote[[Revenir au sommaire](#index)]
+</textarea><script src="js/remark-0.6.5.min.js" type="text/javascript"></script><script type="text/javascript">
+        var hljs = remark.highlighter.engine;
+      </script><script src="remark.language.js" type="text/javascript"></script><script type="text/javascript">
+        var slideshow = remark.create({
+        highlightStyle: 'monokai',
+        highlightLanguage: 'remark'
+        }) ;
+      </script></body></html>

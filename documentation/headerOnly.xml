@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraintSpec xmlns="http://www.tei-c.org/ns/1.0"
+                ident="headeronlyelement"
+                scheme="isoschematron">
+   <constraint>
+      <rule xmlns="http://purl.oclc.org/dsdl/schematron" 
+         context="address|
+         addrLine|
+         biblScope|
+         change|
+         editor|
+         editorialDecl|
+         email|
+         encodingDesc|
+         extent|
+         fileDesc|
+         idno|
+         keywords|
+         licence|
+         listChange|
+         listPerson|
+         localName|
+         profileDesc|
+         publicationStmt|
+         resp|
+         respStmt|
+         sourceDesc|
+         teiHeader|
+         textClass|
+         textDesc|
+         titleStmt|
+         typeDesc">
+         <report test="ancestor::tei:text">Error:  The element <name/>
+is not permitted outside the header</report>
+      </rule>
+   </constraint>
+</constraintSpec>
