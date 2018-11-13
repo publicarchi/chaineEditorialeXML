@@ -1,0 +1,417 @@
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title/>
+         </titleStmt>
+         <publicationStmt>
+            <p>from markdown</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>new born</p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div>
+            <head>Chaînes de traitements XML</head>
+         </div>
+         <div>
+            <head>Introduction</head>
+            <p>Ateliers pratiques d’introduction XML et Atelier Text Encoding Initiative. Dans le cadre de ce cours plus général et par son format, aussi plus théorique, je voudrais vous présenter quelques éléments concernant la chaîne éditoriale XML, dans le cas particulier de l’utilisation de la Text Encoding Initiative.</p>
+            <p>Bien évidemment pas le seul standard en vigueur dans ce domaine. Vous avez également vu, EPUB, HTML et XHTML, peut être les formats Dita et DocBook.</p>
+            <p>Mais plus qu’un format ou un standard, la TEI est un cadre de travail pour l’édition critique numérique qui s’avère particulièrement flexible pour toute sorte d’utilisation dans le domaine académique. Au point qu’elle est devenue, en quelque sorte, une <hi rend="italic">lingua franca</hi> des Digital Humanities, en particulier en Europe. Difficile aujourd’hui d’envisager de produire des contenus textuels dans les humanités numériques sans tenir compte de la TEI.</p>
+            <p>C’est aussi l’un des projets les plus anciens et les plus durables des Digital Humanities, puisque la création de la TEI remonte à 1987 (30 ans !). Elle manifeste l’un des plus grands achèvements de la communauté des humanités numériques comme en témoigne le prix Zampolino qu’elle a reçu cette année à la Conférence mondiale des Humanités numériques. La TEI c’est donc à la fois, une ontologie générique du texte, une méthode d’édition critique, mais aussi un projet libre et open source adossé à une forte communauté.</p>
+            <p>Avec, vous allez l’entrevoir, de nombreux outils développés autour de cette communauté.</p>
+            <div>
+               <head>XML pour l’édition structurée</head>
+               <div>
+                  <div>
+                     <head>Où résident les technologies XML pour l’édition ?</head>
+                  </div>
+                  <div>
+                     <head>Définition des documents structurés</head>
+                     <p>On appel document structuré, un document dont la structure logique est décrite plutôt que sa mise en forme physique.</p>
+                     <q>
+                        <p> Un document peut être décrit comme une collection d’objets comportant des objets de plus haut niveau composés d’objets plus primitifs. Les relations entre ces objets représentent les relations logiques entre les composants du document. Par exemple [...] un livre est divisé en chapitres, chaque chapitre en sections, sous-sections, paragraphes, etc. Une telle organisation documentaire est appelée représentation de document structuré.</p>
+                        <p/>
+                        <p> Jacques André, Richard Furuta, Vincent Quint, <hi rend="italic">Structured documents</hi>, Cambridge University Press, 1989.</p>
+                     </q>
+                  </div>
+                  <div>
+                     <head>La notion de chaîne éditoriale</head>
+                     <p>cf. travail de Stéphane Crozat UTC de Compiègne, ou diverses réalisations récentes dans ce domaine soit dans le secteur de l’industrie à caractère commercial, soit dans le domaine de l’édition savante.</p>
+                     <q>
+                        <p> Une <hi rend="bold">chaîne éditoriale</hi> est un procédé technologique et méthodologique consistant à réaliser un modèle de document, à assister dans les tâches de création du contenu et à automatiser la mise en forme. Son atout premier est de réduire les coûts de production et de maintenance des contenus, et de mieux contrôler leur qualité.</p>
+                     </q>
+                     <p>La mise en œuvre de telles chaînes éditoriales repose notamment :</p>
+                     <list type="unordered">
+                        <item>la <hi rend="bold">séparation du fonds et de la forme</hi> qui se traduit par une séparation des formats de création et de publication</item>
+                        <item>l’<hi rend="bold">utilisation de modèles qui servent de guide d’écriture</hi>. il s’agit de modèles métiers au sens où ces modèles sont contextuels. Ceci-étant, il est possibilité de configurer des interfaces adaptées aux besoins spécifiques d’un domaine.</item>
+                        <item>la <hi rend="bold">maintenance de fichiers pivots en vue d’une diffusion multisupport</hi>. Indépendance technologique et séparation du contenu de la forme qui permet d’assurer la durabilité. Les documents sources ont alors recours à des formats pivots à partir desquels sont générés tous les autres formats en vue d’une diffusion multimodale. Le multisupport permet de n’écrire qu’une seule fois ce qui peut être publié plusieurs fois sous différentes formes. Il permet un gain de temps à la production du contenu, mais surtout de ne maintenir un seul fonds documentaire, sans redondance d’information.</item>
+                     </list>
+                     <p>Une chaîne éditoriale se compose donc habituellement :</p>
+                     <list type="unordered">
+                        <item>d’un ensemble de modèles formels (appelés « schémas documentaires ») permettant de contrôler automatiquement la structure des documents avec des technologies de schéma</item>
+                        <item>les références aux ressources binaires (images, etc.) et les références entre documents (liens entre fichiers)</item>
+                        <item>un ensemble d’interfaces d’édition qui peuvent selon les cas être WYSIWYG, ou pas, permettant de créer et modifier des documents dans un format conforme aux modèles, de référencer des ressources binaires depuis ces documents et de créer des liens entre ces documents.</item>
+                        <item>d’un ensemble d'espaces permettant de stocker les fichiers (documents structurés et ressources binaires)</item>
+                        <item>d’un ensemble de moteurs de publications permettant de transformer les documents structurés et ressources binaires pour rendre des publications lisibles (HTML, PDF, etc.)</item>
+                     </list>
+                     <p>@todo faire un schéma</p>
+                     <p>modélisation = modèles</p>
+                     <p>production = contenus structurés</p>
+                     <p>publication = générateurs</p>
+                     <p>output multiformes</p>
+                  </div>
+                  <div>
+                     <head>Enjeux d’une chaîne éditoriale</head>
+                     <list type="unordered">
+                        <item>polymorphisme et accessibilité</item>
+                        <item>réduction des coûts et démarche qualité</item>
+                        <item>séparation des métiers</item>
+                        <item>archivage et pérennisation</item>
+                     </list>
+                     <p>Le <hi rend="bold">polymorphisme</hi> consiste en la possibilité technique de disposer d’une <hi rend="bold">source unique</hi> (<hi rend="italic">single sourcing</hi> en anglais) de contenu et de la transformer à volonté selon les supports et mises en formes désirés. Enjeux sur les formats liés à l’accessibilité, pour publication de l’ensemble des documents sur le web.</p>
+                     <p>
+                        <hi rend="bold">L’objectif d'une chaîne éditoriale numérique est d’instrumenter la production documentaire en vue de son industrialisation. Ce qui suppose la massification des processus, la réalisation d’économies d’échelle, et la mise en place de démarches de qualité.</hi>
+                     </p>
+                     <p>Limites du paradigme bureautique. Permis démocratisation des pratique documentaires. Mais calqués sur les outils antérieurs. Expressivité limité.</p>
+                     <p>L’archivage pérenne des fonds documentaires numériques doit reposer sur trois piliers : un stockage durable qui assure que l’on puisse lire plus tard ce que l’on stocke aujourd’hui ; des formats malléables qui permettent d’utiliser les documents existants dans les usages présents ; des modalités d’indexation qui assurent que l’on peut accéder à ce qui existe en fonction de ce que l’on cherche. Donc il faut pouvoir stocker, chercher, utiliser.</p>
+                     <p>Traditionnellement la production documentaire fait appel à plusieurs métiers (auteur, rédacteur, correcteur, éditeur, diffuseur, etc.). En facilitant certaines tâches (correcteurs orthographiques, mise en page, etc.), l’outil informatique a tendu à fusionner tous les métiers en un seul « auteur-rédacteur-éditeur ». Pourtant, ces métiers sous-tendent des compétences et des savoirs faire spécifiques qui peuvent être réinvestis dans une chaîne éditoriale numérique.</p>
+                  </div>
+                  <div>
+                     <head>Avantages de XML sur HTML</head>
+                     <p>XML est un méta-langage et HTML est un langage, XML et HTML ne sont donc pas strictement comparables. En particulier XHTML est un langage XML, c'est donc du XML !</p>
+                     <p>Toutefois, il est pertinent de se demander pourquoi HTML ou ses syntaxes XHTML ne suffisent pas pour les usages du web ou en publication.</p>
+                     <p>Si HTML, et a fortiori XHTML, fournissent une solution de publication efficiente, ceux-ci n’offrent pas le même potentiel en terme d’ingénierie documentaire. XML possède notamment un potentiel de manipulation plus important (par exemple pour le multi-supports, la rééditorialisation,...).</p>
+                     <list type="unordered">
+                        <item>jeu de balises restreint, manque d’extensivité</item>
+                        <item>mélange des descripteurs physiques et logiques</item>
+                        <item>liens directs</item>
+                     </list>
+                     <p>Vocabulaire propre à un domaine restreint, impossible jusqu’il y a peu de créer ses propres balises ou de créer un vocabulaire propre à un domaine spécifique. Du fait de ce manque d’extensibilité, peu adapté pour l’indexation de documents variés.</p>
+                     <p>Même si un effort notable a été produit pour séparer la présentation de la description du contenu, HTML reste très centré sur la présentation et mélange encore ces deux niveaux de descripteurs. Cette absence de séparation stricte peut nuire dans des contextes de publication multimodaux.</p>
+                     <p>En HTML les liens sont généralement des pointeurs directs, ce qui limite fortement les possibilités de réutilisation et ne permet pas de gérer la maintenance des liens.</p>
+                     <p>Ensemble de considérations qui ont conduit le W3C à se pencher sur XM et à développer ce standard.</p>
+                     <p>Besoins spécifiques dans des contextes éditoriaux complexes qui peuvent seulement difficilement être pris en charge par HTML.</p>
+                     <p>En outre aujourd’hui, on dispose pour les documents XML d’un outillage particulièrement bien adapté et puissant pour la prise en charge du texte informatique et sans équivalent dans le monde informatique.</p>
+                  </div>
+               </div>
+               <div>
+                  <head>Rappels XML pour le Texte</head>
+                  <div>
+                     <head>Un langage de balisage</head>
+                     <p>Une balise est un descripteur ajouté au contenu en vue d'un traitement informatique.Un langage à balises est un langage permettant d'associer à un contenu (généralement du texte) des balises explicites (par exemple pour rendre compte de la structure du texte).</p>
+                     <p>Simplification GSML</p>
+                     <p>Intérêt de SGML pour prendre en charge le texte</p>
+                  </div>
+                  <div>
+                     <head>Avantages de XML :</head>
+                     <list type="unordered">
+                        <item>non-ambiguïté</item>
+                        <item>lisibilité</item>
+                        <item>passivité</item>
+                     </list>
+                     <p>Les règles syntaxiques strictes d'XML rendent son interprétation informatique univoque.</p>
+                     <p>Un format XML a pour objectif d'être lisible par un être humain, afin de plus facilement en appréhender le langage.</p>
+                     <p>Un format XML est passif, il dépend de programmes informatiques qui le transforment.</p>
+                     <p>Distinguer utilisation orientée données de celle orientée document. Généralement considéré plus verbeux que ses alternatives comme JSON, CSV. Mais aussi plus expressif. Surtout répond plus spécifiquement au cas particulier du contenu mixte qui est fréquent pour le texte.</p>
+                     <p>Les langages de balisages de la famille SGML permettent de représenter informatiquement des documents numériques. Ces représentations font appel à des représentation arborescentes habituellement exprimés en XML.</p>
+                     <p>Formats orientés documents structuré, versus formaté :</p>
+                     <list type="unordered">
+                        <item>OpenDocument,</item>
+                        <item>OOXML,</item>
+                        <item>SMIL,</item>
+                        <item>etc.</item>
+                     </list>
+                     <p>Formats orientés documents structurés :</p>
+                     <list type="unordered">
+                        <item>DocBook,</item>
+                        <item>DITA,</item>
+                        <item>TEI,</item>
+                        <item>etc.</item>
+                     </list>
+                  </div>
+               </div>
+               <div>
+                  <head>XML et la validation</head>
+                  <p>Définition de grammaires et de syntaxes</p>
+                  <p>Un méta-langage est un langage permettant de définir d'autres langages, les langages ainsi définis permettent à leur tour la description d'informations respectant ces langages.</p>
+                  <p>Exemples de formats XML orientés données</p>
+                  <list type="unordered">
+                     <item>MathML</item>
+                     <item>ChemML</item>
+                     <item>Atom, RSS</item>
+                     <item>Dublin Core</item>
+                     <item>RDF, OWL</item>
+                     <item>SVG</item>
+                  </list>
+                  <div>
+                     <head>Les technologies de schémas</head>
+                     <p>Un schéma est une description de la structure que doit respecter un document qui lui fait référence, c’est à dire qu’il établit la liste des éléments XML autorisés (avec leurs attributs), ainsi que l’agencement possible de ces éléments.</p>
+                     <p>On parle aussi de <hi rend="italic">grammaire</hi>, au sens où le schéma définit l’enchaînement autorisé des balises et vient en complément de la syntaxe XML (qui elle est indépendante d’un schéma particulier).</p>
+                     <p>Un document bien formé est dit valide pour un schéma donné s’il respecte les règles structurelles imposées par ce schéma.</p>
+                     <p>Ce contrôle de la structure permet :</p>
+                     <list type="unordered">
+                        <item>de s’assurer de l’homogénéité structurelle des documents de même type</item>
+                        <item>le traitement automatique d’un ensemble de documents de même type (mise en forme, stockage, extraction d'informations...)</item>
+                        <item>la création de formats standard et leur respect</item>
+                     </list>
+                     <p>Langages de schéma</p>
+                     <list type="unordered">
+                        <item>Document Type Définition (W3C) : langage hérité de SGML qui fait partie du standard XML</item>
+                        <item>
+                           <ref target="http://www.w3.org/XML/Schema">W3C XML Schema (W3C)</ref> : alternative aux DTD destiné à moderniser et compléter ce langage historique</item>
+                        <item>
+                           <ref target="http://relaxng.org/">Relax NG (OASIS, ISO)</ref> : autre alternative, compromis entre W3C XML Schema et DTD</item>
+                     </list>
+                     <p>Production des contraintes</p>
+                  </div>
+                  <div>
+                     <head>Notion de parser</head>
+                     <p>Un <hi rend="italic">parser</hi> (ou parseur) XML est un programme capable d’analyser un document XML afin de :</p>
+                     <list type="unordered">
+                        <item>s’assurer qu'il est bien formé</item>
+                        <item>éventuellement vérifier sa validité par rapport à un schéma donné (DTD, W3C Schema, RelaxNG)</item>
+                        <item>en fournir une représentation mémoire permettant son traitement (SAX, DOM, ou XDM)</item>
+                     </list>
+                     <p>La plupart des grands langages de programmation proposent aujourd'hui des parsers XML.</p>
+                     <list type="unordered">
+                        <item>Par exemple Xerces est un parser Java (<ref target="http://xerces.apache.org/xerces2">http://xerces.apache.org/xerces2</ref>-j/).</item>
+                     </list>
+                     <p>Un éditeur validant, sera un éditeur spécialisé pour l’édition de document XML en vérifiant dynamiquement que le fichier est bien formé, en s’assurant dynamiquement de sa validité, et en proposant des fonctions d’auto-complétion.</p>
+                     <p>Il existe également des éditeurs orientés dévelopeur et des éditeurs orientés rédacteur (ex. outil Caen)</p>
+                     <list type="unordered">
+                        <item>oXygen (<ref target="http://www.oxygenxml.com/">http://www.oxygenxml.com/</ref>), complet et accessible, multi-plateformes (Linux, Mac, Windows) ;</item>
+                        <item>XML Spy, disponible uniquement sous Windows</item>
+                     </list>
+                     <p>Il existe également des éditeurs orientés dévelopeur et des éditeurs orientés rédacteur (ex. outil Caen)</p>
+                     <list type="unordered">
+                        <item>Jaxe, libre et multi-plateformes (<ref target="http://jaxe.sourceforge.net/fr/">http://jaxe.sourceforge.net/fr/</ref>)</item>
+                        <item>Scenari, chaîne éditoriale complète libre et multi-plateformes (http://scenari-platform.org/)</item>
+                        <item>XXE</item>
+                     </list>
+                  </div>
+               </div>
+               <div>
+                  <head>Vocabulaires spécialisés pour l’édition</head>
+                  <list type="unordered">
+                     <item>docbook</item>
+                     <item>ONIX</item>
+                     <item>EPUB</item>
+                     <item>TEI</item>
+                     <item>XML-Érudit</item>
+                  </list>
+               </div>
+               <div>
+                  <head>Le cas de la TEI</head>
+                  <p>Cadre de travail pour l’édition critique</p>
+                  <p>Système modulaire</p>
+                  <p>Métadonnées autoportées</p>
+               </div>
+            </div>
+            <div>
+               <head>L’outillage XML</head>
+               <div>
+                  <head>Gestion des fichiers</head>
+               </div>
+               <div>
+                  <head>Langages de manipulation</head>
+                  <p>Modèle de données de XML, modèle abstrait</p>
+                  <p>Langage de programmation à caractère déclaratifs</p>
+                  <p>Langages fonctionnels, turing complet</p>
+               </div>
+               <div>
+                  <head>Transformations</head>
+               </div>
+               <div>
+                  <head>Requêtes</head>
+               </div>
+               <div>
+                  <head>Les solutions de publication web</head>
+               </div>
+            </div>
+            <div>
+               <head>Chaînes de traitements éditoriaux XML</head>
+               <p>Chaîne éditoriale, ou chaîne d‘édition appellation qui désigne la suite d’opérations ou de procédés à travers lesquels les documents rédigés par des auteurs sont transformés en documents publiables et publics.</p>
+               <p>Au cours de ce processus, les documents feront l’objet d’un formatage, seront mis en conformité avec des modèles de documents ou feront l’objet de différentes conversions, en vue de leur stockage ou de leur diffusion.</p>
+               <p>cf. Stéphane Crozat. Scenari, la chaîne éditoriale libre. Eyrolles. Accès libre. 2007</p>
+               <list type="unordered">
+                  <item>normalisation et formatage de la production documentaire</item>
+                  <item>séparation de la couche présentationnelle du fonds</item>
+               </list>
+               <p>Mise en œuvre de documents sources propres facilement manipulables par des outils informatiques, sans risque de perte de données. Ces fichiers source peuvent alors servir de formats pivots pour la publication de divers formats dans des chaînes multimodales.</p>
+               <p>La mise en œuvre d’une chaîne éditoriale réclame plusieurs actions.</p>
+               <list type="unordered">
+                  <item>formation des acteurs</item>
+                  <item>mise en place des outils</item>
+                  <item>maintenance</item>
+               </list>
+               <div>
+                  <head>Documentation</head>
+                  <list type="unordered">
+                     <item>Exemple de la TEI</item>
+                     <item>Utilisation de ODD</item>
+                     <item>Production d’un schéma et d’une documentation</item>
+                  </list>
+                  <p>Utilisation des XSL-Stylesheets, ensemble de package de transformation</p>
+                  <p>Récupération d’un document bureautique</p>
+                  <p>Pourriez dire que pas besoin, qu’apporte en plus ?</p>
+               </div>
+               <div>
+                  <head>Validation</head>
+                  <p>Le caractère récursif de la TEI</p>
+                  <p>La TEI s’exprime elle même en ODD, son propre langage de schéma</p>
+                  <div>
+                     <head>Contrôle éditorial, l’exemple du schéma TEI-Journal</head>
+                  </div>
+                  <div>
+                     <head>Revues.org et Lodel</head>
+                  </div>
+                  <div>
+                     <head>Exemple La cité de Dieu</head>
+                     <p>Olivier Bertrand et alii : La Cité de Dieu d’Augustin traduite par Raoul de Presles (première partie)</p>
+                     <p>En 1375, Raoul de Presles, avocat de l’entourage du roi Charles V, présente à ce dernier le fruit de plus de quatre années de labeur : la première traduction en français de l’oeuvre d’Augustin d’Hippone, La cité de Dieu. C’est cette première traduction, au sein de laquelle chaque chapitre est complété par un commentaire de Raoul (« exposition »), qu’édite aujourd’hui l’équipe du programme de recherche « Histoire du Lexique Politique Français », sous la houlette d’Olivier Bertrand.</p>
+                     <p>Le volume constitue le premier fruit du travail colossal entrepris par l’équipe du programme de recherche « Histoire du Lexique Politique Français », qui depuis 2008, s’est attelée à l’édition de cette œuvre, avec le soutien du Conseil Européen de la Recherche et de l’unité de recherche du CNRS « Analyse et traitement informatique de la Langue Française » (ATILF). On ne peut que se montrer admiratif d’une telle entreprise – non seulement en raison de la somme de travail à accomplir, mais encore parce que cette première réalisation est remarquable.</p>
+                     <p>l’ouvrage de 981, ne contient en réalité que le premier tome de la première séquence de la première partie de La Cité de Dieu de saint Augustin traduite par Raoul de Presles ! En réalité, le premier d’une série de huit volumes.</p>
+                     <p>Huit personnes se sont penchés sur l’établissement du texte et deux collaborateurs sur l’indexation et la mise en forme.</p>
+                     <p>Texte conservé dans 50 témoins manuscrits, un manuscrit complet daté de 1376 à la Bnf, sans doute celui présenté par Raoul de Presles à son souverain. Toutefois, l’édition est donnée d’après 4 autres témoins manuscrits de contrôle.</p>
+                     <p>Apparat critique fourni, trois niveaux de notes : « dans l’étage supérieur figurent les leçons qui demandent un choix ou une intervention de la part de l’éditeur, dans l’étage intermédiaire les variantes et enfin dans l’étage inférieur l’apparat des sources ».</p>
+                     <p>Mais cette abondance de notes ne surcharge pourtant pas la page, qui reste tout à fait lisible également dans le cadre d’une lecture cursive, puisque les éditeurs, attentifs au moindre détail, ont fait le choix de ne pas placer d’appels de notes, mais d’indiquer directement dans les notes la ligne et les premiers mots de l’expression sur laquelle ils souhaitent attirer notre attention.</p>
+                     <p>Il nous faut également souligner la volonté affichée par les éditeurs de tenir compte des spécificités de mise en page de leur manuscrit de référence. En effet, l’élément qui caractérise le plus les principes d’édition employés dans ce volume est la volonté de mettre à la disposition du lecteur un maximum d’informations, facilement lisibles, en plus du texte établi. Or, cette maniabilité des ouvrages était également primordiale à la fin du Moyen Âge, surtout dans le cas de manuscrits d’apparat comme celui sur lequel s’appuient les éditeurs. C’est pour cette raisons qu’il est tout à fait pertinent de faire converger ces deux aspects (exigences académiques et témoignage historique textuel), en proposant une mise en page qui donne « au lecteur moderne une idée de la mise en page de [leur] manuscrit de base ». Cela comprend par exemple la distinction stricte entre le chapitre d’Augustin lui-même et son exposition par Raoul, mais aussi la reproduction dans des encadrés des indications marginales (<hi rend="italic">marginalia</hi>), par lesquelles le copiste signale des références utilisées (auteurs, œuvres).</p>
+                     <p>édité chez Champion, mais avec LateX !</p>
+                     <p>http://www.actu-philosophia.com/spip.php?article604</p>
+                  </div>
+                  <div>
+                     <head>Génération de métadonnées</head>
+                     <p>ONIX (ONLine Information eXchange) est un standard international XML intégrant 156 listes de codes (codes de devises ISO, codes de pays, …) créé en 1999 par l’association des éditeurs américains, pour faciliter la mise en ligne de données enrichies sur les sites de e-commerce.</p>
+                     <p>Il a ensuite été repris par la Book Industry Communication (BIC) et le Book Industry Study Group (BISG) et EDItEUR qui en devient le promoteur et en assure la maintenance et le support.</p>
+                     <p>
+                        <ref target="http://editeur.org">http://editeur.org</ref>
+                     </p>
+                     <p>Onix se décline désormais en trois standards</p>
+                     <list type="unordered">
+                        <item>Onix for books</item>
+                        <item>Onix for serials</item>
+                        <item>Onix for publications licens</item>
+                     </list>
+                     <p>La Commission de liason internprofessionnelle du livre (CLIL) créée en 1991 est une association française qui a pour objet le développement du marché et de la promotion du livre, l’étude et l’amélioration des pratiques relatives à la chaîne du livre ». Commission FEL (Fichier exhaustif du livre) qui a pour but de normaliser les données indispensables à la commercialisation des livres.</p>
+                     <list type="unordered">
+                        <item>un « langage » commun qui permet en principe de faciliter les échanges</item>
+                        <item>un standard qui permet d’échanger des données structurées et enrichies</item>
+                        <item>un standard qui permet d’intégrer des données normalisées (EAN13, GTIN13, ISBN, code ISO Pays, code ISO Devise, ISTC, ISNI, classification CLIL, Dewey, THEMA, etc) et multi-langues</item>
+                        <item>un standard qui recouvre les besoins de description d’un marché de plus en plus international (description des droits par territoire, disponibilité et prix par territoire, etc)</item>
+                     </list>
+                     <p>1 description du produit</p>
+                     <p>2 enrichissement maketing</p>
+                     <p>3 Détail du contenu</p>
+                     <p>4 Conditions de publication</p>
+                     <p>5 Œuvres et produits liés</p>
+                     <p>6 Conditions de distributions</p>
+                     <p>http://www.bnf.fr/documents/afnor2014_onix.pdf</p>
+                  </div>
+                  <div>
+                     <head>OAI-PMH</head>
+                     <p>OAI-PMH est un acronyme pour Protocol for Metadata Harvesting (ou en français « protocole pour la collecte de métadonnées de l'Initiative pour les Archives ouvertes »). Le protocole OAI-PMH est un moyen d’échanger sur Internet des métadonnées entre plusieurs institutions, afin de favoriser le signalement et l’accès aux documents numériques.</p>
+                     <p>Ce protocole est promu par l’Open Access Initiative depuis 1999, pour :</p>
+                     <list type="unordered">
+                        <item>d’accroître la visibilité des collections numériques sur Internet,</item>
+                        <item>de reconstituer virtuellement des corpus à partir de ressources accessibles sur différents sites,</item>
+                        <item>d'alimenter des portails thématiques.</item>
+                     </list>
+                     <p>Son utilisation est libre, tout comme ses spécifications, disponibles sur le site www.openarchives.org. On utilise actuellement la version 2 du protocole qui date de 2002. Le protocole est très utilisé dans le domaine patrimonial et culturel ainsi qu’universitaire.</p>
+                     <p>OAI-PMH définit deux types d’acteurs :</p>
+                     <list type="unordered">
+                        <item>les fournisseurs de données, qui déposent leurs métadonnées sur un serveur web appelé "entrepôt",</item>
+                        <item>et les fournisseurs de service qui collectent (on dit aussi "moissonnent") ces données pour les intégrer à l'index de leurs propres bibliothèques numériques.</item>
+                     </list>
+                     <p>Un même établissement peut jouer les deux rôles : diffuser ses métadonnées et collecter celles des autres.</p>
+                     <p>Le fonctionnement de base du protocole OAI-PMH repose sur une communication de client à serveur. Le client envoie des requêtes au serveur en HTTP, le serveur répond par un flux de données en XML.</p>
+                     <p>Tous les jeux de données doivent être décrits en Dublin Core qui sert de format de description générique, mais peuvent également être décrits dans d’autres formats.</p>
+                     <p>Modèle de données</p>
+                     <p>Ressource (<hi rend="italic">resource</hi>) </p>
+                     <list type="unordered">
+                        <item>un objet physique ou numérique pour lequel il existe une description documentaire</item>
+                     </list>
+                     <p>Item (<hi rend="italic">item</hi>) :</p>
+                     <list type="unordered">
+                        <item>un objet documentaire qui décrit et identifie de manière unique une resource</item>
+                        <item>toutes les métadonnées dont on dispose, sont stockées dans un entrepôt (repository) et décrites dans des formats XML</item>
+                     </list>
+                     <p>Le protocole définit un ensemble de verbes pour accéder aux ressources :</p>
+                     <p>Les requêtes OAI-PMH</p>
+                     <p>Il existe 6 requêtes et des paramètres (Identify ; ListIdentifiers ; ListMetadataFormats ; ListSets ; ListRecords ; GetRecord)</p>
+                     <list type="unordered">
+                        <item>Les requêtes précédées de « ?verb= »</item>
+                        <item>Les requêtes commencent par une majuscule</item>
+                        <item>Les paramètres sont introduits par « &amp; »</item>
+                        <item>Les paramètres commencent par une minuscule</item>
+                        <item>Le nom du set est celui spécifié dans &lt;setSpec&gt; et non celui de &lt;setName&gt;</item>
+                     </list>
+                     <p>Exemples</p>
+                     <list type="unordered">
+                        <item>?verb=Identify</item>
+                        <item>?verb=ListSets</item>
+                        <item>?verb=ListMetadataFormats</item>
+                        <item>?verb=ListRecords&amp;metadataPrefix=oai_dc&amp;set=cartes</item>
+                        <item>?verb=ListRecords&amp;resumptionToken=ID1</item>
+                        <item>?verb=ListIdentifiers&amp;metadataPrefix=didl&amp;set=cartes&amp;from=2008-10-31</item>
+                        <item>?verb=GetRecord&amp;metadataPrefix=didl&amp;identifier= identifiant:bnf:123456</item>
+                     </list>
+                     <p>http://weboai.cahier.huma-num.fr</p>
+                     <p>
+                        <ref target="https://github.com/ccahier/weboai/wiki">https://github.com/ccahier/weboai/wiki</ref>
+                     </p>
+                     <p>http://weboai.cahier.huma-num.fr/pmh?verb=ListSets</p>
+                     <p>http://weboai.cahier.huma-num.fr/pmh?verb=ListMetadataFormats</p>
+                     <p>http://weboai.cahier.huma-num.fr/pmh?verb=ListRecords&amp;set=bfm</p>
+                     <p>http://weboai.cahier.huma-num.fr/pmh?verb=GetRecord&amp;identifier=oai:localhost:bfm:adhalefeuill-teiHeader</p>
+                  </div>
+               </div>
+               <div>
+                  <head>Publications multimodales</head>
+                  <div>
+                     <head>Exemple Van Gogh letters</head>
+                  </div>
+                  <div>
+                     <head>Exemple de la chaîne éditoriale de Caen</head>
+                     <p>Dominique Roux, Pierre-Yves Buard</p>
+                     <p>Le projet MÉTOPES – Méthodes et outils pour l’édition structurée – vise à mettre au point, à développer et diffuser, librement dans la sphère publique, par des actions de formation auprès des éditeurs publics et des revues labellisées CNRS un ensemble d’outils et de méthodes leur permettant d’organiser leur production et leur diffusion papier et numérique sur le modèle du Single Source Publishing.</p>
+                     <p>Un des apports principaux est de rationaliser et de factoriser, au sein de la communauté des éditeurs universitaires et de recherche publics, le travail éditorial tout en favorisant la mise en place de stratégies de diffusion multisupports, en assurant une pérennisation des contenus et une haute qualité des métadonnées associées.</p>
+                     <p>Ce projet, principalement orienté vers la production des contenus, est fortement articulé, par le biais de la prise en compte de la norme ONIX et de ses exploitations, aux travaux et développements menés parallèlement par le Centre pour l’édition électronique ouverte (CLEO – OpenEdition, Marseille). L’ensemble des deux dispositifs permet de développer conjointement un réservoir de contenus normés (XML-TEI), à haute valeur éditoriale ajoutée (évalués, éditorialisés, structurés…), et un système de catalogage et d’exposition (diffusion) ouvrant vers la possibilité du déploiement d’un catalogue commun (ONIX) des éditeurs publics associés (métadonnées et contenus). Il constitue la partie recherche développement de l’infrastructure nationale de recherche NUMEDIF[3].</p>
+                     <p>Depuis septembre 2013, le même modèle de données<ref target="http://www.unicaen.fr/recherche/mrsh/document_numerique/projets/metopes#_ftn4">[4\]</ref> régit les productions d’OpenEdition — ouvrages et périodiques — et des membres de l’<ref target="http://www.aedres.fr/">AEDRES</ref> utilisateurs de la chaîne avec des conséquences positives directes quant à l’économie de diffusion des contenus. Une de ces conséquences, et non la moindre, est la suppression des frais de transformation des fichiers pour leur diffusion sur les plateformes<ref target="http://www.unicaen.fr/recherche/mrsh/document_numerique/projets/metopes#_ftn5">[5\]</ref> mais surtout, assurant à l’éditeur la pleine propriété de fichiers structurés. Ces derniers, fruits d’un travail éditorial unique, sont pérennes, reconfigurables, garants du fond et porteurs de formes de diffusion multiples. Ils remplissent toutes les conditions de l’interopérabilité des fonds soit la possibilité du développement d’un catalogue commun et la mise en œuvre d’un réservoir de publications « qui chuchotent entre elles »<ref target="http://www.unicaen.fr/recherche/mrsh/document_numerique/projets/metopes#_ftn6">[6\]</ref>.</p>
+                     <p>Ce modèle et les outils d’informatique éditoriale qui l’accompagnent permettent, à partir d’une source unique, de produire toutes les formes de diffusion et est d’ores et déjà compatible avec les schémas nécessaires pour les revues des plateformes <ref target="http://www.revues.org/">Revues.org</ref>, <ref target="https://www.cairn.info/">Cairn</ref> et pour les livres diffusés sur <ref target="https://books.openedition.org/">OpenEdition Books</ref>.</p>
+                     <p>http://www.unicaen.fr/recherche/mrsh/document_numerique/projets/metopes</p>
+                     <p>http://www.numedif.fr/metopes-outils.html</p>
+                  </div>
+                  <div>
+                     <head>TEIPublisher</head>
+                     <p>TEI Simple</p>
+                  </div>
+                  <div>
+                     <head>SynopsX</head>
+                  </div>
+               </div>
+            </div>
+            <div>
+               <head>Bibliographie</head>
+               <p>Stéphane Crozat. Chaînes éditoriales XML. Ingénierie documentaire. 14 septembre 2016. https://stph.scenari-community.org/doc/ced.pdf</p>
+               <p>Stéphane Crozat. Chaînes éditoriales et rééditorialisation de contenus numériques.crozat-v2.pdf</p>
+               <p>— — . 2016. Chaînes éditoriales XML Ingénierie Documentaire.</p>
+               <p>Bruno Bachimont, Ingénierie des connaissances et des contenus : le numérique entre ontologies et documents, Lavoisier, Hermès, 2007</p>
+               <p>Roger T. Pédauque, Document : forme, signe et médium, les re-formulations du numérique, premier texte, 2003. [&lt;http://archivesic.ccsd.cnrs.fr/sic_00000511&gt;]</p>
+               <p>Roger T. Pédauque, Le texte en jeu : Permanence et transformations du document, second texte, 2005. [&lt;http://archivesic.ccsd.cnrs.fr/sic_00001401&gt;]</p>
+               <p>Roger T. Pédauque, Document et modernités, troisième texte, 2006. [&lt;http://archivesic.ccsd.cnrs.fr/sic_00001741&gt;]</p>
+               <p>Bachimont Bruno, Herméneutique matérielle et artéfacture, Thèse en épistémologie, 1996.</p>
+               <p>Bachimont Bruno, Arts et sciences du numérique : ingénierie des connaissances et critique de la raison computationnelle, Mémoire de HDR, Université de Technologie de Compiègne, 2004.</p>
+               <p>Bruno Bachimont, Stéphane Crozat, Instrumentation numérique des documents : pour une séparation fonds/forme, revue I3, vol 4, num 1, 2004. [&lt;http://archivesic.ccsd.cnrs.fr/sic_00001017.html&gt;]</p>
+               <p>Stéphane Crozat, Bruno Bachimont, Réinterroger les structures documentaires : de la numérisation à l'informatisation, revue I3, vol 4, num 1, 2004. [&lt;http://archivesic.ccsd.cnrs.fr/sic_00001015.html&gt;]</p>
+               <p>David Gardiner. Digital publishing with XML. Concepts for editors. XMPLAR, 2012. ISBN : 978-0-9873513-0-2</p>
+               <p>@todo ajouter réf inDesign, etc.</p>
+            </div>
+         </div>
+      </body>
+   </text>
+</TEI>
