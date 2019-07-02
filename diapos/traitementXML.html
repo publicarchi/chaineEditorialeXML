@@ -1,25 +1,25 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Programme</title>
-    <link href="themes/remark-dark.css" rel="stylesheet" media="all" type="text/css">
+    <link href="themes/remark-dark.css" rel="stylesheet" media="all" type="text/css"/>
   </head>
-    <body><textarea id="source">
+    <body>
+      <textarea id="source">
 title: Introduction à l’édition critique numérique
 description: Emmanuel Château-Dutier, mars 2017
 theme: theme/remark-dark-em.css
 name: inverse
 layout: true
 class: inverse
-
 ---
 
 class: center middle
 
 # Chaînes éditoriales XML avec TEI
 
-## EDN6002 | UdeM, 13 mars 2017
+## EDN6002 | UdeM, 13 novembre 2018
 
 .footnote[[Répertoire GitHub](https://github.com/publicarchitectura/chaineEditorialeXML) | [Programme](00-programme.tei.xml)]
 ![test](images/logo.svg)
@@ -35,13 +35,15 @@ class: center middle
 
 Ateliers pratiques d’introduction XML et Atelier Text Encoding Initiative. Dans le cadre de ce cours plus général et par son format, aussi plus théorique, je voudrais vous présenter quelques éléments concernant la chaîne éditoriale XML, dans le cas particulier de l’utilisation de la Text Encoding Initiative.
 
-Bien évidemment pas le seul standard en vigueur dans ce domaine. Vous avez également vu, EPUB, HTML et XHTML, peut être les formats Dita et DocBook.
+Bien évidemment pas le seul standard en vigueur dans ce domaine. Vous avez également eu l’occasion de rencontrr, ou vous allez voir, un certain nombre de formats dédiés à l’édition au cours de cette session tels que EPUB, HTML et XHTML, peut être les formats Dita et DocBook.
 
-Mais plus qu’un format ou un standard, la TEI est un cadre de travail pour l’édition critique numérique qui s’avère particulièrement flexible pour toute sorte d’utilisation dans le domaine académique. Au point qu’elle est devenue, en quelque sorte, une *lingua franca* des Digital Humanities, en particulier en Europe. Difficile aujourd’hui d’envisager de produire des contenus textuels dans les humanités numériques sans tenir compte de la TEI.
+Mais plus qu’un format ou un standard, **la TEI est un cadre de travail pour l’édition critique numérique** qui s’avère particulièrement flexible pour toute sorte d’utilisation dans le domaine académique. Au point qu’elle est devenue, en quelque sorte, une *lingua franca* des Digital Humanities, en particulier en Europe. Difficile aujourd’hui d’envisager de produire des contenus textuels dans les humanités numériques sans tenir compte de la TEI.
 
-C’est aussi l’un des projets les plus anciens et les plus durables des Digital Humanities, puisque la création de la TEI remonte à 1987 (30 ans !). Elle manifeste l’un des plus grands achèvements de la communauté des humanités numériques comme en témoigne le prix Zampolino qu’elle a reçu cette année à la Conférence mondiale des Humanités numériques. La TEI c’est donc à la fois, une ontologie générique du texte, une méthode d’édition critique, mais aussi un projet libre et open source adossé à une forte communauté.
+C’est aussi **l’un des projets les plus anciens et les plus durables des Digital Humanities**, puisque la création de la TEI remonte à 1987 (30 ans !). Elle manifeste l’un des plus grands achèvements de la communauté des humanités numériques comme en témoigne le prix Zampolino que sa communauté a reçu en 2017 à l’occasion de la Conférence mondiale des Humanités numériques à Montréal.
 
-Avec, vous allez l’entrevoir, de nombreux outils développés autour de cette communauté.
+**La TEI c’est donc à la fois, une ontologie générique du texte, une méthode d’édition critique, mais aussi un projet libre et open source adossé à une forte communauté.**
+
+Avec, vous allez l’entrevoir, de nombreux outils développés autour de cette communauté qui permettent d’envisager la création de chaînes éditoriales complètes pour le traitement des éditions.
 
 ---
 
@@ -97,7 +99,9 @@ On appelle document structuré, un document dont la structure logique est décri
 ### Encodage descriptif .red[vs] encodage présentationnel
 
 Parce qu’il détermine tous les traitements informatiques qu’il est possible d’effectuer sur le texte, le balisage a historiquement constitué une question fondamentale dans l’histoire de l’informatique. Depuis l’article séminal de Coombs et ses collègues, on a pris l’habitude de distinguer plusieurs types de balisages&nbsp;: procédural, présentationnel, ou encore descriptif.
-cf. Coombs, James H, Renear, Allen H, et DeRose, Steven J, [« Markup Systems and the Future of Scholarly Text Processing »](http://xml.coverpages.org/coombs.html), Communications of the ACM, n° 11, t. 30, 1987, p.933-947.
+
+> cf. Coombs, James H, Renear, Allen H, et DeRose, Steven J, [« Markup Systems and the Future of Scholarly Text Processing »](http://xml.coverpages.org/coombs.html), Communications of the ACM, n° 11, t. 30, 1987, p.933-947.
+
 La supériorité du balisage descriptif sur les autres types de balisage du texte a clairement été établie depuis quelques années. Un tel balisage présente l’avantage notable d’assurer une meilleure distinction entre le contenu et la forme (et donc de séparer les traitements). Cette distinction garantit une meilleure maintenance du texte encodé et une meilleure portabilité des artefacts numériques.
 
 ---
@@ -1205,10 +1209,10 @@ Toutefois, pour être efficace, une telle recherche suppose un traitement partic
 <div xmlns="http://www.tei-c.org/ns/Examples" type="chapitre">
 	<div type="section" xml:id="AFR.1" xml:lang="afr">
     	<lg xml:id="AFR.1.1"> <l n="1" xml:id="vers1">
-          <pb ed="A" n="1r"/>Molz pelerins qui vunt al 
-munt<note type="marginal" xml:id="AFRftn1"> 
+          <pb ed="A" n="1r"/>Molz pelerins qui vunt al
+munt<note type="marginal" xml:id="AFRftn1">
 <hi rend="italic">B</hi>: Les bones gens qui vunt au mont
-<hi rend="italic">(voir infra), avec majuscule initiale de 
+<hi rend="italic">(voir infra), avec majuscule initiale de
 grande taille.</hi> </note></l> <l n="2" xml:id="vers2">Enquierent
 molt, et grant dreit unt,</l> <l n="3" xml:id="vers3">Comment
 l’igliese fut fundee</l> <l n="4" xml:id="vers4">Premierement,
@@ -1386,11 +1390,16 @@ class: center middle
 ## @emchateau
 
 .footnote[[Revenir au sommaire](#index)]
-</textarea><script src="js/remark-0.6.5.min.js" type="text/javascript"></script><script type="text/javascript">
-        var hljs = remark.highlighter.engine;
-      </script><script src="remark.language.js" type="text/javascript"></script><script type="text/javascript">
-        var slideshow = remark.create({
-        highlightStyle: 'monokai',
-        highlightLanguage: 'remark'
-        }) ;
-      </script></body></html>
+</textarea>
+<script src="js/remark-0.6.5.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+​        var hljs = remark.highlighter.engine;
+​      </script>
+<script src="remark.language.js" type="text/javascript"></script><script type="text/javascript">
+​        var slideshow = remark.create({
+​        highlightStyle: 'monokai',
+​        highlightLanguage: 'remark'
+​        }) ;
+​      </script>
+</body>
+</html>

@@ -16,14 +16,17 @@
       <body>
          <div>
             <head>Chaînes de traitements XML</head>
+            <head>EDN6002 | UdeM, 13 novembre 2018</head>
+            <note>[Répertoire GitHub](https://github.com/publicarchitectura/chaineEditorialeXML) | [Programme](00-programme.tei.xml)</note>
          </div>
          <div>
             <head>Introduction</head>
             <p>Ateliers pratiques d’introduction XML et Atelier Text Encoding Initiative. Dans le cadre de ce cours plus général et par son format, aussi plus théorique, je voudrais vous présenter quelques éléments concernant la chaîne éditoriale XML, dans le cas particulier de l’utilisation de la Text Encoding Initiative.</p>
-            <p>Bien évidemment pas le seul standard en vigueur dans ce domaine. Vous avez également vu, EPUB, HTML et XHTML, peut être les formats Dita et DocBook.</p>
-            <p>Mais plus qu’un format ou un standard, la TEI est un cadre de travail pour l’édition critique numérique qui s’avère particulièrement flexible pour toute sorte d’utilisation dans le domaine académique. Au point qu’elle est devenue, en quelque sorte, une <hi rend="italic">lingua franca</hi> des Digital Humanities, en particulier en Europe. Difficile aujourd’hui d’envisager de produire des contenus textuels dans les humanités numériques sans tenir compte de la TEI.</p>
-            <p>C’est aussi l’un des projets les plus anciens et les plus durables des Digital Humanities, puisque la création de la TEI remonte à 1987 (30 ans !). Elle manifeste l’un des plus grands achèvements de la communauté des humanités numériques comme en témoigne le prix Zampolino qu’elle a reçu cette année à la Conférence mondiale des Humanités numériques. La TEI c’est donc à la fois, une ontologie générique du texte, une méthode d’édition critique, mais aussi un projet libre et open source adossé à une forte communauté.</p>
-            <p>Avec, vous allez l’entrevoir, de nombreux outils développés autour de cette communauté.</p>
+            <p>Bien évidemment pas le seul standard en vigueur dans ce domaine. Vous avez également eu l’occasion de rencontrr, ou vous allez voir, un certain nombre de formats dédiés à l’édition au cours de cette session tels que EPUB, HTML et XHTML, peut être les formats Dita et DocBook.</p>
+            <p>Mais plus qu’un format ou un standard, <hi>la TEI est un cadre de travail pour l’édition critique numérique</hi> qui s’avère particulièrement flexible pour toute sorte d’utilisation dans le domaine académique. Au point qu’elle est devenue, en quelque sorte, une <soCalled>lingua franca</soCalled> des Digital Humanities, en particulier en Europe. Difficile aujourd’hui d’envisager de produire des contenus textuels dans les humanités numériques sans tenir compte de la TEI.</p>
+            <p>C’est aussi <hi>l’un des projets les plus anciens et les plus durables des Digital Humanities</hi>, puisque la création de la TEI remonte à 1987 (30 ans !). Elle manifeste l’un des plus grands achèvements de la communauté des humanités numériques comme en témoigne le prix Zampolino qu’elle a reçu en 2017 à l’occasion de la Conférence mondiale des Humanités numériques à Montréal. </p>
+            <p><hi>La TEI c’est donc à la fois, une ontologie générique du texte, une méthode d’édition critique, mais aussi un projet libre et open source adossé à une forte communauté.</hi></p>
+            <p>Avec, vous allez l’entrevoir, de nombreux outils développés autour de cette communauté qui permettent d’envisager la création de chaînes éditoriales complètes pour le traitement des éditions.</p>
             <div>
                <head>XML pour l’édition structurée</head>
                <div>
