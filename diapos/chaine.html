@@ -11,94 +11,94 @@
       body {
           font-family: 'Droid Serif'
       }
-
+    
       h1, h2, h3 {
           font-family: 'Yanone Kaffeesatz';
           font-weight: 400;
           margin-bottom: 0;
       }
-
+    
       h1 {
           font-size: 2.4em;
       }
-
+    
       h2 {
           font-size: 2.0em;
       }
-
+    
       h3 {
           font-size: 1.6em;
       }
-
+    
       ul, ol {
           list-style-position: outside;
       }
-
+    
       .footnote {
           position: absolute;
           bottom: 3em;
       }
-
+    
       .menu > ul > li {
           font-size: 2.0em;
       }
-
+    
       .menu > ul > li > ul > li {
           font-size: 1.0em;
       }
-
+    
       .red {
           /* color: #fa0000; */
           color: rgb(249, 38, 114);
       }
-
+    
       .large {
           font-size: 2em;
       }
-
+    
       a, a > code {
           color: rgb(249, 38, 114);
           text-decoration: none;
       }
-
+    
       code {
           color: #2AA1FF;
       }
-
+    
       .pull-left {
           float: left;
           width: 47%;
       }
-
+    
       .pull-right {
           float: right;
           width: 47%;
       }
-
+    
       .pull-right ~ p {
           clear: both;
       }
-
+    
       #slideshow .slide .content code {
           font-size: 0.8em;
       }
-
+    
       #slideshow .slide .content pre code {
           font-size: 0.9em;
           padding: 8px;
           background: #24251D;
       }
-
+    
       .inverse {
           background: #272822;
           color: #BBBBBB;
           text-shadow: 0 0 20px #333;
       }
-
+    
       .inverse h1, .inverse h2 {
           color: #f3f3f3;
       }
-
+    
       /* Slide-specific styling */
       #slide-how .slides {
           font-size: 0.9em;
@@ -106,11 +106,11 @@
           top: 151px;
           right: 140px;
       }
-
+    
       #slide-how .slides h3 {
           margin-top: 0.2em;
       }
-
+    
       #slide-how .slides .first, #slide-how .slides .second {
           padding: 1px 20px;
           height: 90px;
@@ -119,7 +119,7 @@
           -webkit-box-shadow: 0 0 10px #777;
           box-shadow: 0 0 10px #777;
       }
-
+    
       #slide-how .slides .first {
           background: #fff;
           position: absolute;
@@ -127,13 +127,13 @@
           left: 20%;
           z-index: 1;
       }
-
+    
       #slide-how .slides .second {
           position: relative;
           background: #fff;
           z-index: 0;
       }
-
+    
       /* Two-column layout */
       .left-column {
           color: #777;
@@ -141,19 +141,19 @@
           height: 92%;
           float: left;
       }
-
+    
       .left-column h2:last-of-type, .left-column h3:last-child {
           color: #ccc;
       }
-
+    
       .right-column {
           width: 75%;
           float: right;
           padding-top: 15px;
       }
-
+    
       /* personnalisation */
-
+    
       pre {
         border-left: 0.4em solid #d7d7d7;
         padding: 1em !important;
@@ -175,7 +175,7 @@ class: center middle
 
 # Chaînes éditoriales XML avec TEI
 
-### EDN6002 | UdeM, 13 novembre 2018
+### EDN6002 | UdeM, 14 novembre 2019
 
 .footnote[[Répertoire GitHub](https://github.com/publicarchitectura/chaineEditorialeXML) | [Programme](00-programme.tei.xml)]
 ![test](images/logo.svg)
@@ -189,9 +189,13 @@ class: center middle
 
 ???
 
-Ateliers pratiques d’introduction XML et Atelier Text Encoding Initiative. Dans le cadre de ce cours plus général et par son format, aussi plus théorique, je voudrais vous présenter quelques éléments concernant la chaîne éditoriale XML, dans le cas particulier de l’utilisation de la Text Encoding Initiative.
+Remercier Dominique
 
-Bien évidemment pas le seul standard en vigueur dans ce domaine. Vous avez également eu l’occasion de rencontrr, ou vous allez voir, un certain nombre de formats dédiés à l’édition au cours de cette session tels que EPUB, HTML et XHTML, peut être les formats Dita et DocBook.
+Occasion de parler d’un outillage qui me tient à cœur.
+
+Par ailleurs, ateliers pratiques d’introduction XML et Atelier Text Encoding Initiative. Dans le cadre de ce cours plus général et par son format, aussi plus théorique, je voudrais vous présenter quelques éléments concernant la chaîne éditoriale XML, dans le cas particulier de l’utilisation de la Text Encoding Initiative.
+
+Bien évidemment pas le seul standard en vigueur dans ce domaine. Vous avez également eu l’occasion de rencontrer, ou vous allez voir, un certain nombre de formats dédiés à l’édition au cours de cette session tels que EPUB, HTML et XHTML, peut être les formats Dita et DocBook.
 
 Mais plus qu’un format ou un standard, **la TEI est un cadre de travail pour l’édition critique numérique** qui s’avère particulièrement flexible pour toute sorte d’utilisation dans le domaine académique. Au point qu’elle est devenue, en quelque sorte, une *lingua franca* des Digital Humanities, en particulier en Europe. Difficile aujourd’hui d’envisager de produire des contenus textuels dans les humanités numériques sans tenir compte de la TEI.
 
@@ -208,9 +212,9 @@ name: index
 
 ## Sommaire
 
-1. [XML pour l’édition structurée](#xml)
-2. [L’outillage XML](#outillage)
-3. [Chaînes de traitement XML](#chaines)
+1. #### [XML pour l’édition structurée](#xml)
+2. #### [L’outillage XML](#outillage)
+3. #### [Chaînes de traitement XML](#chaines)
 
 ---
 
@@ -248,7 +252,7 @@ On appelle document structuré, un document dont la structure logique est décri
 
 ### .red[vs]
 
-## encodage présentationnel
+## Encodage présentationnel
 
 ???
 
@@ -275,6 +279,7 @@ Identifier explicitement la structure sémantique sous-jacente d’un document, 
 1. Processus d’établissement du texte simplifié
 2. Réduction des problèmes de maintenance
 3. Meilleure portabilité
+
 
 ???
 
@@ -307,6 +312,28 @@ Autrement dit, le balisage descriptif offre un certain nombre d’avantages pour
 ### 3. Réalisation du balisage, marquage de l’élément
 
 ???
+## Procédure mise en œuvre lors du .red[balisage]
+
+Les trois opérations qui interviennent au cours du balisage sont donc les suivantes&nbsp;:
+
+- la reconnaissance des éléments, &nbsp;: reconnaître que l’élément courant est un élément d’un certain type (paragraphe, citation en prose, note de bas de page, etc.)
+- la sélection des balises,&nbsp;: déterminer le balisage qui s’applique au type d’élément reconnu
+- la réalisation du balisage,&nbsp;: marquage de l’élément à l’intérieur du flux textuel
+
+  cf. Coombs, James, et al., .red[op. cit.]
+
+--
+
+```txt
+Ceci est un paragraphe contenant une entité.
+```
+--
+```xml
+<para>Ceci est du texte contenant une <entity>entité</entity>.</para>
+
+```
+
+???
 
 ## Procédure mise en œuvre lors du .red[balisage]
 
@@ -320,7 +347,7 @@ Les trois opérations qui interviennent au cours du balisage sont donc les suiva
 
 ---
 
-## .red[OHCO], .red[O]rdered .red[H]ierarchy of .red[C]ontent .red[O]bject
+## .red[OHCO], .red[O]rdered .red[H]ierarchy of .red[C]ontent .red[O]bjects
 
 L’idée d’un balisage descriptif suggère une représentation du texte qui correspond à un modèle d’.red[éléments contenus hiérarchiquement imbriqués] (OHCO, .red[ordered hierarchy of content object, en anglais]).
 
@@ -331,11 +358,14 @@ Une manière de se représenter ce qu’est un texte
 
 ???
 
-## .red[OHCO], ordered hierarchy of content object
+## .red[OHCO], ordered hierarchy of content objects
 
 L’idée d’un balisage descriptif qui repose sur le fait de marquer le contenu d’un texte par des éléments suggère une représentation du texte qui correspond à ce qu’on a appelé un modèle d’.red[]éléments contenus hiérarchiquement imbriqués.red[] (OHCO, ordered hierarchy of content object, en anglais).
 
 Dans une telle représentation du texte, les éléments contenus (paragraphes, citations, phrases, notes, etc.) sont présentés à l’intérieur d’une structure hiérarchique. La structure du texte est hiérarchique parce qu’ils résident les uns à l’intérieur des autres. Les objets reçoivent donc des relations linéaires.
+
+cf. Renear
+cf. DeRose, et al. 1990
 
 C’est ici l’occasion de souligner qu’il s’agit ici d’une modélisation. C’est une manière de représenter ce qu’est un texte qui impose son expressivité et ses contraintes. Nous verrons que la TEI, tout en étant en grande basée sur le balisage descriptif offre différents mécanismes pour prendre en charge des relations non hiérarchiques comme les chevauchements, etc.
 
@@ -367,7 +397,17 @@ La mise en œuvre de telles chaînes éditoriales repose notamment :
 
 ---
 
-@todo faire un schéma
+background-image: url(../images/chaine.jpg)
+
+.footnote[Evelyne Broudoux]
+
+???
+e
+---
+
+background-image: url(../images/chaines.png)
+
+.foonote[Stéphane Crozat. Principes généraux de la chaîne éditoriale par rapport à l’approche artisanale]
 
 ???
 
@@ -519,12 +559,12 @@ Métalangage désormais utilisé partout en informatique qu’il s’agisse de s
 
 ## Principes de conception de .red[XML]
 
-- applicable à tout type de texte
-- e.red[X]tensible
-- définition par un schéma
-- hypertextualité
-- simple, universel
-- modèle hiérarchique
+- #### applicable à tout type de texte
+- #### e.red[X]tensible
+- #### définition par un schéma
+- #### hypertextualité
+- #### simple, universel
+- #### modèle hiérarchique
 
 ???
 
@@ -1495,6 +1535,234 @@ It’s __a full XQuery web application built upon BaseX__, a native XML Database
 
 __SynopsX has been conceived as a scalable and easily customizable solution__ for HTML5 publication of XML files (TEI, EAD...).
 It allows __full control over the URL scheme__ to build real REST applications and we are planning to use it to expose XML corpora in the Linked Open Data.
+
+---
+
+## Publishers Survey: The State of Production Automation and Workflow Modernization 
+
+| Workflow Step         | Yes  | No   |
+| --------------------- | ---- | ---- |
+| Editorial             | 51%  | 49%  |
+| Print production      | 64%  | 34%  |
+| e-Products production | 71%  | 29%  |
+
+Enjeux plusieurs passes, format et qualité 
+
+63% éditeurs passé le cap, jugent que décision plus importante qu’aient prise
+
+https://amnet-systems.com/what-are-the-benefits-of-an-xml-first-workflow-in-publishing-and-marketing/
+
+???
+
+Are you using
+
+- **38%:** **Yes**
+-  **27%:** **No, but we are looking into it**
+- **6%:** **We are in the process of migrating now** **29%:** **No, and we have no plans to change*
+
+Priorité 
+
+- **74%:** **Revenue
+- ** **69%:** **Improving efficiency**
+-  **66%:** **Reducing costs**
+-  **29%:** **Improving author acquisition and satisfaction**  
+
+articles récents
+
+2018, What are the benefits of an XML-first workflow in publishing and Marketing ?
+
+https://amnet-systems.com/what-are-the-benefits-of-an-xml-first-workflow-in-publishing-and-marketing/
+
+---
+
+## Les formats XML
+
+- [Darwin Information Typing Architecture (DITA XML)](http://xml.coverpages.org/dita.html)
+
+  documentation technique (structuration, hypertextualité, index)
+
+- DocBook
+  monographies techniques (logiciel, keyCode, GUIButton, etc.)
+
+- TEI
+  publication académique, versification, correspondance, transcriptions de ms
+
+- NISO JATS journal / US National Library of Medicine (NLM)
+
+- BITS [jats.nlm.nih.gov/extensions/bits/](https://jats.nlm.nih.gov/extensions/bits/)
+
+- The Book Interchange Tag Suite (BITS) is an XML document model for STEM books that is based on JATS (the Journal Article Tag Suite ANSI/NISO Z39-96-2015). 
+
+???
+
+#### Journal Article Tag Suite (JATS)
+
+- ANSI/NISO Z39.96-2015
+- 1ère publication en 2003, dernier standard 2015
+
+'JATS', également connu sous l’appelation ANSI/NISO Z39.96-2015 JATS: Journal Article Tag Suite,
+
+Lapeyre, Debbie. 2018. « Introduction to JATS (Journal Article Tag Suite) ». *XML.com* (blog). 12 octobre 2018. https://www.xml.com/articles/2018/10/12/introduction-jats/.
+
+Publié en 2003
+
+## Standards Tag Suite (STS)
+
+- ANSI/NISO Z39.102-2017
+- Standard pour l’encodage XML de documents de standardisation
+
+https://www.niso-sts.org/
+
+Rétrocompatible avec ISO STS 1.1.
+
+Usdin, B. Tommie. 2018. « What is NISO STS? » *XML.com* (blog). 6 janvier 2018. https://www.xml.com/articles/2018/01/06/what-niso-sts/.
+
+### Book Interchange Tag Suite (BITS)
+
+- ANSI/NISO Z39-96-2015
+- Standardisation 2015
+
+Lapeyre, Debbie. 2019. « Introduction to BITS (Book Interchange Tag Suite) ». *XML.com* (blog). 18 janvier 2019. https://www.xml.com/articles/2019/01/18/introduction-bits-book-interchange-tag-suite/.
+
+> The Book Interchange Tag Suite (BITS) is an XML document model for  STEM books that is based on JATS (the Journal Article  Tag Suite ANSI/NISO Z39-96-2015). BITS is a named collection of XML  elements and attributes for describing the structural and semantic content of books and book  components, as well as a packaging  element for interchange of book parts. BITS provides a robust book model that is compatible with JATS, making it easy for publishers of both  journals and books to publish them using the same system.
+
+Fournir un vocabulaire destiné à supporter l’échange, l’archivage, la conversion de format et la publication de livres scientifiques, de référence, d’enseignement supérieur, techniques et médicaux. Le format n’est pas centré sur les catalogues commerciaux, les livres de cuisine ou les libres scolaires, ni les publications légales, l’édition de texte historique.
+
+Modèle de création fondé sur JATS. 'JATS', également connu sous l’appelation ANSI/NISO Z39.96-2015 JATS: Journal Article Tag Suite,
+
+Format qui permet de prendre en charge
+
+- métadonnées de collection
+- métadonnées de livre
+- front matter
+- body et parties
+- back matter
+
+Déclaratif basé sur JATS, documenté, gratuit et public
+
+---
+
+## MIT Press (2012)
+
+Premier éditeur dont les contenus scientifiques constituent l’activité principale aux US.
+
+- 200 nouveaux livres /an
+- 80% en XML (non XML ouvrages d’architecture, ou pas produits en traitement de txt)
+- 4 436 titres numériques
+- 2 552 web-ready
+- 338 ePub (Kobo, Amazon, Barnes and nobles, etc.)
+
+(En 2012 : Jake Furbush, digital publishing manager https://youtu.be/EHmXM61ItWY, depuis 2015 Harvard University Press)
+
+???
+
+Jake Furbush, digital publishing manager (2016). jfurbush@mit.edu
+
+CMS Marklogic facilite 7 flux de travail. Remplacement par Alfresco. 
+
+Utilisation de EXTYLES pour les brouillons. Possibilité de corriger syntaxe, identification des citations.
+
+Utilisation de la validations, exploration de nouveaux formats pour le livre. JATS pour les journaux.
+
+Transformation optimisée pour InDesign des fichiers corrigés. Utilisation de template pour alimenter les ePub.
+
+Converstion TeX pour eXtyling
+
+---
+
+## Elsevier (-2016)
+
+https://www.elsevier.com/authors/author-schemas/xml-in-science-publishing
+
+> Elsevier is basing its workflow for primary book and journal publications on the "XML-first" principle: all articles and books are converted to XML as they come in and this XML is used to prepare all output, irrespective of the format.
+
+[Elsevier DTD family](https://www.elsevier.com/authors/author-schemas/elsevier-xml-dtds-and-transport-schemas)
+
+???
+
+> Elsevier's book and journal content is based on XML. XML stands for eXtensible Markup Language. XML documents are structured ("tagged") independently of the presentation in a way that can be extended by the developer of the XML standard that is used.
+>
+> Elsevier is basing its workflow for primary book and journal publications on the "XML-first" principle: all articles and books are converted to XML as they come in and this XML is used to prepare all output, irrespective of the format.
+
+[Elsevier DTD family](https://www.elsevier.com/authors/author-schemas/elsevier-xml-dtds-and-transport-schemas)
+
+Dernières version 2016
+
+Ensemble de la chaîne de travail est basée sur XML. Les commande sont également traitées en XML dans un format appelé CONTRAST (CONtent TRAnsport STandard)
+
+---
+
+## Hogrefe
+
+éditeur spécialisé en psychologie
+
+- 240 livres /an
+- 42 journaux 
+- tests
+
+BITS et InDesign
+
+2013
+
+https://youtu.be/UPRIhdz8ycA
+
+---
+
+## The Web, the W3C and the Future of Publishing
+
+https://www.w3.org/publishing/
+
+Plusieurs ateliers dans le cadre de l’Open Web Platform
+
+- ebooks New York (février 2013)
+- internationalisation dans l’édition (Tokyo 2013)
+- édition imprimée et OWP (Paris, septembre 2013)
+- Annotation et OWP (San Francisco, avril 2014)
+
+???
+
+Digital Publishing Activity créée pour aider le W3C à se concerter sur les besoins de l’édition.
+
+- Digital Publishing Interest Group premier brouillon pour mise en page des textes latins
+- 
+
+Liam Quim, 2014 JATS-Con https://youtu.be/uGVerpRsO3Q
+
+Liam Quim, 2013 Balisage https://www.balisage.net/Proceedings/vol12/html/Quin01/BalisageVol12-Quin01.html
+
+Digital Publishing Interest Group, draft par Dave Cramer (Hachette) 16 000 titres par an en CSS et HTML, arrière plan en XSL-FO. Actuellement Luc Audrain (Hachette) dirige le groupe https://www.w3.org/community/publishingbg/participants
+
+Début 2017, IDPF  fut absorbé par le World Wide Web Consortium  (W3C). Dès lors le développement du standard EPUB et des autres technologies pour la Web Platform ont désormais lieu au sein du W3C.
+
+Requirements for Latin Text Layout and Pagination 2014 https://www.w3.org/TR/dpub-latinreq/
+
+https://www.w3.org/TR/dpub-css-priorities/
+
+2017 https://www.w3.org/TR/pwp/ Web Publications for the Open Web Platform: Vision And Technical Challenges
+
+> This document outlines a vision for the convergence between the Open Web Platform and portable documents while also significantly advancing and expanding the existing digital publishing ecosystem. The realization of this vision would require a strong cooperation between the traditional publishing and Web communities, based on a close collaboration between the W3C and other relevant organizations, like [IDPF](http://idpf.org/), [EDItEUR](http://editeur.org/), [BISG](http://www.bisg.org/), or others. While it is envisaged that most of the work could be done in one or more dedicated Working Groups (within W3C or elsewhere, depending on the exact charter), it must be emphasized that many of the features will affect and will be affected by work done elsewhere, within or outside these organizations. The starting point will be to explore and plan for the detailed technical challenges to gain a better insight into the work ahead; this exploration should be done together with the various interested communities.
+
+2019 https://www.w3.org/TR/wpub/
+
+https://www.w3.org/dpub/IG/
+
+---
+
+## O’Reilly
+
+http://toc.oreilly.com/
+
+https://atlas.oreilly.com/
+
+???
+
+> “Publishing isn’t about putting ink on paper, and moving blocks of  said paper through warehouses to readers. It’s about knowledge  dissemination, learning, entertainment, codification of subject  authority — the real jobs that authors and publishers do for readers…  Our goal is to bring together people who are pushing the boundaries of  publishing and those who want to learn from them, and to provide a table of contents (TOC), so to speak, on what modern publishers need to  know.”
+
+> We’ve been developers of publishing technology since the days we  first started publishing. In the “scratch your own itch” spirit of the  open source movement, we co-created [DocBook](http://www.docbook.org/whatis) in the early ’90s, published the first commercial web magazine, [GNN](http://en.wikipedia.org/wiki/Global_Network_Navigator) (initially developed as a demo to help bookstores grok the Internet!) in 1993, and launched [Safari Books Online](http://www.safaribooksonline.com) in 2000.  And we’ve used the internal production toolchain we built  over the years to create a digital distribution business that now  provides DRM-free ebooks in multiple formats not only from O’Reilly but  also from Microsoft Press, Wiley, Elsevier, No Starch, and many other  technical publishers.
+>
+> For the past few years, we’ve been focusing on development of a  platform code-named **Atlas**, and bringing that to fruition is central to  our future plans. Atlas is a tool for collaborative writing (currently  being used by authors of about two-thirds of the books in our pipeline), one-touch publishing in all formats (including print-on-demand), and an interactive online reading platform that takes full advantage of the  digital realm. We believe it takes a big step towards fulfilling the  promise of digital publishing. You’ll be hearing much more about Atlas  in the coming months.
+
+https://atlas.oreilly.com/
 
 ---
 
