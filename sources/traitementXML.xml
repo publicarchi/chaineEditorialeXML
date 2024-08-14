@@ -153,7 +153,7 @@
                   </list>
                   <div>
                      <head>Les technologies de schémas</head>
-                     <p>Un schéma est une description de la structure que doit respecter un document qui lui fait référence, c’est à dire qu’il établit la liste des éléments XML autorisés (avec leurs attributs), ainsi que l’agencement possible de ces éléments.</p>
+                     <p>Un schéma est une description de la structure que doit respecter un document qui lui fait référence, c’est à dire qu’il établit la liste des éléments XML autorisés (avec leurs attributs), ainsi que l’agencement possible de ces éléments.</p>
                      <p>On parle aussi de <hi rend="italic">grammaire</hi>, au sens où le schéma définit l’enchaînement autorisé des balises et vient en complément de la syntaxe XML (qui elle est indépendante d’un schéma particulier).</p>
                      <p>Un document bien formé est dit valide pour un schéma donné s’il respecte les règles structurelles imposées par ce schéma.</p>
                      <p>Ce contrôle de la structure permet :</p>
